@@ -1,0 +1,40 @@
+site_name: Pivot Handbook
+#repo_url: https://github.com/korniko98/pivot-handbook/
+theme:
+  name: material
+  icon:
+    logo: material/table-pivot
+  palette:
+    scheme: default
+    primary: deep purple
+    accent: deep orange
+  features:
+    - search.highlight
+    - navigation.sections
+    - content.tabs.link
+plugins:
+    - search
+    - mermaid2
+    #- social
+markdown_extensions:
+  - pymdownx.details
+  - admonition
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji 
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.pathconverter
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/AmitaiCo
+extra_css:
+  - stylesheets/extra.css
