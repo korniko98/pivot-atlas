@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This project serves as a beginner's guide to various methods of pivoting on cyber threat intelligence artifacts, such as [IP addresses](ip-address) and [file hashes](hash).
+This project serves as a beginner's guide to various methods of pivoting on cyber threat intelligence artifacts, such as [IP addresses](/artifacts/ip-address) and [file hashes](/artifacts/hash).
 
 Every listed method can be performed using one or more tools or platforms, and you can find query examples throughout the documentation.
 

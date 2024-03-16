@@ -37,7 +37,7 @@
 
 ## Pivots
 
-### TLS Certificate
+### TLS Certificates
 
 #### [Certificates](/artifacts/tls_certificate) served by it
 
