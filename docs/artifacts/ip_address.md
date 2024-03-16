@@ -38,7 +38,7 @@
 ## Pivots
 
 ### Servers
-####[Servers](/artifacts/server) hosted by it
+####[Servers](/pivot-handbook/artifacts/server) hosted by it
 
 An IP address can host one or more servers on various ports. Every port might reveal different information.
 
@@ -60,7 +60,7 @@ An IP address can host one or more servers on various ports. Every port might re
     ```
 
 ### Domains
-####[Domains or subdomains](/artifacts/domain) that resolve to it
+####[Domains or subdomains](/pivot-handbook/artifacts/domain) that resolve to it
 
 An IP address might be resolved by one or more domains or subdomains operated by the same actor.
 In some cases, an IP address might be used for multiple purposes at once (e.g., malware C2, serving phishing pages, proxying traffic, etc.)
@@ -70,7 +70,7 @@ In some cases, an IP address might be used for multiple purposes at once (e.g., 
 	https://dnschecker.org/reverse-dns.php?query={IP_ADDRESS}
     ```
 
-####[Domains or subdomains](/artifacts/domain) that have historically resolved to it
+####[Domains or subdomains](/pivot-handbook/artifacts/domain) that have historically resolved to it
 
 Reverse DNS queries are usually less acurate than passive DNS, which has the added benefit of querying past records as well.
 
@@ -100,3 +100,6 @@ Some ASNs are known to be operated by malicious actors, and in some cases an add
 #### Other IP addresses observed communicating with it
 
 If you have access to aggregated Netflow data, you can check for other IP addresses that may have been observed in communication with this IP address.
+
+*[ASN]: Autonomous System Number
+*[NS]: Name Server

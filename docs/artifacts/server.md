@@ -8,7 +8,7 @@
 -   :material-lightbulb-on:{ .lg .middle } __Definition__
 
     ---
-	A server is an [IP address](/artifacts/ip-address) and port combination that serves an application to clients.
+	A server is an [IP address](/pivot-handbook/artifacts/ip-address) and port combination that serves an application to clients.
 
 -   :material-flower-tulip:{ .lg .middle } __Examples__
 
@@ -39,7 +39,7 @@
 
 ### TLS Certificates
 
-#### [Certificates](/artifacts/tls_certificate) served by it
+#### [Certificates](/pivot-handbook/artifacts/tls_certificate) served by it
 
 === "Shodan (URL)"
     ```
@@ -60,7 +60,7 @@
 
 ### Servers
 
-#### Other servers with the same [JA4+](/methods/ja4) signature
+#### Other servers with the same JA4+ signature
 
 === "Shodan (URL)"
     ```
@@ -81,7 +81,7 @@
 
 ### Samples
 
-####[Samples](/artifacts/sample) that reference it in their code
+####[Samples](/pivot-handbook/artifacts/sample) that reference it in their code
 
 === "VirusTotal (URL)"
     ```
@@ -92,7 +92,7 @@
 	TO DO
     ```
 
-####[Samples](/artifacts/sample) that communicate with it at runtime
+####[Samples](/pivot-handbook/artifacts/sample) that communicate with it at runtime
 
 === "VirusTotal (URL)"
     ```
@@ -103,7 +103,7 @@
 	TO DO
     ```
 
-####[Samples](/artifacts/sample) that it stores
+####[Samples](/pivot-handbook/artifacts/sample) that it stores
 
 === "VirusTotal (URL)"
     ```

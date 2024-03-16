@@ -12,10 +12,11 @@ theme:
     - search.highlight
     - navigation.sections
     - content.tabs.link
+    - content.tooltips
 plugins:
     - search
     - mermaid2
-    - social
+    #- social
 markdown_extensions:
   - pymdownx.details
   - admonition
@@ -25,7 +26,9 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji 
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.pathconverter
+  - abbr
   - attr_list
+  - pymdownx.snippets
   - md_in_html
   - pymdownx.superfences:
       custom_fences:
