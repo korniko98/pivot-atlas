@@ -1,5 +1,7 @@
 site_name: Pivot Handbook
 repo_url: https://github.com/korniko98/pivot-handbook
+repo_name: korniko98/pivot-handbook
+edit_uri: edit/main/docs/
 theme:
   name: material
   icon:
@@ -13,6 +15,7 @@ theme:
     - navigation.sections
     - content.tabs.link
     - content.tooltips
+    - content.action.edit
 plugins:
     - search
     - mermaid2
@@ -20,6 +23,7 @@ plugins:
 markdown_extensions:
   - pymdownx.details
   - admonition
+  - footnotes
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.emoji:
