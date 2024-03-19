@@ -19,7 +19,9 @@ theme:
 plugins:
     - search
     - mermaid2
-    - git-authors
+    - git-committers:
+        repository: korniko98/pivot-handbook
+        branch: main
     #- social
 markdown_extensions:
   - pymdownx.details
