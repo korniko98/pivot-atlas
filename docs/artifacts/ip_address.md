@@ -21,12 +21,13 @@
 <div class="grid cards" markdown>
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
-	flowchart TD
+	flowchart LR
 		A("IP Address") -- rDNS --> B("Domain / Subdomain")
 		A -- pDNS --> B
 		B -- fDNS --> A
 		A <-- ASN --> C("IP Address")
-		A <-- UA --> C
+		A <--> E("User Agent")
+		E <--> C
 		A <-- Netflow --> C
 		A -- hosts --> D("Server")
 		click B "#domains"
@@ -64,7 +65,7 @@ An IP address can host one or more servers on various ports. Scanning different 
 	TO DO
     ```
 
-####:octicons-arrow-right-24: Clients communicating from it
+####:octicons-arrow-right-24: Clients connecting from it
 
 Besides their use for hosting traditional servers, threat actors can also use IP addresses to connect as clients to victim infrastructure. Threat actors can do so using IP addresses they own or via proxy or VPN servers. Client behavior (whether automated or "hands-on-keyboard") can be observed during brute-force attacks, password spray attacks, as well as remote connection sessions such as logging into a target database.
 

@@ -26,6 +26,7 @@
 		C("Sample") -- communicates --> B
 		C -- references --> B
 		B -- JA4+ --> D("Server")
+		B -- JARM --> D
 		B -- stores --> C
 		B -- serves--> E("TLS Certificate")
 		click A "#ip-addresses"
