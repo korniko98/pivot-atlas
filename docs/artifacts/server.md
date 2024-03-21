@@ -8,20 +8,22 @@
 -   :material-lightbulb-on:{ .lg .middle } __Definition__
 
     ---
-	A server is an [IP address](/pivot-handbook/artifacts/ip-address) and port combination that serves an application to clients.
+	<span style="font-size:0.8em;">
+	A server is an [IP address](/artifacts/ip-address) and port combination that serves an application to clients. Threat actors deploy these to host various parts of their infrastructure, such as phishing websites, repositories from which victim devices download malicious payloads, command and control servers to which malware connects for recieving commands, storage for exfiltrated data, and proxies for routing malicious traffic.
+	</span>
 
--   :material-flower-tulip:{ .lg .middle } __Examples__
+-   :material-flower-tulip:{ .lg .middle } __Example__
 
     ---
+	<span style="font-size:0.8em;">
     `8.8.8.8:80`
-	
-	`1.2.3.4:443`
+	</span>
 </div>
 
 <div class="grid cards" markdown>
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
-	flowchart TD
+	flowchart LR
 		A("IP Address") -- hosts --> B("Server")
 		C("Sample") -- communicates --> B
 		C -- references --> B
@@ -40,7 +42,7 @@
 
 ### TLS Certificates
 
-#### [Certificates](/pivot-handbook/artifacts/tls_certificate) served by it
+#### [Certificates](/artifacts/tls_certificate) served by it
 
 === "Shodan (URL)"
     ```
@@ -82,7 +84,7 @@
 
 ### Samples
 
-####[Samples](/pivot-handbook/artifacts/sample) that reference it in their code
+####[Samples](/artifacts/sample) that reference it in their code
 
 === "VirusTotal (URL)"
     ```
@@ -93,7 +95,7 @@
 	TO DO
     ```
 
-####[Samples](/pivot-handbook/artifacts/sample) that communicate with it at runtime
+####[Samples](/artifacts/sample) that communicate with it at runtime
 
 === "VirusTotal (URL)"
     ```
@@ -104,7 +106,7 @@
 	TO DO
     ```
 
-####[Samples](/pivot-handbook/artifacts/sample) that it stores
+####[Samples](/artifacts/sample) that it stores
 
 === "VirusTotal (URL)"
     ```

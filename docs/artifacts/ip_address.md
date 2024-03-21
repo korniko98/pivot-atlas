@@ -7,10 +7,10 @@
 
     ---
 	<span style="font-size:0.8em;">
-	An [Internet Protocol address](https://en.wikipedia.org/wiki/IP_address) is a numerical label assigned to a device connected to a computer network. Threat actors purchase or hijack IP addresses to host [servers](/pivot-handbook/artifacts/server) for malicious purposes.
+	An [Internet Protocol address](https://en.wikipedia.org/wiki/IP_address) is a numerical label assigned to a device connected to a computer network. Threat actors purchase or hijack IP addresses and assign them to clients or [servers](/artifacts/server).
 	</span>
 
--   :material-flower-tulip:{ .lg .middle } __Examples__
+-   :material-flower-tulip:{ .lg .middle } __Example__
 
     ---
 	<span style="font-size:0.8em;">
@@ -39,14 +39,17 @@
 !!! warning "Static vs. dynamic addresses"
 	IP addresses can be either static or dynamic, with the first type remaining under the control of the same user for prolonged periods of time, and the second type often changing hands. Therefore, dynamic IP addresses are much less useful for pivoting than their static counterparts, since any pivots could lead to entirely unrelated activity, depending on the timeframe of our query.
 
+!!! warning "Clients vs. servers"
+	IP addresses can be assigned by threat actors to either clients or [servers](/artifacts/server), which affects how they appear in logs and therefore how one should pivot on them. For example, clients can be observed scanning victims' networks or connecting to compromised target machines, whereas servers are applications that recieve connections from compromised devices or attacker-controlled clients.
+
 ## Pivots
 
 ### Servers
-####:octicons-arrow-right-24: [Servers](/pivot-handbook/artifacts/server) hosted by it
+####:octicons-arrow-right-24: [Servers](/artifacts/server) hosted by it
 
 An IP address can host one or more servers on various ports. Scanning different ports can reveal new information about how a threat actor is using a given IP address.
 
-[Host scanning services](/pivot-handbook/tools/host_scanners) such as [Shodan](https://www.shodan.io) and [Censys](https://search.censys.io) regularly scan the entire IPv4 space and report their findings in queryable databases.
+[Host scanning services](/tools/#host-scanners) such as [Shodan](https://www.shodan.io) and [Censys](https://search.censys.io) regularly scan the entire IPv4 space and report their findings in queryable databases.
 
 === "Shodan (URL)"
     ```
@@ -74,7 +77,7 @@ In some cases, client behavior can be pivoted upon between different IP addresse
 ---
 
 ### Domains
-####:octicons-arrow-right-24: [Domains or subdomains](/pivot-handbook/artifacts/domain) that resolve to it
+####:octicons-arrow-right-24: [Domains or subdomains](/artifacts/domain) that resolve to it
 
 An IP address might be resolved by one or more domains or subdomains operated by the same threat actor. In some cases, an IP address might be used for multiple purposes at once (e.g., malware C2, serving phishing pages, proxying traffic, etc.), with every server fronted by a different domain or subdomain.
 
@@ -87,7 +90,7 @@ While querying a domain for its resolving IP address is called forward DNS (fDNS
 	https://dnschecker.org/reverse-dns.php?query={IP_ADDRESS}
     ```
 
-####:octicons-arrow-right-24: [Domains or subdomains](/pivot-handbook/artifacts/domain) that have historically resolved to it
+####:octicons-arrow-right-24: [Domains or subdomains](/artifacts/domain) that have historically resolved to it
 
 Passive DNS queries are usually more accurate than reverse DNS queries, since the former relies on continuously recording DNS queries from various sources and aggregating their results into a queryable database. This has the added benefit of enabling pivots to past DNS records as well, which is especially useful when investigating a long-term campaign or cases in which a threat actor has already shut down their operations.
 
@@ -118,10 +121,7 @@ Some Autonomous System Numbers (ASN) are known to be operated by malicious actor
 
 ####:octicons-arrow-right-24: Other IP addresses observed communicating with it
 
-If you have access to [aggregated Netflow data](/pivot-handbook/tools/flow_logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
-
-*[ASN]: Autonomous System Number
-*[DNS]: Domain Name System
+If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
 
 [^1]: [Tales from the cloud trenches: Using malicious AWS activity to spot phishing campaigns](https://securitylabs.datadoghq.com/articles/tales-from-the-cloud-trenches-aws-activity-to-phishing/)
 [^2]: [Risky Business: Determining Malicious Probabilities Through ASNs](https://www.akamai.com/blog/security/determining-malicious-probabilities-through-asns/)

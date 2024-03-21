@@ -29,4 +29,5 @@ jobs:
       - run: pip install "mkdocs-material[imaging]"
       - run: pip install mkdocs-mermaid2-plugin
       - run: pip install mkdocs-git-committers-plugin-2
+      - run: pip install mkdocs-table-reader-plugin
       - run: mkdocs gh-deploy --force
