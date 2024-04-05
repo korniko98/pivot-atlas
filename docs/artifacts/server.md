@@ -29,6 +29,8 @@
 		C -- references --> B
 		B -- JA4+ --> D("Server")
 		B -- JARM --> D
+		B -- URL path --> D
+		B -- appearance --> D
 		B -- stores --> C
 		B -- serves--> E("TLS Certificate")
 		click A "#ip-addresses"
@@ -40,30 +42,9 @@
 
 ## Pivots
 
-### TLS Certificates
+### [TLS Certificates](/artifacts/tls_certificate)
 
-#### [Certificates](/artifacts/tls_certificate) served by it
-
-=== "Shodan (URL)"
-    ```
-	https://www.shodan.io/host/{IP_ADDRESS}
-    ```
-=== "Shodan (API)"
-    ``` console
-	$ curl -X GET "https://api.shodan.io/shodan/host/{IP_ADDRESS}?key={YOUR_API_KEY}"
-    ```
-=== "Censys (URL)"
-    ```
-	TO DO
-    ```
-=== "Censys (API)"
-    ``` console
-	TO DO
-    ```
-
-### Servers
-
-#### Other servers with the same JA4+ signature
+####:octicons-arrow-right-24: Certificates served by it
 
 === "Shodan (URL)"
     ```
@@ -82,9 +63,52 @@
 	TO DO
     ```
 
-### Samples
+### [Servers](/artifacts/server)
 
-####[Samples](/artifacts/sample) that reference it in their code
+####:octicons-arrow-right-24: Other servers with the same JA4+ signature
+
+=== "Shodan (URL)"
+    ```
+	TO DO
+    ```
+=== "Shodan (API)"
+    ``` console
+	TO DO
+    ```
+=== "Censys (URL)"
+    ```
+	TO DO
+    ```
+=== "Censys (API)"
+    ``` console
+	TO DO
+    ```
+
+####:octicons-arrow-right-24: Other servers with the same URL path
+
+=== "URLScan (URL)"
+    ```
+	TO DO
+    ```
+=== "URLScan (API)"
+    ``` console
+	TO DO
+    ```
+
+####:octicons-arrow-right-24: Other servers with the same visual appearance
+
+=== "URLScan (URL)"
+    ```
+	TO DO
+    ```
+=== "URLScan (API)"
+    ``` console
+	TO DO
+    ```
+
+### [Samples](/artifacts/sample)
+
+####:octicons-arrow-right-24: Samples that reference it in their code
 
 === "VirusTotal (URL)"
     ```
@@ -95,7 +119,7 @@
 	TO DO
     ```
 
-####[Samples](/artifacts/sample) that communicate with it at runtime
+####:octicons-arrow-right-24: Samples that communicate with it at runtime
 
 === "VirusTotal (URL)"
     ```
@@ -106,7 +130,7 @@
 	TO DO
     ```
 
-####[Samples](/artifacts/sample) that it stores
+####:octicons-arrow-right-24: Samples that it stores
 
 === "VirusTotal (URL)"
     ```

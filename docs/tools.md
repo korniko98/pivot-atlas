@@ -34,13 +34,14 @@
 
 ### DNS History / Passive DNS
 * [SecurityTrails](https://securitytrails.com/)
+* [Validin](https://www.validin.com/)
 * [DomainTools](https://securitytrails.com/) :heavy_dollar_sign:{ title="Premium" }
 * [RiskIQ](https://community.riskiq.com/) :heavy_dollar_sign:{ title="Premium" }
 
 ## Flow Logs
 
 ### Netflow Aggregators
-* Team Cymru Augury
+* [Team Cymru Pure Signal Recon](https://www.team-cymru.com/cyber-threat-hunting-tools) :heavy_dollar_sign:{ title="Premium" }
 
 ## Host Scanners
 
@@ -59,8 +60,8 @@
 
 ### Sandboxes
 
-* HybridAnalysis
-* any.run
+* [HybridAnalysis](https://www.hybrid-analysis.com/)
+* [any.run](https://any.run/)
 
 ### Code Similarity
 

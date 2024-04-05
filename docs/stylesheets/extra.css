@@ -35,3 +35,36 @@ th, td {
 [data-md-color-scheme="slate"] .md-typeset__table tr:nth-child(2n) {
     background-color: hsla(var(--md-hue),25%,25%,1)
 }
+
+.md-typeset .admonition.example,
+.md-typeset details.example {
+  background-color: #E7DEF6;
+}
+
+.animated-word {
+  animation: fadeInOut 3s infinite;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0.5;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+#dynamic-word-container {
+  display: inline-block;
+}
+
+#dynamic-word {
+  font-weight: bold;
+  color: #5D4090;
+}

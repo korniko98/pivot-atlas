@@ -44,8 +44,8 @@
 
 ## Pivots
 
-### Servers
-####:octicons-arrow-right-24: [Servers](/artifacts/server) hosted by it
+### [Servers](/artifacts/server)
+####:octicons-arrow-right-24: Servers hosted by it
 
 An IP address can host one or more servers on various ports. Scanning different ports can reveal new information about how a threat actor is using a given IP address.
 
@@ -76,8 +76,8 @@ In some cases, client behavior can be pivoted upon between different IP addresse
 
 ---
 
-### Domains
-####:octicons-arrow-right-24: [Domains or subdomains](/artifacts/domain) that resolve to it
+### [Domains](/artifacts/domain)
+####:octicons-arrow-right-24: Domains or subdomains that resolve to it
 
 An IP address might be resolved by one or more domains or subdomains operated by the same threat actor. In some cases, an IP address might be used for multiple purposes at once (e.g., malware C2, serving phishing pages, proxying traffic, etc.), with every server fronted by a different domain or subdomain.
 
@@ -90,7 +90,7 @@ While querying a domain for its resolving IP address is called forward DNS (fDNS
 	https://dnschecker.org/reverse-dns.php?query={IP_ADDRESS}
     ```
 
-####:octicons-arrow-right-24: [Domains or subdomains](/artifacts/domain) that have historically resolved to it
+####:octicons-arrow-right-24: Domains or subdomains that have historically resolved to it
 
 Passive DNS queries are usually more accurate than reverse DNS queries, since the former relies on continuously recording DNS queries from various sources and aggregating their results into a queryable database. This has the added benefit of enabling pivots to past DNS records as well, which is especially useful when investigating a long-term campaign or cases in which a threat actor has already shut down their operations.
 
@@ -123,5 +123,8 @@ Some Autonomous System Numbers (ASN) are known to be operated by malicious actor
 
 If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
 
+For example, Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
+
 [^1]: [Tales from the cloud trenches: Using malicious AWS activity to spot phishing campaigns](https://securitylabs.datadoghq.com/articles/tales-from-the-cloud-trenches-aws-activity-to-phishing/)
 [^2]: [Risky Business: Determining Malicious Probabilities Through ASNs](https://www.akamai.com/blog/security/determining-malicious-probabilities-through-asns/)
+[^3]: [Latrodectus: This Spider Bytes Like Ice](https://www.proofpoint.com/us/blog/threat-insight/latrodectus-spider-bytes-ice)

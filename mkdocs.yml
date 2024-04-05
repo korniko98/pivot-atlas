@@ -1,4 +1,4 @@
-site_name: Pivot Handbook
+site_name: Pivot Atlas
 site_url: https://gopivot.ing
 repo_url: https://github.com/korniko98/pivot-handbook
 repo_name: korniko98/pivot-handbook
@@ -57,3 +57,4 @@ extra_css:
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
   - javascripts/tablesort.js
+  - javascripts/wordflip.js
