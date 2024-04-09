@@ -27,15 +27,15 @@
 		A("IP Address") -- hosts --> B("Server")
 		C("Sample") -- communicates --> B
 		C -- references --> B
-		B -- JA4+ --> D("Server")
-		B -- JARM --> D
-		B -- URL path --> D
-		B -- appearance --> D
+		B <-- JA4+/JARM --> D("Server")
+		B <-- banner --> D
+		B <-- content/look --> D
+		B <-- URL path --> D
 		B -- stores --> C
-		B -- serves--> E("TLS Certificate")
+		E("TLS Certificate") -- served by--> B
 		click A "#ip-addresses"
 		click C "#samples"
-		click D "#server"
+		click D "#servers"
 		click E "#tls-certificates"
 	```
 </div>
@@ -66,6 +66,44 @@
 ### [Servers](/artifacts/server)
 
 ####:octicons-arrow-right-24: Other servers with the same JA4+ signature
+
+=== "Shodan (URL)"
+    ```
+	TO DO
+    ```
+=== "Shodan (API)"
+    ``` console
+	TO DO
+    ```
+=== "Censys (URL)"
+    ```
+	TO DO
+    ```
+=== "Censys (API)"
+    ``` console
+	TO DO
+    ```
+
+####:octicons-arrow-right-24: Other servers with the same response banner
+
+=== "Shodan (URL)"
+    ```
+	TO DO
+    ```
+=== "Shodan (API)"
+    ``` console
+	TO DO
+    ```
+=== "Censys (URL)"
+    ```
+	TO DO
+    ```
+=== "Censys (API)"
+    ``` console
+	TO DO
+    ```
+
+####:octicons-arrow-right-24: Other servers with the same content
 
 === "Shodan (URL)"
     ```

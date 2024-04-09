@@ -6,6 +6,10 @@
 
 [File samples](/artifacts/sample) can be hashed using various methods, the most common of which are SHA1, SHA256 and MD5.
 
+## Certificate Hash
+
+[TLS certificates](/artifacts/tls-certificate) can be hashed using various methods, the most common of which are SHA1 and SHA256.
+
 ## HHHash Fingerprint
 
 [HTTP Headers Hashing](https://www.foo.be/2023/07/HTTP-Headers-Hashing_HHHash) is a technique used to create a fingerprint of an HTTP [server](/artifacts/server) based on the headers it returns.

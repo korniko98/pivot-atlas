@@ -22,7 +22,7 @@ Welcome to **Pivot Atlas**, a pivoting handbook for cyber threat intelligence an
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— You, probably.
 	</span>
 
-For any given type of observable encountered during an investigation, analysts can use this handbook to figure out what steps they should take to reveal potentially related infrastructure or tooling. Every listed pivoting method can be performed using one or more platforms (depending on preference or availability), and query examples are provided for the most commonly used tools. Diagrams are also provided for easy navigation between artifact types, for example:
+For any given type of observable encountered during an investigation, analysts can use this handbook to figure out what steps they should take to reveal potentially related infrastructure or tooling. Every listed pivoting method can be performed using one or more platforms (depending on preference or availability), and query examples are provided for the most commonly used tools. Diagrams are also included for easy navigation between artifact types, for example:
 
 <div class="grid cards" markdown>
 -   :material-globe-model:{ .lg .middle } __Pivot Map__

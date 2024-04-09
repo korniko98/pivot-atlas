@@ -36,7 +36,7 @@
 * [SecurityTrails](https://securitytrails.com/)
 * [Validin](https://www.validin.com/)
 * [DomainTools](https://securitytrails.com/) :heavy_dollar_sign:{ title="Premium" }
-* [RiskIQ](https://community.riskiq.com/) :heavy_dollar_sign:{ title="Premium" }
+* [RiskIQ](https://community.riskiq.com/) :heavy_dollar_sign:{ title="Premium" } - also allows pivoting by co-occurence (domains often queried for in the same timeframe).
 
 ## Flow Logs
 

@@ -11,18 +11,13 @@ dynamicWordContainer.style.width = (maxLength * 15) + 'px'; // Adjust the multip
 
 // Function to determine if a word starts with a vowel
 function startsWithVowel(word) {
-  return ['a', 'e', 'i', 'o', 'u'].includes(word.charAt(0).toLowerCase());
+  return ['a', 'e', 'i', 'o'].includes(word.charAt(0).toLowerCase());
 }
 
 function flipWords() {
   dynamicWord.textContent = wordList[index];
   indefiniteArticle.textContent = startsWithVowel(wordList[index]) ? 'an ' : 'a ';
   index = (index + 1) % wordList.length;
-}
-
-// Function to determine if a word starts with a vowel
-function startsWithVowel(word) {
-  return ['a', 'e', 'i', 'o', 'u'].includes(word.charAt(0).toLowerCase());
 }
 
 // Initial call
