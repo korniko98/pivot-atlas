@@ -5,6 +5,7 @@ repo_name: korniko98/pivot-handbook
 edit_uri: edit/main/docs/
 theme:
   name: material
+  custom_dir: overrides
   icon:
     logo: material/table-pivot
   favicon: images/favicon.png

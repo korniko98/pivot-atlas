@@ -1,28 +1,33 @@
 ﻿ ,WHOIS,DNS Hist.,Hosts,Certs,URLs,Samples,Sandbox,Code Sim.,Code,Netflow,Enrich
-DNSChecker,:material-checkbox-marked:, , , , , , , , , , 
-MXToolBox,:material-checkbox-marked:, , , , , , , , , , 
-SecurityTrails,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , , , 
-DomainTools,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , , , 
-RiskIQ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , , , 
-Validin,,,:material-checkbox-marked:,:material-checkbox-marked:,,,,,,,
-Shodan, , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , 
-Censys, , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , 
-BinaryEdge, , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , 
-FOFA, , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , 
-crt.sh, , , ,:material-checkbox-marked-outline:[^1], , , , , , , 
-URLScan, , , , ,:material-checkbox-marked-outline:[^2], , , , , , 
-PublicWWW, , , , ,:material-checkbox-marked:, , , , , , 
-Internet Archive, , , , ,:material-checkbox-marked-outline:[^3], , , , , , 
-VirusTotal, , ,:material-checkbox-marked-outline:[^4],:material-checkbox-marked:,:material-checkbox-marked-outline:[^2],:material-checkbox-marked:,:material-checkbox-marked:,:material-checkbox-marked:, , , 
-MalShare, , , , , ,:material-checkbox-marked:, , , , , 
-MalwareBazaar, , , , , ,:material-checkbox-marked:, , , , , 
-HybridAnalysis, , , , , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , 
-any.run, , , , , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , 
-Intezer Analyse, , , , , , , ,:material-checkbox-marked:, , , 
-GitHub Search, , , , , , , , ,:material-checkbox-marked:, , 
-Augury, , , , , , , , , ,:material-checkbox-marked:, 
-Cortex, , , , , , , , , , ,:material-checkbox-marked:
-Yeti, , , , , , , , , , ,:material-checkbox-marked:
-IntelOwl, , , , , , , , , , ,:material-checkbox-marked:
-Vertex Synapse, , , , , , , , , , ,:material-checkbox-marked:
-Maltego, , , , , , , , , , ,:material-checkbox-marked:
+[DNSChecker](https://dnschecker.org/),:material-checkbox-marked:, , , , , , , , , , 
+[MXToolBox](https://mxtoolbox.com/),:material-checkbox-marked:, , , , , , , , , , 
+[SecurityTrails](https://securitytrails.com/),:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , , , 
+"[DomainTools](https://domaintools.com/) { title=""Premium only"" }",:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , , , 
+[RiskIQ](https://community.riskiq.com/),:material-checkbox-marked:,":material-checkbox-multiple-marked:{ title=""Also allows pivoting by co-occurence (domains often queried for in the same timeframe)"" }", , , , , , , , , 
+[Driftnet](https://driftnet.io/),:material-checkbox-marked:, ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , 
+[Silent Push](https://silentpush.com/),":material-checkbox-multiple-marked:{ title=""Also provides WHOIS history"" }",:material-checkbox-marked:,:material-checkbox-marked:,:material-checkbox-marked:,":material-checkbox-marked-outline: { title=""Only contains information about submitted URLs."" }", , , , , , 
+"[Spamhaus](https://www.spamhaus.org/) { title=""Premium only"" }", ,:material-checkbox-marked:, , , , , , , , , 
+"[ZETAlytics](https://zetalytics.com/) { title=""Premium only"" }", ,:material-checkbox-marked:, , , , , , , , , 
+[Validin](https://www.validin.com/), , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , 
+[Shodan](https://shodan.io/), , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , 
+[Censys](https://search.censys.io/), , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , 
+[BinaryEdge](https://app.binaryedge.io/), , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , 
+[FOFA](https://en.fofa.info/), , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , 
+[ZoomEye](https://zoomeye.hk/), , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , 
+[crt.sh](https://crt.sh/), , , ,":material-checkbox-marked-outline: { title=""Doesn't correlate certificates to hosts."" }", , , , , , , 
+[URLScan](https://urlscan.io/), , , , ,":material-checkbox-marked-outline: { title=""Only contains information about submitted URLs."" }", , , , , , 
+[PublicWWW](https://publicwww.com/), , , , ,:material-checkbox-marked:, , , , , , 
+[Internet Archive](https://archive.org/), , , , ,":material-checkbox-marked-outline: { title=""Only contains copies of submitted URLs; doesn't lend itself to pivoting"" }", , , , , , 
+[VirusTotal](https://www.virustotal.com/), , ,":material-checkbox-marked-outline: { title=""Only contains information about submitted hosts."" }",:material-checkbox-marked:,":material-checkbox-marked-outline: { title=""Only contains information about submitted URLs."" }",:material-checkbox-marked:,:material-checkbox-marked:,:material-checkbox-marked:, , , 
+[MalShare](https://malshare.com/), , , , , ,:material-checkbox-marked:, , , , , 
+[MalwareBazaar](https://bazaar.abuse.ch/), , , , , ,:material-checkbox-marked:, , , , , 
+[HybridAnalysis](https://www.hybrid-analysis.com/), , , , , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , 
+[any.run](https://any.run/), , , , , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , 
+[Intezer Analyse](https://analyze.intezer.com/), , , , , , , ,:material-checkbox-marked:, , , 
+[GitHub Search](https://github.com/search), , , , , , , , ,:material-checkbox-marked:, , 
+"[Team Cymru](https://www.team-cymru.com/cyber-threat-hunting-tools) { title=""Premium only"" }", , , , , , , , , ,:material-checkbox-marked:, 
+[Cortex](https://github.com/TheHive-Project/Cortex), , , , , , , , , , ,:material-checkbox-marked:
+[Yeti](https://yeti-platform.io/), , , , , , , , , , ,:material-checkbox-marked:
+[IntelOwl](https://github.com/intelowlproject/IntelOwl/), , , , , , , , , , ,:material-checkbox-marked:
+[Vertex Synapse](https://vertex.link/synapse), , , , , , , , , , ,:material-checkbox-marked:
+[Maltego](https://www.maltego.com/), , , , , , , , , , ,:material-checkbox-marked:

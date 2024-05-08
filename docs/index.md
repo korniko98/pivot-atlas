@@ -28,26 +28,34 @@ For any given type of observable encountered during an investigation, analysts c
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		A("IP Address") -- rDNS --> B("Domain / Subdomain")
-		A -- pDNS --> B
-		B -- fDNS --> A
-		A <-- ASN --> C("IP Address")
-		A <--> E("User Agent")
-		E <--> C
-		A <-- Netflow --> C
-		A -- hosts --> D("Server")
-		click A "artifacts/ip-address"
-		click B "artifacts/domain"
-		click C "artifacts/ip-address"
-		click D "artifacts/server"
-		click E "artifacts/user-agents"
+		IP_ADDRESS("IP Address") -- rDNS --> DOMAIN("Domain / Subdomain")
+		IP_ADDRESS -- pDNS --> DOMAIN
+		DOMAIN -- fDNS --> IP_ADDRESS
+		IP_ADDRESS <-- ASN --> IP_ADDRESS_("IP Address")
+		IP_ADDRESS <--> USER_AGENT("User Agent")
+		USER_AGENT <--> IP_ADDRESS_
+		IP_ADDRESS <-- Netflow --> IP_ADDRESS_
+		IP_ADDRESS <-- WHOIS --> IP_ADDRESS_
+		IP_ADDRESS -- hosts --> SERVER("Server")
+		click IP_ADDRESS "artifacts/ip-address"
+		click DOMAIN "artifacts/domain"
+		click IP_ADDRESS_ "artifacts/ip-address"
+		click SERVER "artifacts/server"
+		click USER_AGENT "artifacts/user-agent"
 	```
 </div>
 
 This project is a work in progress and cannot yet serve as a truly comprehensive guide to pivoting, but in time it could. If you would like to learn more about pivoting, I highly recommend checking out the [references section](/references). If you would like to contribute content to this project, please feel free to submit a pull request [here](https://github.com/korniko98/pivot-handbook).
 
-## How do I use this?
+## Frequently asked questions (FAQ)
 
+### How should I use Pivot Atlas?
 * To learn about recommended pivots, check out the items in the **Artifacts** section.
 * To learn about useful artifact fingerprints, take a look at the **[Fingerprints](/fingerprints)** page.
 * To learn about tools of the trade, head on over to the **[Tools](/tools)** page.
+
+### What are the organizing principles of this website?
+In graph terminology, I've chosen to use nodes to represent artifacts, meaning things that exist in reality (i.e., cyberspace), whereas pivots are represented as egdes between them. Similarly, fingerprints (such as JA4) are also represented as edges, since they can be considered higher-order abstractions of artifacts (whether lossy or lossless), rather than artifacts in and of themselves.
+
+### What's the best way to contribute?
+Submit publicly known examples of investigations demonstrating novel or creative pivots. You can either submit a pull request or simply add an issue to the GitHub project.

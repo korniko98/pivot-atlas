@@ -24,19 +24,20 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		A("IP Address") -- hosts --> B("Server")
-		C("Sample") -- communicates --> B
-		C -- references --> B
-		B <-- JA4+/JARM --> D("Server")
-		B <-- banner --> D
-		B <-- content/look --> D
-		B <-- URL path --> D
-		B -- stores --> C
-		E("TLS Certificate") -- served by--> B
-		click A "#ip-addresses"
-		click C "#samples"
-		click D "#servers"
-		click E "#tls-certificates"
+		IP_ADDRESS("IP Address") -- hosts --> SERVER("Server")
+		SAMPLE("Sample") -- communicates --> SERVER
+		SAMPLE -- references --> SERVER
+		SERVER <-- JA4+/JARM --> SERVER_("Server")
+		SERVER <-- banner --> SERVER_
+		SERVER <-- favicon --> SERVER_
+		SERVER <-- content/look --> SERVER_
+		SERVER <-- URL path --> SERVER_
+		SERVER -- stores --> SAMPLE
+		TLS_CERT("TLS Certificate") -- served by--> SERVER
+		click IP_ADDRESS "#ip-addresses"
+		click SAMPLE "#samples"
+		click SERVER_ "#servers"
+		click TLS_CERT "#tls-certificates"
 	```
 </div>
 
@@ -46,135 +47,174 @@
 
 ####:octicons-arrow-right-24: Certificates served by it
 
-=== "Shodan (URL)"
-    ```
-	TO DO
-    ```
-=== "Shodan (API)"
-    ``` console
-	TO DO
-    ```
-=== "Censys (URL)"
-    ```
-	TO DO
-    ```
-=== "Censys (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
 
 ### [Servers](/artifacts/server)
 
 ####:octicons-arrow-right-24: Other servers with the same JA4+ signature
 
-=== "Shodan (URL)"
-    ```
-	TO DO
-    ```
-=== "Shodan (API)"
-    ``` console
-	TO DO
-    ```
-=== "Censys (URL)"
-    ```
-	TO DO
-    ```
-=== "Censys (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
 
 ####:octicons-arrow-right-24: Other servers with the same response banner
 
-=== "Shodan (URL)"
-    ```
-	TO DO
-    ```
-=== "Shodan (API)"
-    ``` console
-	TO DO
-    ```
-=== "Censys (URL)"
-    ```
-	TO DO
-    ```
-=== "Censys (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
+
+####:octicons-arrow-right-24: Other servers with the same favicon
+
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
 
 ####:octicons-arrow-right-24: Other servers with the same content
 
-=== "Shodan (URL)"
-    ```
-	TO DO
-    ```
-=== "Shodan (API)"
-    ``` console
-	TO DO
-    ```
-=== "Censys (URL)"
-    ```
-	TO DO
-    ```
-=== "Censys (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
 
 ####:octicons-arrow-right-24: Other servers with the same URL path
 
-=== "URLScan (URL)"
-    ```
-	TO DO
-    ```
-=== "URLScan (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "URLScan (URL)"
+		```
+		TO DO
+		```
+	=== "URLScan (API)"
+		``` console
+		TO DO
+		```
 
 ####:octicons-arrow-right-24: Other servers with the same visual appearance
 
-=== "URLScan (URL)"
-    ```
-	TO DO
-    ```
-=== "URLScan (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "URLScan (URL)"
+		```
+		TO DO
+		```
+	=== "URLScan (API)"
+		``` console
+		TO DO
+		```
 
 ### [Samples](/artifacts/sample)
 
 ####:octicons-arrow-right-24: Samples that reference it in their code
 
-=== "VirusTotal (URL)"
-    ```
-	TO DO
-    ```
-=== "VirusTotal (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "VirusTotal (URL)"
+		```
+		TO DO
+		```
+	=== "VirusTotal (API)"
+		``` console
+		TO DO
+		```
 
 ####:octicons-arrow-right-24: Samples that communicate with it at runtime
 
-=== "VirusTotal (URL)"
-    ```
-	TO DO
-    ```
-=== "VirusTotal (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "VirusTotal (URL)"
+		```
+		TO DO
+		```
+	=== "VirusTotal (API)"
+		``` console
+		TO DO
+		```
 
 ####:octicons-arrow-right-24: Samples that it stores
 
-=== "VirusTotal (URL)"
-    ```
-	TO DO
-    ```
-=== "VirusTotal (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "VirusTotal (URL)"
+		```
+		TO DO
+		```
+	=== "VirusTotal (API)"
+		``` console
+		TO DO
+		```

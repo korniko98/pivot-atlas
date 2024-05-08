@@ -3,17 +3,17 @@
 ## Overview
 
 <div class="grid cards" markdown>
--   :material-lightbulb-on:{ .lg .middle } __Definition__
+-   :octicons-book-16:{ .lg .middle } __Definition__
 
     ---
-	<span style="font-size:0.8em;">
+	<span style="font-size:0.9em;">
 	An [Internet Protocol address](https://en.wikipedia.org/wiki/IP_address) is a numerical label assigned to a device connected to a computer network. Threat actors purchase or hijack IP addresses and assign them to clients or [servers](/artifacts/server).
 	</span>
 
--   :material-flower-tulip:{ .lg .middle } __Example__
+-   :octicons-eye-16:{ .lg .middle } __Example__
 
     ---
-	<span style="font-size:0.8em;">
+	<span style="font-size:0.9em;">
     `134.209.127[.]249` was in use by an unknown threat actor for the triple purpose of running commands against cloud environments, sending phishing SMS messages to targets, and serving phishing websites.[^1]
 	</span>
 </div>
@@ -22,17 +22,18 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		A("IP Address") -- rDNS --> B("Domain / Subdomain")
-		A -- pDNS --> B
-		B -- fDNS --> A
-		A <-- ASN --> C("IP Address")
-		A <--> E("User Agent")
-		E <--> C
-		A <-- Netflow --> C
-		A -- hosts --> D("Server")
-		click B "#domains"
-		click C "#ip-addresses"
-		click D "#servers"
+		IP_ADDRESS("IP Address") -- rDNS --> DOMAIN("Domain / Subdomain")
+		IP_ADDRESS -- pDNS --> DOMAIN
+		DOMAIN -- fDNS --> IP_ADDRESS
+		IP_ADDRESS <-- ASN --> IP_ADDRESS_("IP Address")
+		IP_ADDRESS <--> USER_AGENT("User Agent")
+		USER_AGENT <--> IP_ADDRESS_
+		IP_ADDRESS <-- Netflow --> IP_ADDRESS_
+		IP_ADDRESS <-- WHOIS --> IP_ADDRESS_
+		IP_ADDRESS -- hosts --> SERVER("Server")
+		click DOMAIN "#domains"
+		click IP_ADDRESS_ "#ip-addresses"
+		click SERVER "#servers"
 	```
 </div>
 
@@ -51,22 +52,24 @@ An IP address can host one or more servers on various ports. Scanning different 
 
 [Host scanning services](/tools/#host-scanners) such as [Shodan](https://www.shodan.io) and [Censys](https://search.censys.io) regularly scan the entire IPv4 space and report their findings in queryable databases.
 
-=== "Shodan (URL)"
-    ```
-	https://www.shodan.io/host/{IP_ADDRESS}
-    ```
-=== "Shodan (API)"
-    ``` console
-	$ curl -X GET "https://api.shodan.io/shodan/host/{IP_ADDRESS}?key={YOUR_API_KEY}"
-    ```
-=== "Censys (URL)"
-    ```
-	https://search.censys.io/hosts/{IP_ADDRESS}
-    ```
-=== "Censys (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		https://www.shodan.io/host/{IP_ADDRESS}
+		```
+	=== "Shodan (API)"
+		``` console
+		$ curl -X GET "https://api.shodan.io/shodan/host/{IP_ADDRESS}?key={YOUR_API_KEY}"
+		```
+	=== "Censys (URL)"
+		```
+		https://search.censys.io/hosts/{IP_ADDRESS}
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
 
 ####:octicons-arrow-right-24: Clients connecting from it
 
@@ -85,10 +88,12 @@ Since most normal network traffic initiates in DNS queries and uses host headers
 
 While querying a domain for its resolving IP address is called forward DNS (fDNS for short), the opposite query is known as reverse DNS (or rDNS).
 
-=== "DNSChecker"
-    ```
-	https://dnschecker.org/reverse-dns.php?query={IP_ADDRESS}
-    ```
+??? example "Try it out"
+
+	=== "DNSChecker"
+		```
+		https://dnschecker.org/reverse-dns.php?query={IP_ADDRESS}
+		```
 
 ####:octicons-arrow-right-24: Domains or subdomains that have historically resolved to it
 
@@ -102,28 +107,55 @@ Passive DNS queries are usually more accurate than reverse DNS queries, since th
 
 Some Autonomous System Numbers (ASN) are known to be operated by malicious actors[^2], and in some cases an address's ASN may contain additional addresses in use by the same actor.
 
-=== "Shodan (URL)"
-    ```
-	TO DO
-    ```
-=== "Shodan (API)"
-    ``` console
-	TO DO
-    ```
-=== "Censys (URL)"
-    ```
-	https://search.censys.io/search?q=autonomous_system.asn%3A+{ASN}&resource=hosts
-    ```
-=== "Censys (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		https://search.censys.io/search?q=autonomous_system.asn%3A+{ASN}&resource=hosts
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
+
+####:octicons-arrow-right-24: Other IP addresses with overlapping registration details
+
+When actors purchase an IP address, they must supply registrant information, which is made publicly available through the WHOIS protocol. This requirement is different than for registering a domain, a process which allow for registrant privacy. While stealthy actors will often provide fake details, these can sometimes still be useful for pivoting. Note that if a threat actor leases a (static or dynamic) IP address from a cloud provider, a WHOIS query will only return information about the provider.
+
+??? example "Try it out"
+
+	=== "WHOIS (API)"
+		```
+		TO DO
+		```
+	=== "Dig (API)"
+		``` console
+		TO DO
+		```
+	=== "Driftnet (URL)"
+		```
+		https://search.censys.io/search?q=autonomous_system.asn%3A+{ASN}&resource=hosts
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
+
+!!! abstract inline end "Example"
+
+	Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
 
 ####:octicons-arrow-right-24: Other IP addresses observed communicating with it
 
 If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
-
-For example, Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
 
 [^1]: [Tales from the cloud trenches: Using malicious AWS activity to spot phishing campaigns](https://securitylabs.datadoghq.com/articles/tales-from-the-cloud-trenches-aws-activity-to-phishing/)
 [^2]: [Risky Business: Determining Malicious Probabilities Through ASNs](https://www.akamai.com/blog/security/determining-malicious-probabilities-through-asns/)
