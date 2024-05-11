@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 #Tools
 
 !!! warning "Under Construction"

@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # About
 
 ## Introduction
@@ -14,10 +19,9 @@ Welcome to **Pivot Atlas**, a pivoting handbook for cyber threat intelligence an
 		<span id="word-list" style="display: none;">
 			phishing domain,IP address,malware sample,file hash,TLS certificate,user agent
 		</span>
+		<span style="font-size:1.5em;font-style: italic;">...what can I do with it?"</span>
 	</div>
-	<div style="text-align: right;">
-	<span align="center" style="font-size:1.5em;font-style: italic;">...what can I do with it?"</span>
-	</div>
+	
 	<span style="font-size:1.1em;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— You, probably.
 	</span>
@@ -45,7 +49,7 @@ For any given type of observable encountered during an investigation, analysts c
 	```
 </div>
 
-This project is a work in progress and cannot yet serve as a truly comprehensive guide to pivoting, but in time it could. If you would like to learn more about pivoting, I highly recommend checking out the [references section](/references). If you would like to contribute content to this project, please feel free to submit a pull request [here](https://github.com/korniko98/pivot-handbook).
+This project is a work in progress and cannot yet serve as a truly comprehensive guide to pivoting, but in time it could. If you would like to learn more about pivoting, I highly recommend checking out the references section listed at the end of this page. If you would like to contribute content to this project, please feel free to submit a pull request [here](https://github.com/korniko98/pivot-atlas).
 
 ## Frequently asked questions (FAQ)
 
@@ -59,3 +63,17 @@ In graph terminology, I've chosen to use nodes to represent artifacts, meaning t
 
 ### What's the best way to contribute?
 Submit publicly known examples of investigations demonstrating novel or creative pivots. You can either submit a pull request or simply add an issue to the GitHub project.
+
+### Where can I learn more about pivoting?
+If you'd like to learn more about pivoting in cyber threat intelligence, be sure to check out the following resources:
+
+* [Formulating a Robust Pivoting Methodology](https://pylos.co/wp-content/uploads/2021/02/pivoting.pdf) by [Joe Slowik](https://twitter.com/jfslowik)
+* [Pivoting from Art to Science](https://www.youtube.com/watch?v=IhUJH_mgVVk) by [Joe Slowik](https://twitter.com/jfslowik)
+* [A Cyber Threat Intelligence Self-Study Plan](https://medium.com/katies-five-cents/a-cyber-threat-intelligence-self-study-plan-part-2-d04b7a529d36) by [Katie Nickels](https://twitter.com/likethecoins)
+* [A Beginner’s Guide to Tracking Malware Infrastructure](https://censys.com/a-beginners-guide-to-tracking-malware-infrastructure/) by [Embee Research](https://twitter.com/embee_research)
+
+### Where can I learn more about offensive cyber operations?
+If you'd like to learn more about how threat actors operate, I recommend reading the following books:
+
+* [Network Attacks and Exploitation: A Framework](https://www.wiley.com/en-us/Network+Attacks+and+Exploitation%3A+A+Framework-p-9781118987124) by Matthew Monte
+* [Attribution of Advanced Persistent Threats](https://link.springer.com/book/10.1007/978-3-662-61313-9) by [Timo Steffens](https://twitter.com/Timo_Steffens)

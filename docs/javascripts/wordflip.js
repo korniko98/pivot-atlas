@@ -7,7 +7,7 @@ let maxLength = Math.max(...wordList.map(word => word.length));
 let index = 0;
 
 // Set the width of the dynamic word container based on the length of the longest word
-dynamicWordContainer.style.width = (maxLength * 15) + 'px'; // Adjust the multiplier as needed
+dynamicWordContainer.style.width = (maxLength * 13) + 'px'; // Adjust the multiplier as needed
 
 // Function to determine if a word starts with a vowel
 function startsWithVowel(word) {
@@ -24,4 +24,4 @@ function flipWords() {
 flipWords();
 
 // Set interval to change words
-setInterval(flipWords, 3000); // Change the interval time to match the animation duration
+setInterval(flipWords, 2500); // Change the interval time to match the animation duration

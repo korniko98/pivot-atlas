@@ -16,7 +16,7 @@ th, td {
 }
 
 .md-typeset__table table:not([class]) {
-    font-size: .50rem;
+    font-size: .60rem;
     border-right: none;
 }
 
@@ -47,28 +47,25 @@ th, td {
 }
 
 .animated-word {
-  animation: fadeInOut 3s infinite;
+  animation: fadeInOut 2.5s infinite;
 }
 
 @keyframes fadeInOut {
-  0% {
-    opacity: 0.25;
-  }
-  20% {
-    opacity: 1;
-  }
-  40% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.25;
-  }
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 #dynamic-word-container {

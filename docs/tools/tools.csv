@@ -23,6 +23,7 @@
 [MalwareBazaar](https://bazaar.abuse.ch/), , , , , ,:material-checkbox-marked:, , , , , 
 [HybridAnalysis](https://www.hybrid-analysis.com/), , , , , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , 
 [any.run](https://any.run/), , , , , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , 
+[ThreatFox](https://threatfox.abuse.ch/), , ,":material-checkbox-marked-outline: { title=""Only contains IP addresses and domains tagged as malicious."" }", , ,":material-checkbox-marked-outline: { title=""Only contains hashes tagged as malicious."" }", , , , , 
 [Intezer Analyse](https://analyze.intezer.com/), , , , , , , ,:material-checkbox-marked:, , , 
 [GitHub Search](https://github.com/search), , , , , , , , ,:material-checkbox-marked:, , 
 "[Team Cymru](https://www.team-cymru.com/cyber-threat-hunting-tools) { title=""Premium only"" }", , , , , , , , , ,:material-checkbox-marked:, 
