@@ -5,17 +5,17 @@
 ## Overview
 
 <div class="grid cards" markdown>
--   :material-lightbulb-on:{ .lg .middle } __Definition__
+-   :octicons-book-16:{ .lg .middle } __Definition__
 
     ---
-	<span style="font-size:0.8em;">
+	<span style="font-size:0.9em;">
 	A server is an [IP address](/artifacts/ip-address) and port combination that serves an application to clients. Threat actors deploy these to host various parts of their infrastructure, such as phishing websites, repositories from which victim devices download malicious payloads, command and control servers to which malware connects for recieving commands, storage for exfiltrated data, and proxies for routing malicious traffic.
 	</span>
 
--   :material-flower-tulip:{ .lg .middle } __Example__
+-   :octicons-eye-16:{ .lg .middle } __Example__
 
     ---
-	<span style="font-size:0.8em;">
+	<span style="font-size:0.9em;">
     `8.8.8.8:80`
 	</span>
 </div>
@@ -65,6 +65,8 @@
 		``` console
 		TO DO
 		```
+
+---
 
 ### [Servers](/artifacts/server)
 
@@ -177,6 +179,8 @@
 		``` console
 		TO DO
 		```
+
+---
 
 ### [Samples](/artifacts/sample)
 

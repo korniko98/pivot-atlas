@@ -27,9 +27,7 @@ Certificate transparency log aggregators such as [crt.sh](https://crt.sh/) allow
 
 Many host scanning tools provide certificate metadata sourced from the servers hosting them.
 
-## Source code
-
-### Code scanners
+## Source code scanners
 
 Source code repositories such as GitHub allow [querying for code snippets](https://github.com/search), which can be useful for identifying malware source code.
 
@@ -39,22 +37,16 @@ Source code repositories such as GitHub allow [querying for code snippets](https
 
 ### DNS History / Passive DNS
 
-## Flow Logs
+## Netflow aggregation
 
-### Netflow Aggregators
-
-## Host Scanners
-
-### Host Scanners
-
-## Malware Zoos
-
-### Sample Repositories
-
-### Sandboxes
-
-### Code Similarity
+## Host scanners
 
 ## URL Scanners
 
-### URL Scanners
+## Malware zoos
+
+### Sample repositories
+
+### Sandboxes
+
+### Code similarity scanners
