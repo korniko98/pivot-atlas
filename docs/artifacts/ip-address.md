@@ -22,7 +22,7 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		IP_ADDRESS("IP Address") -- rDNS --> DOMAIN("Domain / Subdomain")
+		IP_ADDRESS("IP Address") -- rDNS --> DOMAIN("Domain")
 		IP_ADDRESS -- pDNS --> DOMAIN
 		DOMAIN -- fDNS --> IP_ADDRESS
 		IP_ADDRESS <-- ASN --> IP_ADDRESS_("IP Address")
@@ -103,7 +103,7 @@ Passive DNS queries are usually more accurate than reverse DNS queries, since th
 
 ### IP Addresses
 
-####:octicons-arrow-right-24: Other IP addresses in the same ASN
+####:octicons-arrow-right-24: IP addresses in the same ASN
 
 Some Autonomous System Numbers (ASN) are known to be operated by malicious actors[^2], and in some cases an address's ASN may contain additional addresses in use by the same actor.
 
@@ -126,9 +126,9 @@ Some Autonomous System Numbers (ASN) are known to be operated by malicious actor
 		TO DO
 		```
 
-####:octicons-arrow-right-24: Other IP addresses with overlapping registration details
+####:octicons-arrow-right-24: IP addresses with overlapping registration details
 
-When actors purchase an IP address, they must supply registrant information, which is made publicly available through the WHOIS protocol. This requirement is different than for registering a domain, a process which allow for registrant privacy. While stealthy actors will often provide fake details, these can sometimes still be useful for pivoting. Note that if a threat actor leases a (static or dynamic) IP address from a cloud provider, a WHOIS query will only return information about the provider.
+When actors purchase an IP address, they must supply registrant information, which is made publicly available through the WHOIS protocol. This requirement is different than for registering a domain, a process which allows for registrant privacy. While stealthy actors will often provide fake registration details, these can sometimes still be useful for pivoting if they are rare enough. Note that if a threat actor leases a (static or dynamic) IP address from a cloud provider, a WHOIS query will only return information about the provider.
 
 ??? example "Try it out"
 
@@ -153,7 +153,7 @@ When actors purchase an IP address, they must supply registrant information, whi
 
 	Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
 
-####:octicons-arrow-right-24: Other IP addresses observed communicating with it
+####:octicons-arrow-right-24: IP addresses observed communicating with it
 
 If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
 

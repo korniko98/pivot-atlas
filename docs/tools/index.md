@@ -1,11 +1,14 @@
 ---
 hide:
   - navigation
+icon: material/tools
 ---
 
-#Tools
+#:material-tools:Tools
 
 !!! warning "Under Construction"
+
+This section lists various tools and platforms that enable pivoting. Every tool allows analysts to perform different types of pivots on different types of data, and analysts must usually utilize multiple tools in order to conduct full-scale investigations. This aspect of analysis can be observed in the comparison table below, which demonstrates that no single tool is sufficient for all types of pivots.
 
 ## Overview
 
@@ -35,18 +38,34 @@ Source code repositories such as GitHub allow [querying for code snippets](https
 
 ### WHOIS Lookup
 
+[...]
+
 ### DNS History / Passive DNS
+
+[...]
 
 ## Netflow aggregation
 
+[...]
+
 ## Host scanners
 
+[...]
+
 ## URL Scanners
+
+[...]
 
 ## Malware zoos
 
 ### Sample repositories
 
+[...]
+
 ### Sandboxes
 
+[...]
+
 ### Code similarity scanners
+
+[...]

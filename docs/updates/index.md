@@ -1,7 +1,8 @@
 ---
 hide:
   - navigation
+icon: material/newspaper
 ---
 
-# Updates
+#:material-newspaper:Updates
 

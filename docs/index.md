@@ -1,9 +1,10 @@
 ---
 hide:
   - navigation
+icon: material/lightbulb
 ---
 
-# About
+#:material-lightbulb:About
 
 ## Introduction
 
@@ -26,13 +27,13 @@ Welcome to **Pivot Atlas**, a pivoting handbook for cyber threat intelligence an
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— You, probably.
 	</span>
 
-For any given type of observable encountered during an investigation, analysts can use this handbook to figure out what steps they should take to reveal potentially related infrastructure or tooling. Every listed pivoting method can be performed using one or more platforms (depending on preference or availability), and query examples are provided for the most commonly used tools. Diagrams are also included for easy navigation between artifact types, for example:
+For any given type of observable encountered during an investigation, analysts can use this handbook to figure out what steps they should take to reveal potentially related infrastructure or tooling. Every listed pivoting method can be performed using one or more [tools](/tools) (depending on your preference or which tools you have access to), and query examples are provided for the most commonly used tools. Diagrams are also included for easy and clickable navigation between artifact types, for example:
 
 <div class="grid cards" markdown>
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		IP_ADDRESS("IP Address") -- rDNS --> DOMAIN("Domain / Subdomain")
+		IP_ADDRESS("IP Address") -- rDNS --> DOMAIN("Domain")
 		IP_ADDRESS -- pDNS --> DOMAIN
 		DOMAIN -- fDNS --> IP_ADDRESS
 		IP_ADDRESS <-- ASN --> IP_ADDRESS_("IP Address")
@@ -49,20 +50,17 @@ For any given type of observable encountered during an investigation, analysts c
 	```
 </div>
 
-This project is a work in progress and cannot yet serve as a truly comprehensive guide to pivoting, but in time it could. If you would like to learn more about pivoting, I highly recommend checking out the references section listed at the end of this page. If you would like to contribute content to this project, please feel free to submit a pull request [here](https://github.com/korniko98/pivot-atlas).
+This project is a work in progress, but in time I hope it can serve as a comprehensive guide to pivoting. If you would like to learn more about pivoting and cyber threat intelligence, I highly recommend checking out the references listed at the end of this page. If you would like to contribute content to this project, please feel free to submit a pull request [here](https://github.com/korniko98/pivot-atlas).
 
 ## Frequently asked questions (FAQ)
 
 ### How should I use Pivot Atlas?
-* To learn about recommended pivots, check out the items in the **Artifacts** section.
-* To learn about useful artifact fingerprints, take a look at the **[Fingerprints](/fingerprints)** page.
-* To learn about tools of the trade, head on over to the **[Tools](/tools)** page.
+* To learn about recommended pivots, check out the items in the **[Artifacts](/artifacts)** section.
+* To learn about useful artifact fingerprints, take a look at the **[Fingerprints](/fingerprints)** section.
+* To learn about various tools of the trade, head on over to the **[Tools](/tools)** section.
 
-### What are the organizing principles of this website?
-In graph terminology, I've chosen to use nodes to represent artifacts, meaning things that exist in reality (i.e., cyberspace), whereas pivots are represented as egdes between them. Similarly, fingerprints (such as JA4) are also represented as edges, since they can be considered higher-order abstractions of artifacts (whether lossy or lossless), rather than artifacts in and of themselves.
-
-### What's the best way to contribute?
-Submit publicly known examples of investigations demonstrating novel or creative pivots. You can either submit a pull request or simply add an issue to the GitHub project.
+### What's the best way to contribute to this project?
+Submit information about publicly known examples of investigations demonstrating novel or creative pivots (or anything else you've noticed may be missing from this website). I also recommend reviewing the "Future plans" section of [this blogpost](/updates/2024/05/13/hello-world/) for ideas on other areas I'd like to expand or improve. To contribute, you can either submit a pull request yourself or simply add an issue to the GitHub project (pull requests are preferred but issues are welcome).
 
 ### Where can I learn more about pivoting?
 If you'd like to learn more about pivoting in cyber threat intelligence, be sure to check out the following resources:

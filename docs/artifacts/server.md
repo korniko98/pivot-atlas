@@ -9,14 +9,23 @@
 
     ---
 	<span style="font-size:0.9em;">
-	A server is an [IP address](/artifacts/ip-address) and port combination that serves an application to clients. Threat actors deploy these to host various parts of their infrastructure, such as phishing websites, repositories from which victim devices download malicious payloads, command and control servers to which malware connects for recieving commands, storage for exfiltrated data, and proxies for routing malicious traffic.
+	A server is an application listening on an [IP address](/artifacts/ip-address) and port combination (also known as a socket) that serves clients connecting to it. Servers run on hosts, which might be physical devices, virtual machines, or containers.
 	</span>
 
+-   :octicons-bug-16:{ .lg .middle } __Usecase__
+
+    ---
+	<span style="font-size:0.9em;">
+    Threat actors deploy servers to host various parts of their infrastructure, such as phishing websites, repositories from which victim devices download malicious payloads, C&C servers to which malware connects for recieving commands, storage for exfiltrated data, and proxies for routing malicious traffic.
+	</span>
+</div>
+
+<div class="grid cards" markdown>
 -   :octicons-eye-16:{ .lg .middle } __Example__
 
     ---
 	<span style="font-size:0.9em;">
-    `8.8.8.8:80`
+    [...]
 	</span>
 </div>
 
@@ -27,7 +36,7 @@
 		IP_ADDRESS("IP Address") -- hosts --> SERVER("Server")
 		SAMPLE("Sample") -- communicates --> SERVER
 		SAMPLE -- references --> SERVER
-		SERVER <-- JA4+/JARM --> SERVER_("Server")
+		SERVER <-- fingerprint --> SERVER_("Server")
 		SERVER <-- banner --> SERVER_
 		SERVER <-- favicon --> SERVER_
 		SERVER <-- content/look --> SERVER_
@@ -70,7 +79,7 @@
 
 ### [Servers](/artifacts/server)
 
-####:octicons-arrow-right-24: Other servers with the same JA4+ signature
+####:octicons-arrow-right-24: Servers with the same banner
 
 ??? example "Try it out"
 
@@ -91,7 +100,7 @@
 		TO DO
 		```
 
-####:octicons-arrow-right-24: Other servers with the same response banner
+####:octicons-arrow-right-24: Servers with the same JA4+ fingerprint
 
 ??? example "Try it out"
 
@@ -112,7 +121,7 @@
 		TO DO
 		```
 
-####:octicons-arrow-right-24: Other servers with the same favicon
+####:octicons-arrow-right-24: Servers with the same JARM fingerprint
 
 ??? example "Try it out"
 
@@ -133,7 +142,7 @@
 		TO DO
 		```
 
-####:octicons-arrow-right-24: Other servers with the same content
+####:octicons-arrow-right-24: Servers with the same HHHash fingerprint
 
 ??? example "Try it out"
 
@@ -154,7 +163,70 @@
 		TO DO
 		```
 
-####:octicons-arrow-right-24: Other servers with the same URL path
+####:octicons-arrow-right-24: Servers with the same response banner
+
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
+
+####:octicons-arrow-right-24: Servers with the same favicon
+
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
+
+####:octicons-arrow-right-24: Servers with similar content
+
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
+
+####:octicons-arrow-right-24: Servers with the same URL path
 
 ??? example "Try it out"
 
@@ -167,7 +239,7 @@
 		TO DO
 		```
 
-####:octicons-arrow-right-24: Other servers with the same visual appearance
+####:octicons-arrow-right-24: Servers with the same visual appearance
 
 ??? example "Try it out"
 

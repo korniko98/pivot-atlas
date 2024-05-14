@@ -17,7 +17,7 @@
 
     ---
 	<span style="font-size:0.9em;">
-    [`cd4c0fe2cb8a00edf4e97a22f550e080a8732b1666c7a16dc01be4ac0ccb2244`](https://crt.sh/?q=cd4c0fe2cb8a00edf4e97a22f550e080a8732b1666c7a16dc01be4ac0ccb2244) is the SHA1 hash of a malware binary known as ...
+    [`88c8b472108e0d79d16a1634499c1b45048a10a38ee799054414613cc9dccccc`](https://www.virustotal.com/gui/file/88c8b472108e0d79d16a1634499c1b45048a10a38ee799054414613cc9dccccc) is the SHA-256 hash of a malware binary used by the threat actor known as Black Basta.[^1]
 	</span>
 </div>
 
@@ -41,6 +41,8 @@
 
 ####:octicons-arrow-right-24: Servers serving it
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
 ??? example "Try it out"
 
 	=== "Shodan (URL)"
@@ -59,3 +61,5 @@
 		``` console
 		TO DO
 		```
+
+[^1]: [#StopRansomware: Black Basta](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-131a)
