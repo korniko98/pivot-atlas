@@ -1,7 +1,7 @@
 site_name: Pivot Atlas
 site_url: https://gopivot.ing
-repo_url: https://github.com/korniko98/pivot-handbook
-repo_name: korniko98/pivot-handbook
+repo_url: https://github.com/korniko98/pivot-atlas
+repo_name: korniko98/pivot-atlas
 edit_uri: edit/main/docs/
 theme:
   name: material
@@ -14,16 +14,22 @@ theme:
     accent: deep orange
   features:
     - search.highlight
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
+    - navigation.indexes
     - content.tabs.link
     - content.tooltips
     - content.action.edit
 plugins:
     - search
+    - blog:
+        archive: false
+        blog_dir: updates
     - table-reader
     - mermaid2
     - git-committers:
-        repository: korniko98/pivot-handbook
+        repository: korniko98/pivot-atlas
         branch: main
     #- social
 markdown_extensions:
@@ -52,6 +58,7 @@ extra:
   social:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/AmitaiCo
+copyright: Maintained by <a href="https://twitter.com/AmitaiCo">Amitai Cohen</a>
 extra_css:
   - stylesheets/extra.css
 extra_javascript:

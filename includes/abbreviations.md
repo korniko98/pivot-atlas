@@ -15,3 +15,4 @@
 *[SSL]: Secure Sockets Layer
 *[C2]: Command and Control
 *[C&C]: Command and Control
+*[FQDN]: Fully Qualified Domain Name

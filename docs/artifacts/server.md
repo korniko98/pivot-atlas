@@ -5,18 +5,27 @@
 ## Overview
 
 <div class="grid cards" markdown>
--   :material-lightbulb-on:{ .lg .middle } __Definition__
+-   :octicons-book-16:{ .lg .middle } __Definition__
 
     ---
-	<span style="font-size:0.8em;">
-	A server is an [IP address](/artifacts/ip-address) and port combination that serves an application to clients. Threat actors deploy these to host various parts of their infrastructure, such as phishing websites, repositories from which victim devices download malicious payloads, command and control servers to which malware connects for recieving commands, storage for exfiltrated data, and proxies for routing malicious traffic.
+	<span style="font-size:0.9em;">
+	A server is an application listening on an [IP address](/artifacts/ip-address) and port combination (also known as a socket) that serves clients connecting to it. Servers run on hosts, which might be physical devices, virtual machines, or containers.
 	</span>
 
--   :material-flower-tulip:{ .lg .middle } __Example__
+-   :octicons-bug-16:{ .lg .middle } __Usecase__
 
     ---
-	<span style="font-size:0.8em;">
-    `8.8.8.8:80`
+	<span style="font-size:0.9em;">
+    Threat actors deploy servers to host various parts of their infrastructure, such as phishing websites, repositories from which victim devices download malicious payloads, C&C servers to which malware connects for recieving commands, storage for exfiltrated data, and proxies for routing malicious traffic.
+	</span>
+</div>
+
+<div class="grid cards" markdown>
+-   :octicons-eye-16:{ .lg .middle } __Example__
+
+    ---
+	<span style="font-size:0.9em;">
+    [...]
 	</span>
 </div>
 
@@ -24,19 +33,20 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		A("IP Address") -- hosts --> B("Server")
-		C("Sample") -- communicates --> B
-		C -- references --> B
-		B <-- JA4+/JARM --> D("Server")
-		B <-- banner --> D
-		B <-- content/look --> D
-		B <-- URL path --> D
-		B -- stores --> C
-		E("TLS Certificate") -- served by--> B
-		click A "#ip-addresses"
-		click C "#samples"
-		click D "#servers"
-		click E "#tls-certificates"
+		IP_ADDRESS("IP Address") -- hosts --> SERVER("Server")
+		SAMPLE("Sample") -- communicates --> SERVER
+		SAMPLE -- references --> SERVER
+		SERVER <-- fingerprint --> SERVER_("Server")
+		SERVER <-- banner --> SERVER_
+		SERVER <-- favicon --> SERVER_
+		SERVER <-- content/look --> SERVER_
+		SERVER <-- URL path --> SERVER_
+		SERVER -- stores --> SAMPLE
+		TLS_CERT("TLS Certificate") -- served by--> SERVER
+		click IP_ADDRESS "#ip-addresses"
+		click SAMPLE "#samples"
+		click SERVER_ "#servers"
+		click TLS_CERT "#tls-certificates"
 	```
 </div>
 
@@ -46,135 +56,241 @@
 
 ####:octicons-arrow-right-24: Certificates served by it
 
-=== "Shodan (URL)"
-    ```
-	TO DO
-    ```
-=== "Shodan (API)"
-    ``` console
-	TO DO
-    ```
-=== "Censys (URL)"
-    ```
-	TO DO
-    ```
-=== "Censys (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
+
+---
 
 ### [Servers](/artifacts/server)
 
-####:octicons-arrow-right-24: Other servers with the same JA4+ signature
+####:octicons-arrow-right-24: Servers with the same banner
 
-=== "Shodan (URL)"
-    ```
-	TO DO
-    ```
-=== "Shodan (API)"
-    ``` console
-	TO DO
-    ```
-=== "Censys (URL)"
-    ```
-	TO DO
-    ```
-=== "Censys (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
 
-####:octicons-arrow-right-24: Other servers with the same response banner
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
 
-=== "Shodan (URL)"
-    ```
-	TO DO
-    ```
-=== "Shodan (API)"
-    ``` console
-	TO DO
-    ```
-=== "Censys (URL)"
-    ```
-	TO DO
-    ```
-=== "Censys (API)"
-    ``` console
-	TO DO
-    ```
+####:octicons-arrow-right-24: Servers with the same JA4+ fingerprint
 
-####:octicons-arrow-right-24: Other servers with the same content
+??? example "Try it out"
 
-=== "Shodan (URL)"
-    ```
-	TO DO
-    ```
-=== "Shodan (API)"
-    ``` console
-	TO DO
-    ```
-=== "Censys (URL)"
-    ```
-	TO DO
-    ```
-=== "Censys (API)"
-    ``` console
-	TO DO
-    ```
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
 
-####:octicons-arrow-right-24: Other servers with the same URL path
+####:octicons-arrow-right-24: Servers with the same JARM fingerprint
 
-=== "URLScan (URL)"
-    ```
-	TO DO
-    ```
-=== "URLScan (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
 
-####:octicons-arrow-right-24: Other servers with the same visual appearance
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
 
-=== "URLScan (URL)"
-    ```
-	TO DO
-    ```
-=== "URLScan (API)"
-    ``` console
-	TO DO
-    ```
+####:octicons-arrow-right-24: Servers with the same HHHash fingerprint
+
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
+
+####:octicons-arrow-right-24: Servers with the same response banner
+
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
+
+####:octicons-arrow-right-24: Servers with the same favicon
+
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
+
+####:octicons-arrow-right-24: Servers with similar content
+
+??? example "Try it out"
+
+	=== "Shodan (URL)"
+		```
+		TO DO
+		```
+	=== "Shodan (API)"
+		``` console
+		TO DO
+		```
+	=== "Censys (URL)"
+		```
+		TO DO
+		```
+	=== "Censys (API)"
+		``` console
+		TO DO
+		```
+
+####:octicons-arrow-right-24: Servers with the same URL path
+
+??? example "Try it out"
+
+	=== "URLScan (URL)"
+		```
+		TO DO
+		```
+	=== "URLScan (API)"
+		``` console
+		TO DO
+		```
+
+####:octicons-arrow-right-24: Servers with the same visual appearance
+
+??? example "Try it out"
+
+	=== "URLScan (URL)"
+		```
+		TO DO
+		```
+	=== "URLScan (API)"
+		``` console
+		TO DO
+		```
+
+---
 
 ### [Samples](/artifacts/sample)
 
 ####:octicons-arrow-right-24: Samples that reference it in their code
 
-=== "VirusTotal (URL)"
-    ```
-	TO DO
-    ```
-=== "VirusTotal (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "VirusTotal (URL)"
+		```
+		TO DO
+		```
+	=== "VirusTotal (API)"
+		``` console
+		TO DO
+		```
 
 ####:octicons-arrow-right-24: Samples that communicate with it at runtime
 
-=== "VirusTotal (URL)"
-    ```
-	TO DO
-    ```
-=== "VirusTotal (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "VirusTotal (URL)"
+		```
+		TO DO
+		```
+	=== "VirusTotal (API)"
+		``` console
+		TO DO
+		```
 
 ####:octicons-arrow-right-24: Samples that it stores
 
-=== "VirusTotal (URL)"
-    ```
-	TO DO
-    ```
-=== "VirusTotal (API)"
-    ``` console
-	TO DO
-    ```
+??? example "Try it out"
+
+	=== "VirusTotal (URL)"
+		```
+		TO DO
+		```
+	=== "VirusTotal (API)"
+		``` console
+		TO DO
+		```
