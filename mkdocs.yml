@@ -21,6 +21,7 @@ theme:
     - content.tabs.link
     - content.tooltips
     - content.action.edit
+    - content.action.view
 plugins:
     - search
     - blog:

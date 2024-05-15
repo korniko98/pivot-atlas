@@ -13,6 +13,15 @@
 	An SSL/TLS certificate allows systems to verify the identity of another system and establish an encrypted network connection between them using the SSL/TLS protocol. Certificates are often represented using a [SHA1 or SHA256 fingerprint](/fingerprints#certificate-hash).
 	</span>
 
+-   :octicons-bug-16:{ .lg .middle } __Usecase__
+
+    ---
+	<span style="font-size:0.9em;">
+    Threat actors use certificates for ...
+	</span>
+</div>
+
+<div class="grid cards" markdown>
 -   :octicons-eye-16:{ .lg .middle } __Example__
 
     ---

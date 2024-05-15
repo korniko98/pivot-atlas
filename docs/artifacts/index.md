@@ -18,5 +18,5 @@ flowchart LR
 	ARTIFACT("Artifact (node)") -- Pivot (edge) --> ARTIFACT_("Artifact (node)")
 ```
 
-Similarly, [fingerprints](/fingerprints) (such as JA4+) are also represented as edges, since they can be considered higher-order abstractions of artifacts (whether lossy or lossless), rather than artifacts in and of themselves. Having said that, certain pivots and fingerprints may eventually "graduate" to artifact status if they are proven to have enough substance.
+Similarly, [fingerprints](/fingerprints) (such as [JARM](/fingerprints#jarm-fingerprint)) are also represented as edges, since they can be considered higher-order abstractions of artifacts (whether lossy or lossless), rather than artifacts in and of themselves. Having said that, certain pivots and fingerprints may eventually "graduate" to artifact status if they are proven to have enough substance.
 

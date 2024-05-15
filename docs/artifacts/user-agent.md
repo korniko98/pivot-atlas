@@ -13,6 +13,15 @@
 	A user agent is ...
 	</span>
 
+-   :octicons-bug-16:{ .lg .middle } __Usecase__
+
+    ---
+	<span style="font-size:0.9em;">
+    Threat actors use useragents to ...
+	</span>
+</div>
+
+<div class="grid cards" markdown>
 -   :octicons-eye-16:{ .lg .middle } __Example__
 
     ---
@@ -77,3 +86,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 		``` console
 		TO DO
 		```
+
+### Samples
+
+####:octicons-arrow-right-24: Samples of malware using it
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar. Donec et dolor at velit dictum lobortis. Vivamus rhoncus suscipit faucibus. Donec iaculis turpis ultricies augue bibendum venenatis. Praesent massa erat, scelerisque et consequat a, sollicitudin eu nulla.

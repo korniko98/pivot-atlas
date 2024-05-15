@@ -10,9 +10,18 @@
 
     ---
 	<span style="font-size:0.9em;">
-	A file sample ... Certificates are often represented using a [SHA1, SHA256 or MD5 hash](/fingerprints#file-hash).
+	A file sample ... samples are often represented using a [SHA1, SHA256 or MD5 hash](/fingerprints#file-hash).
 	</span>
 
+-   :octicons-bug-16:{ .lg .middle } __Usecase__
+
+    ---
+	<span style="font-size:0.9em;">
+    Threat actors use malware for ...
+	</span>
+</div>
+
+<div class="grid cards" markdown>
 -   :octicons-eye-16:{ .lg .middle } __Example__
 
     ---

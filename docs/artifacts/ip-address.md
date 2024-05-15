@@ -7,9 +7,18 @@
 
     ---
 	<span style="font-size:0.9em;">
-	An [Internet Protocol address](https://en.wikipedia.org/wiki/IP_address) is a numerical label assigned to a device connected to a computer network. Threat actors purchase or hijack IP addresses and assign them to clients or [servers](/artifacts/server).
+	An [Internet Protocol address](https://en.wikipedia.org/wiki/IP_address) is a numerical label assigned to a device connected to a computer network.
 	</span>
 
+-   :octicons-bug-16:{ .lg .middle } __Usecase__
+
+    ---
+	<span style="font-size:0.9em;">
+    Threat actors purchase or hijack IP addresses and assign them to clients or [servers](/artifacts/server).
+	</span>
+</div>
+
+<div class="grid cards" markdown>
 -   :octicons-eye-16:{ .lg .middle } __Example__
 
     ---
@@ -109,20 +118,16 @@ Some Autonomous System Numbers (ASN) are known to be operated by malicious actor
 
 ??? example "Try it out"
 
-	=== "Shodan (URL)"
-		```
-		TO DO
-		```
-	=== "Shodan (API)"
+	=== "WHOIS (API)"
 		``` console
 		TO DO
 		```
-	=== "Censys (URL)"
-		```
-		https://search.censys.io/search?q=autonomous_system.asn%3A+{ASN}&resource=hosts
-		```
-	=== "Censys (API)"
+	=== "Dig (API)"
 		``` console
+		TO DO
+		```
+	=== "Driftnet (URL)"
+		```
 		TO DO
 		```
 
@@ -133,7 +138,7 @@ When actors purchase an IP address, they must supply registrant information, whi
 ??? example "Try it out"
 
 	=== "WHOIS (API)"
-		```
+		``` console
 		TO DO
 		```
 	=== "Dig (API)"
@@ -142,10 +147,6 @@ When actors purchase an IP address, they must supply registrant information, whi
 		```
 	=== "Driftnet (URL)"
 		```
-		https://search.censys.io/search?q=autonomous_system.asn%3A+{ASN}&resource=hosts
-		```
-	=== "Censys (API)"
-		``` console
 		TO DO
 		```
 
