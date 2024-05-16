@@ -34,7 +34,8 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		SERVER("Server / Client") -- uses --> USER_AGENT("User Agent")
+		IP_ADDRESS("IP Address") -- uses --> USER_AGENT("User Agent")
+		USER_AGENT -- similar --> USER_AGENT_("User Agent")
 		click SERVER "#servers"
 	```
 </div>

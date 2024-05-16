@@ -34,8 +34,9 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		SERVER("Server") -- serves --> SAMPLE("Sample")
+		SERVER("Server") -- stores --> SAMPLE("Sample")
 		SAMPLE -- hash --> SAMPLE_("Sample")
+		SAMPLE -- uses --> USER_AGENT("User Agent")
 		SAMPLE -- code similarity --> SAMPLE_
 		SAMPLE -- references --> DOMAIN("Domain")
 		SAMPLE -- references --> IP_ADDRESS("IP Address")

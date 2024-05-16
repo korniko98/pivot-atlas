@@ -39,7 +39,7 @@
 		SERVER <-- fingerprint --> SERVER_("Server")
 		SERVER <-- banner --> SERVER_
 		SERVER <-- favicon --> SERVER_
-		SERVER <-- content/look --> SERVER_
+		SERVER <-- content --> SERVER_
 		SERVER <-- URL path --> SERVER_
 		SERVER -- stores --> SAMPLE
 		TLS_CERT("TLS Certificate") -- served by--> SERVER
@@ -205,7 +205,7 @@
 		TO DO
 		```
 
-####:octicons-arrow-right-24: Servers with similar content
+####:octicons-arrow-right-24: Servers with similar content or appearance
 
 ??? example "Try it out"
 
