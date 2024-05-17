@@ -45,11 +45,13 @@
 	```
 </div>
 
+## Pivots
+
 ### IP Addresses
 
 ####:octicons-arrow-right-24: Addresses of attacker-controlled servers using it
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar. Donec et dolor at velit dictum lobortis. Vivamus rhoncus suscipit faucibus. Donec iaculis turpis ultricies augue bibendum venenatis. Praesent massa erat, scelerisque et consequat a, sollicitudin eu nulla.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 
 ??? example "Try it out"
 
@@ -72,7 +74,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 
 ####:octicons-arrow-right-24: Addresses of infected clients using it
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar. Donec et dolor at velit dictum lobortis. Vivamus rhoncus suscipit faucibus. Donec iaculis turpis ultricies augue bibendum venenatis. Praesent massa erat, scelerisque et consequat a, sollicitudin eu nulla.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 
 ??? example "Try it out"
 
@@ -93,8 +95,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 		TO DO
 		```
 
+---
+
 ### Samples
 
 ####:octicons-arrow-right-24: Samples of malware using it
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar. Donec et dolor at velit dictum lobortis. Vivamus rhoncus suscipit faucibus. Donec iaculis turpis ultricies augue bibendum venenatis. Praesent massa erat, scelerisque et consequat a, sollicitudin eu nulla.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.

@@ -115,6 +115,13 @@ Pivoting to past DNS records is especially useful when investigating a long-term
 
 Historic DNS resolutions can be based on either passive DNS collection (pDNS), which involves continuously recording DNS queries from various sources and aggregating their results into a queryable database, or active forward DNS collection (fDNS), which involves regularly querying for known domains and storing their resolutions.
 
+??? example "Try it out"
+
+	=== "Validin (URL)"
+		```
+		https://app.validin.com/detail?type=ip&find={IP_ADDRESS}#tab=resolutions
+		```
+
 ---
 
 ### IP Addresses

@@ -16,3 +16,4 @@
 *[C2]: Command and Control
 *[C&C]: Command and Control
 *[FQDN]: Fully Qualified Domain Name
+*[TLD]: Top-level Domain

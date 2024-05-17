@@ -30,6 +30,9 @@ flowchart LR
 	DOMAIN -- resolves --> IP_ADDRESS
 	DOMAIN -- prev. resolved --> IP_ADDRESS
 	DOMAIN <-- similar name --> DOMAIN_
+	DOMAIN <-- registrar --> DOMAIN_
+	DOMAIN <-- registry --> DOMAIN_
+	DOMAIN <-- TLD --> DOMAIN_
 	IP_ADDRESS -- rDNS --> DOMAIN
 	IP_ADDRESS <-- ASN --> IP_ADDRESS_
 	IP_ADDRESS -- uses --> USER_AGENT
