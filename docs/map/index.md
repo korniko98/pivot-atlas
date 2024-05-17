@@ -6,7 +6,7 @@ icon: material/map
 
 #:material-map:Map
 
-The following diagram shows all pivots between various [artifact](/artifacts) types, as detailed on this website (the list isn't conclusive, and will grow and change as more content is added):
+The following diagram shows all pivots between various [artifact](/artifacts) types, as detailed on this website. Note that the list of pivots and artifacts isn't conclusive, and will grow and change as more content is added (the diagram may take a few seconds to load in your browser if you're visiting this website for the first time):
 
 ```mermaid
 flowchart LR
@@ -41,6 +41,7 @@ flowchart LR
 	SERVER <-- favicon --> SERVER_
 	SERVER <-- content --> SERVER_
 	SERVER <-- URL path --> SERVER_
+	SERVER <-- port --> SERVER_
 	SERVER -- stores --> SAMPLE
 	TLS_CERT -- served by--> SERVER
 	TLS_CERT -- CN --> DOMAIN
@@ -51,7 +52,16 @@ flowchart LR
 	SAMPLE -- references --> SERVER
 	SAMPLE -- hash --> SAMPLE_
 	SAMPLE -- code similarity --> SAMPLE_
+	SAMPLE -- behavior --> SAMPLE_
 	SAMPLE -- references --> DOMAIN
 	SAMPLE -- references --> IP_ADDRESS
 	SAMPLE -- uses --> USER_AGENT
+	
+	%% define links
+	click IP_ADDRESS "/artifacts/ip-address"
+	click DOMAIN "/artifacts/domain"
+	click SERVER "/artifacts/server"
+	click TLS_CERT "/artifacts/tls-certificate"
+	click SAMPLE "/artifacts/sample"
+	click USER_AGENT "/artifacts/user-agent"
 ```

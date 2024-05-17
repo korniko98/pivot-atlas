@@ -46,6 +46,7 @@
 		SERVER <-- favicon --> SERVER_
 		SERVER <-- content --> SERVER_
 		SERVER <-- URL path --> SERVER_
+		SERVER <-- port --> SERVER_
 		SERVER -- stores --> SAMPLE
 		TLS_CERT -- served by--> SERVER
 		SAMPLE -- communicates --> SERVER

@@ -46,6 +46,7 @@
 		SAMPLE -- references --> SERVER
 		SAMPLE -- hash --> SAMPLE_
 		SAMPLE -- code similarity --> SAMPLE_
+		SAMPLE -- behavior --> SAMPLE_
 		SAMPLE -- references --> DOMAIN
 		SAMPLE -- references --> IP_ADDRESS
 		SAMPLE -- uses --> USER_AGENT

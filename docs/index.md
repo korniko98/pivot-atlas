@@ -10,7 +10,7 @@ icon: material/lightbulb
 
 Welcome to **Pivot Atlas**, a pivoting handbook for cyber threat intelligence analysts, containing simple reference material for how to make the best use of various threat activity observables, such as [IP addresses](/artifacts/ip-address) and [file hashes](/fingerprints#file-hash).
 
-!!! example ""
+!!! quote ""
     <div class="word-flip">
 		<span style="font-size:1.5em;font-style: italic;" id="word">"While investigating threat activity, I found </span>
 		<span id="dynamic-word-container">
@@ -27,7 +27,7 @@ Welcome to **Pivot Atlas**, a pivoting handbook for cyber threat intelligence an
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— You, probably.
 	</span>
 
-For any given type of observable encountered during an investigation, analysts can use this handbook to figure out what steps they should take to reveal potentially related infrastructure or tooling. Every listed pivoting method can be performed using one or more [tools](/tools) (depending on your preference or which tools you have access to), and query examples are provided for the most commonly used tools. Diagrams are also included for easy and clickable navigation between artifact types, as in the following example (the diagram may take a few seconds to load in your browser if you're visiting this website for the first time):
+For any given type of observable encountered during an investigation, analysts can use this handbook to figure out what steps they should take to reveal potentially related infrastructure or tooling. Every listed pivoting method can be performed using one or more [tools](/tools) (depending on your preference or which tools you have access to), and query examples are provided for the most commonly used tools. Diagrams are also included for easy and clickable navigation between artifact types, as in the following example or in the [full map](/map) (the diagram may take a few seconds to load in your browser if you're visiting this website for the first time):
 
 <div class="grid cards" markdown>
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
@@ -53,6 +53,13 @@ For any given type of observable encountered during an investigation, analysts c
 		IP_ADDRESS <-- WHOIS --> IP_ADDRESS_
 		SERVER -- hosted by --> IP_ADDRESS
 		SAMPLE -- references --> IP_ADDRESS
+		
+		%% define links
+		click IP_ADDRESS "/artifacts/ip-address"
+		click DOMAIN "/artifacts/domain"
+		click SERVER "/artifacts/server"
+		click SAMPLE "/artifacts/sample"
+		click USER_AGENT "/artifacts/user-agent"
 	```
 </div>
 
