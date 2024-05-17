@@ -7,24 +7,20 @@
 <div class="grid cards" markdown>
 -   :octicons-book-16:{ .lg .middle } __Definition__
 
-
-    ---
 	<span style="font-size:0.9em;">
 	An SSL/TLS certificate allows systems to verify the identity of another system and establish an encrypted network connection between them using the SSL/TLS protocol. Certificates are often represented using a [SHA1 or SHA256 fingerprint](/fingerprints#certificate-hash).
 	</span>
 
 -   :octicons-bug-16:{ .lg .middle } __Usecase__
 
-    ---
 	<span style="font-size:0.9em;">
-    Threat actors use certificates for ...
+    Threat actors use these certificates much like in the legitimate usecase, such as to enable encrypted TLS communication between infected clients and C&C servers.
 	</span>
 </div>
 
 <div class="grid cards" markdown>
 -   :octicons-eye-16:{ .lg .middle } __Example__
 
-    ---
 	<span style="font-size:0.9em;">
     [`cd4c0fe2cb8a00edf4e97a22f550e080a8732b1666c7a16dc01be4ac0ccb2244`](https://crt.sh/?q=cd4c0fe2cb8a00edf4e97a22f550e080a8732b1666c7a16dc01be4ac0ccb2244) is the SHA-1 hash of a certificate in use by `google.com` for a period of several weeks in 2024.
 	</span>
@@ -34,13 +30,19 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		TLS_CERT("TLS Certificate") -- served by --> SERVER("Server")
-		TLS_CERT -- CN --> DOMAIN("Domain")
-		TLS_CERT <-- authority--> TLS_CERT_("TLS Certificate")
-		TLS_CERT <-- time--> TLS_CERT_("TLS Certificate")
-		click SERVER "#servers"
-		click DOMAIN "#domains"
-		click TLS_CERT_ "#tls-certificates"
+		classDef secondary stroke-dasharray: 5 5
+		
+		%% define nodes
+		DOMAIN(Domain)
+		SERVER(Server)
+		TLS_CERT(TLS Certificate)
+		TLS_CERT_(TLS Certificate):::secondary
+		
+		%% define edges
+		TLS_CERT -- served by--> SERVER
+		TLS_CERT -- CN --> DOMAIN
+		TLS_CERT <-- authority--> TLS_CERT_
+		TLS_CERT <-- time--> TLS_CERT_
 	```
 </div>
 

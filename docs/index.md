@@ -33,20 +33,26 @@ For any given type of observable encountered during an investigation, analysts c
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		IP_ADDRESS("IP Address") -- rDNS --> DOMAIN("Domain")
-		IP_ADDRESS -- pDNS --> DOMAIN
-		DOMAIN -- fDNS --> IP_ADDRESS
-		IP_ADDRESS <-- ASN --> IP_ADDRESS_("IP Address")
-		IP_ADDRESS <--> USER_AGENT("User Agent")
-		USER_AGENT <--> IP_ADDRESS_
+		classDef secondary stroke-dasharray: 5 5
+		
+		%% define nodes
+		IP_ADDRESS(IP Address)
+		IP_ADDRESS_(IP Address):::secondary
+		DOMAIN(Domain)
+		SERVER(Server)
+		SAMPLE(Sample)
+		USER_AGENT(User Agent)
+		
+		%% define edges
+		DOMAIN -- resolves --> IP_ADDRESS
+		IP_ADDRESS -- rDNS --> DOMAIN
+		IP_ADDRESS -- prev. resolved --> DOMAIN
+		IP_ADDRESS <-- ASN --> IP_ADDRESS_
+		IP_ADDRESS -- uses --> USER_AGENT
 		IP_ADDRESS <-- Netflow --> IP_ADDRESS_
 		IP_ADDRESS <-- WHOIS --> IP_ADDRESS_
-		IP_ADDRESS -- hosts --> SERVER("Server")
-		click IP_ADDRESS "artifacts/ip-address"
-		click DOMAIN "artifacts/domain"
-		click IP_ADDRESS_ "artifacts/ip-address"
-		click SERVER "artifacts/server"
-		click USER_AGENT "artifacts/user-agent"
+		SERVER -- hosted by --> IP_ADDRESS
+		SAMPLE -- references --> IP_ADDRESS
 	```
 </div>
 

@@ -5,14 +5,12 @@
 <div class="grid cards" markdown>
 -   :octicons-book-16:{ .lg .middle } __Definition__
 
-    ---
 	<span style="font-size:0.9em;">
 	An [Internet Protocol address](https://en.wikipedia.org/wiki/IP_address) is a numerical label assigned to a device connected to a computer network.
 	</span>
 
 -   :octicons-bug-16:{ .lg .middle } __Usecase__
 
-    ---
 	<span style="font-size:0.9em;">
     Threat actors purchase or hijack IP addresses and assign them to clients or [servers](/artifacts/server).
 	</span>
@@ -21,7 +19,6 @@
 <div class="grid cards" markdown>
 -   :octicons-eye-16:{ .lg .middle } __Example__
 
-    ---
 	<span style="font-size:0.9em;">
     `134.209.127[.]249` was in use by an unknown threat actor for the triple purpose of running commands against cloud environments, sending phishing SMS messages to targets, and serving phishing websites.[^1]
 	</span>
