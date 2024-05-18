@@ -10,15 +10,17 @@ This section lists various tips for beginning pivoters. If you'd like to learn m
 
 ## Focus on rarity
 
-As a rule, queries that return more results are less helpful than those that return less results. For this reason, focus should be placed on rare (low-prevalence) artifacts and fingerprints, since they are most likely to surface new information in the course of an investigation.
+As a rule, queries that return more results are less helpful than those that return less results, since the former requires a lot of manual sifting. To be more specific, we should strive to run queries that return a set of results in which many are relevant to our investigation. The technical term for this quality of results is called [**precision**](https://en.wikipedia.org/wiki/Precision_and_recall).
 
-For example, if a suspicious server has properties which are shared by thousands of other servers, but its IP address is located in a small ASN with only a few dozen other addresses, then you should probably prioritize the ASN for further investigation before pursuing other avenues of exploration.
+For this reason, it makes sense to pivot on **rare** (low-prevalence) properties of artifacts, since these are most likely to return precise results, and thereby more easily surface new information.
+
+For example, if a suspicious server has many properties which are shared by thousands of other servers (such as listening on port 80), but its IP address is located in a small ASN with only a few dozen other addresses, then you should probably prioritize the ASN for further investigation before pursuing other avenues of exploration.
 
 ## Combine multiple pivots
 
 Having considered the significance of rarity, during your investigations you may yet encounter artifacts with properties that don't stand out among the rest in any significant way. However, sometimes you can identify rarity by filtering on multiple properties at once.
 
-For instance, let's say a phishing website is hosted on a server that listens on port 80, uses a TLS certificate issued by GlobalSign, contains placeholder HTML content that can be found on thousands of other websites, and its domain was registered on May the 4th, 2024. While each of these properties in and of themselves isn't rare enough to be significant (querying for each of them separately would yield anywhere between thousands and millions of results), in combination they are probably unique enough to surface only one or two other servers with the exact same combination of properties, which may all be associated with the same phishing campaign.
+For instance, let's say a phishing website is hosted on a server that listens on port 80, uses a TLS certificate issued by GlobalSign, contains placeholder HTML content that can be found on thousands of other websites, and its domain was registered on May the 4th, 2024. While each of these properties in and of themselves isn't rare enough to be significant (querying for each of them separately would yield anywhere between thousands and millions of results), in combination they are probably unique enough to surface only a dozen or so other servers with the exact same combination of properties, which may all be associated with the same phishing campaign.
 
 ## Check multiple databases and tools
 
