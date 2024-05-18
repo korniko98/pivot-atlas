@@ -1,10 +1,10 @@
 ---
 hide:
   - navigation
-icon: material/lightbulb
+icon: material/information
 ---
 
-#:material-lightbulb:About
+#:material-information:About
 
 ## Introduction
 

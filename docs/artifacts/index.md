@@ -8,7 +8,8 @@ This section contains information about various types of artifacts encountered d
 
 Additionally, every page contains a pivot map showing the various paths analysts can take in order to pivot between different artifact types, explanations of these pivots and accompanying examples, as well as placeholder queries for performing certain pivots via popular [tools](/tools).
 
-Square brackets are added before and after dots in examples of malicious domains and IP addresses — this is a common practice known as "defanging", and is meant to prevent someone from accidentally clicking the domain and connecting to it.
+!!! note "Defanging"
+	Square brackets are added before and after dots in examples of malicious domains and IP addresses — this is a common practice known as "defanging", and is meant to prevent someone from accidentally clicking the domain and connecting to it.
 
 ## Organizing principles
 In graph terminology, I've chosen to use nodes to represent artifacts — things that exist in reality (i.e., cyberspace) — whereas pivots are represented as egdes between nodes:

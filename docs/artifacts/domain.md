@@ -1,14 +1,12 @@
 # Domain
 
-!!! warning "Under Construction"
-
 ## Overview
 
 <div class="grid cards" markdown>
 -   :octicons-book-16:{ .lg .middle } __Definition__
 
 	<span style="font-size:0.9em;">
-	A fully qualified domain name (FQDN) is the technical term for domains (e.g., `google.com`) and subdomains (e.g., `drive.google.com`).
+	A [fully qualified domain name (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) is the technical term for what are typically called domains (e.g., `google.com`) and subdomains (e.g., `drive.google.com`).
 	</span>
 
 -   :octicons-bug-16:{ .lg .middle } __Usecase__
@@ -46,8 +44,8 @@
 		TLS_CERT -- CN --> DOMAIN
 		DOMAIN <-- similar name --> DOMAIN_
 		DOMAIN <-- registrar --> DOMAIN_
-		DOMAIN <-- registry --> DOMAIN_
 		DOMAIN <-- TLD --> DOMAIN_
+		DOMAIN <-- time --> DOMAIN_
 		SAMPLE -- references --> DOMAIN
 	```
 
@@ -85,11 +83,11 @@ Threat actors may have a preference for certain top-level domains (TLD), such as
 
 ####:octicons-arrow-right-24: Domains with the same registrar
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+A [domain name registrar](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/) handles registrations of domains and leases them to customers. Some threat actors may show preference for certain registrars when registering their domains for malicious use (possible reasons may include minimal anti-fruad mechanisms in place or acceptance of cryptocurrency as payment). This preference can then be leveraged by analysts for pivoting purposes.
 
-####:octicons-arrow-right-24: Domains with the same registry
+####:octicons-arrow-right-24: Domains registered in the same timeframe
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Threat actors perform registration in bulk of domains meant for malicious purposes, or at the very least they may register domains around the same time if they're to be used for the same campaign. In such cases, these timeframes can be leveraged by analysts as an effective filter to narrow down the number of results for otherwise noisy queries. Furthermore, if an analyst is lucky, the threat actor may have registered other artifacts during the same timeframe as well, such as IP addresses and TLS certificates.
 
 ---
 
