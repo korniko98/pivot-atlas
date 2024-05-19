@@ -8,10 +8,21 @@ theme:
   icon:
     logo: material/table-pivot
   favicon: images/favicon.png
-  palette:
-    scheme: default
-    primary: deep purple
-    accent: deep orange
+  palette: 
+    # Palette toggle for light mode
+    - scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+    # Palette toggle for dark mode
+    - scheme: default
+      primary: deep purple
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
   features:
     - search.highlight
     - navigation.tabs
@@ -21,6 +32,7 @@ theme:
     - content.tabs.link
     - content.tooltips
     - content.action.edit
+    - content.action.view
 plugins:
     - search
     - blog:

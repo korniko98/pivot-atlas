@@ -5,14 +5,20 @@
 <div class="grid cards" markdown>
 -   :octicons-book-16:{ .lg .middle } __Definition__
 
-    ---
 	<span style="font-size:0.9em;">
-	An [Internet Protocol address](https://en.wikipedia.org/wiki/IP_address) is a numerical label assigned to a device connected to a computer network. Threat actors purchase or hijack IP addresses and assign them to clients or [servers](/artifacts/server).
+	An [Internet Protocol address](https://en.wikipedia.org/wiki/IP_address) is a numerical label assigned to a device connected to a computer network.
 	</span>
 
+-   :octicons-bug-16:{ .lg .middle } __Usecase__
+
+	<span style="font-size:0.9em;">
+    Threat actors purchase or hijack IP addresses and assign them to clients or [servers](/artifacts/server).
+	</span>
+</div>
+
+<div class="grid cards" markdown>
 -   :octicons-eye-16:{ .lg .middle } __Example__
 
-    ---
 	<span style="font-size:0.9em;">
     `134.209.127[.]249` was in use by an unknown threat actor for the triple purpose of running commands against cloud environments, sending phishing SMS messages to targets, and serving phishing websites.[^1]
 	</span>
@@ -22,18 +28,26 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		IP_ADDRESS("IP Address") -- rDNS --> DOMAIN("Domain")
-		IP_ADDRESS -- pDNS --> DOMAIN
-		DOMAIN -- fDNS --> IP_ADDRESS
-		IP_ADDRESS <-- ASN --> IP_ADDRESS_("IP Address")
-		IP_ADDRESS <--> USER_AGENT("User Agent")
-		USER_AGENT <--> IP_ADDRESS_
+		classDef secondary stroke-dasharray: 5 5
+		
+		%% define nodes
+		IP_ADDRESS(IP Address)
+		IP_ADDRESS_(IP Address):::secondary
+		DOMAIN(Domain)
+		SERVER(Server)
+		SAMPLE(Sample)
+		USER_AGENT(User Agent)
+		
+		%% define edges
+		DOMAIN -- resolves --> IP_ADDRESS
+		IP_ADDRESS -- rDNS --> DOMAIN
+		IP_ADDRESS -- prev. resolved --> DOMAIN
+		IP_ADDRESS <-- ASN --> IP_ADDRESS_
+		IP_ADDRESS -- uses --> USER_AGENT
 		IP_ADDRESS <-- Netflow --> IP_ADDRESS_
 		IP_ADDRESS <-- WHOIS --> IP_ADDRESS_
-		IP_ADDRESS -- hosts --> SERVER("Server")
-		click DOMAIN "#domains"
-		click IP_ADDRESS_ "#ip-addresses"
-		click SERVER "#servers"
+		SERVER -- hosted by --> IP_ADDRESS
+		SAMPLE -- references --> IP_ADDRESS
 	```
 </div>
 
@@ -80,7 +94,7 @@ In some cases, client behavior can be pivoted upon between different IP addresse
 ---
 
 ### [Domains](/artifacts/domain)
-####:octicons-arrow-right-24: Domains or subdomains that resolve to it
+####:octicons-arrow-right-24: Domains or subdomains that currently resolve to it
 
 An IP address might be resolved by one or more domains or subdomains operated by the same threat actor. In some cases, an IP address might be used for multiple purposes at once (e.g., malware C2, serving phishing pages, proxying traffic, etc.), with every server fronted by a different domain or subdomain.
 
@@ -95,9 +109,18 @@ While querying a domain for its resolving IP address is called forward DNS (fDNS
 		https://dnschecker.org/reverse-dns.php?query={IP_ADDRESS}
 		```
 
-####:octicons-arrow-right-24: Domains or subdomains that have historically resolved to it
+####:octicons-arrow-right-24: Domains or subdomains that have previously resolved to it
 
-Passive DNS queries are usually more accurate than reverse DNS queries, since the former relies on continuously recording DNS queries from various sources and aggregating their results into a queryable database. This has the added benefit of enabling pivots to past DNS records as well, which is especially useful when investigating a long-term campaign or cases in which a threat actor has already shut down their operations.
+Pivoting to past DNS records is especially useful when investigating a long-term campaign or cases in which a threat actor has already shut down their operations.
+
+Historic DNS resolutions can be based on either passive DNS collection (pDNS), which involves continuously recording DNS queries from various sources and aggregating their results into a queryable database, or active forward DNS collection (fDNS), which involves regularly querying for known domains and storing their resolutions.
+
+??? example "Try it out"
+
+	=== "Validin (URL)"
+		```
+		https://app.validin.com/detail?type=ip&find={IP_ADDRESS}#tab=resolutions
+		```
 
 ---
 
@@ -109,20 +132,16 @@ Some Autonomous System Numbers (ASN) are known to be operated by malicious actor
 
 ??? example "Try it out"
 
-	=== "Shodan (URL)"
-		```
-		TO DO
-		```
-	=== "Shodan (API)"
+	=== "WHOIS (API)"
 		``` console
 		TO DO
 		```
-	=== "Censys (URL)"
-		```
-		https://search.censys.io/search?q=autonomous_system.asn%3A+{ASN}&resource=hosts
-		```
-	=== "Censys (API)"
+	=== "Dig (API)"
 		``` console
+		TO DO
+		```
+	=== "Driftnet (URL)"
+		```
 		TO DO
 		```
 
@@ -133,7 +152,7 @@ When actors purchase an IP address, they must supply registrant information, whi
 ??? example "Try it out"
 
 	=== "WHOIS (API)"
-		```
+		``` console
 		TO DO
 		```
 	=== "Dig (API)"
@@ -142,10 +161,6 @@ When actors purchase an IP address, they must supply registrant information, whi
 		```
 	=== "Driftnet (URL)"
 		```
-		https://search.censys.io/search?q=autonomous_system.asn%3A+{ASN}&resource=hosts
-		```
-	=== "Censys (API)"
-		``` console
 		TO DO
 		```
 

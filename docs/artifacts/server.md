@@ -7,14 +7,12 @@
 <div class="grid cards" markdown>
 -   :octicons-book-16:{ .lg .middle } __Definition__
 
-    ---
 	<span style="font-size:0.9em;">
 	A server is an application listening on an [IP address](/artifacts/ip-address) and port combination (also known as a socket) that serves clients connecting to it. Servers run on hosts, which might be physical devices, virtual machines, or containers.
 	</span>
 
 -   :octicons-bug-16:{ .lg .middle } __Usecase__
 
-    ---
 	<span style="font-size:0.9em;">
     Threat actors deploy servers to host various parts of their infrastructure, such as phishing websites, repositories from which victim devices download malicious payloads, C&C servers to which malware connects for recieving commands, storage for exfiltrated data, and proxies for routing malicious traffic.
 	</span>
@@ -23,7 +21,6 @@
 <div class="grid cards" markdown>
 -   :octicons-eye-16:{ .lg .middle } __Example__
 
-    ---
 	<span style="font-size:0.9em;">
     [...]
 	</span>
@@ -33,20 +30,27 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		IP_ADDRESS("IP Address") -- hosts --> SERVER("Server")
-		SAMPLE("Sample") -- communicates --> SERVER
-		SAMPLE -- references --> SERVER
-		SERVER <-- fingerprint --> SERVER_("Server")
+		classDef secondary stroke-dasharray: 5 5
+		
+		%% define nodes
+		IP_ADDRESS(IP Address)
+		SERVER(Server)
+		SERVER_(Server):::secondary
+		TLS_CERT(TLS Certificate)
+		SAMPLE(Sample)
+		
+		%% define edges
+		IP_ADDRESS -- hosts --> SERVER
+		SERVER <-- fingerprint --> SERVER_
 		SERVER <-- banner --> SERVER_
 		SERVER <-- favicon --> SERVER_
-		SERVER <-- content/look --> SERVER_
+		SERVER <-- content --> SERVER_
 		SERVER <-- URL path --> SERVER_
+		SERVER <-- port --> SERVER_
 		SERVER -- stores --> SAMPLE
-		TLS_CERT("TLS Certificate") -- served by--> SERVER
-		click IP_ADDRESS "#ip-addresses"
-		click SAMPLE "#samples"
-		click SERVER_ "#servers"
-		click TLS_CERT "#tls-certificates"
+		TLS_CERT -- served by--> SERVER
+		SAMPLE -- communicates --> SERVER
+		SAMPLE -- references --> SERVER
 	```
 </div>
 
@@ -205,7 +209,7 @@
 		TO DO
 		```
 
-####:octicons-arrow-right-24: Servers with similar content
+####:octicons-arrow-right-24: Servers with similar content or appearance
 
 ??? example "Try it out"
 

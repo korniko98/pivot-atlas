@@ -7,15 +7,20 @@
 <div class="grid cards" markdown>
 -   :octicons-book-16:{ .lg .middle } __Definition__
 
-
-    ---
 	<span style="font-size:0.9em;">
-	A file sample ... Certificates are often represented using a [SHA1, SHA256 or MD5 hash](/fingerprints#file-hash).
+	A file sample ... samples are often represented using a [SHA1, SHA256 or MD5 hash](/fingerprints#file-hash).
 	</span>
 
+-   :octicons-bug-16:{ .lg .middle } __Usecase__
+
+	<span style="font-size:0.9em;">
+    Threat actors use malware for ...
+	</span>
+</div>
+
+<div class="grid cards" markdown>
 -   :octicons-eye-16:{ .lg .middle } __Example__
 
-    ---
 	<span style="font-size:0.9em;">
     [`88c8b472108e0d79d16a1634499c1b45048a10a38ee799054414613cc9dccccc`](https://www.virustotal.com/gui/file/88c8b472108e0d79d16a1634499c1b45048a10a38ee799054414613cc9dccccc) is the SHA-256 hash of a malware binary used by the threat actor known as Black Basta.[^1]
 	</span>
@@ -25,15 +30,26 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
-		SERVER("Server") -- serves --> SAMPLE("Sample")
-		SAMPLE -- hash --> SAMPLE_("Sample")
+		classDef secondary stroke-dasharray: 5 5
+		
+		%% define nodes
+		IP_ADDRESS(IP Address)
+		DOMAIN(Domain)
+		SERVER(Server)
+		SAMPLE(Sample)
+		USER_AGENT(User Agent)
+		SAMPLE_(Sample):::secondary
+		
+		%% define edges
+		SERVER -- stores --> SAMPLE
+		SAMPLE -- communicates --> SERVER
+		SAMPLE -- references --> SERVER
+		SAMPLE -- hash --> SAMPLE_
 		SAMPLE -- code similarity --> SAMPLE_
-		SAMPLE -- references --> DOMAIN("Domain")
-		SAMPLE -- references --> IP_ADDRESS("IP Address")
-		click SERVER "#servers"
-		click SAMPLE "#samples"
-		click DOMAIN "#domains"
-		click IP_ADDRESS "#ip-addresses"
+		SAMPLE -- behavior --> SAMPLE_
+		SAMPLE -- references --> DOMAIN
+		SAMPLE -- references --> IP_ADDRESS
+		SAMPLE -- uses --> USER_AGENT
 	```
 </div>
 
