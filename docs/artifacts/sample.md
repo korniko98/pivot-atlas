@@ -8,13 +8,13 @@
 -   :octicons-book-16:{ .lg .middle } __Definition__
 
 	<span style="font-size:0.9em;">
-	A file sample ... samples are often represented using a [SHA1, SHA256 or MD5 hash](/fingerprints#file-hash).
+	A sample is a copy of a malicious file such as a malware component, which can be reverse engineered to discover how it works and to extract indicators of compromise (IOCs). Samples are often represented using their [SHA1, SHA256 or MD5 hash](/fingerprints#file-hash).
 	</span>
 
 -   :octicons-bug-16:{ .lg .middle } __Usecase__
 
 	<span style="font-size:0.9em;">
-    Threat actors use malware for ...
+    Threat actors use different types of malicious software for various purposes - these can include malware deployed on victim devices (e.g., for backdooring or cryptojacking), botnet management software installed on C&C servers, phishing infrastructure utilized on phishing landing pages, malicious scripts injected into hijacked webpages, and more.
 	</span>
 </div>
 
@@ -22,7 +22,7 @@
 -   :octicons-eye-16:{ .lg .middle } __Example__
 
 	<span style="font-size:0.9em;">
-    [`88c8b472108e0d79d16a1634499c1b45048a10a38ee799054414613cc9dccccc`](https://www.virustotal.com/gui/file/88c8b472108e0d79d16a1634499c1b45048a10a38ee799054414613cc9dccccc) is the SHA-256 hash of a malware binary used by the threat actor known as Black Basta.[^1]
+    [`88c8b472108e0d79d16a1634499c1b45048a10a38ee799054414613cc9dccccc`](https://www.virustotal.com/gui/file/88c8b472108e0d79d16a1634499c1b45048a10a38ee799054414613cc9dccccc) is the SHA-256 hash of a malware binary deployed on victim devices by the threat actor known as Black Basta.[^1]
 	</span>
 </div>
 
@@ -52,6 +52,11 @@
 		SAMPLE -- uses --> USER_AGENT
 	```
 </div>
+
+!!! warning "Victim-side vs. attacker-side tooling"
+	When pivoting on a file sample, one must consider where the threat actor is expected to use it. For instance, while malware is more likely to be found within victim networks, toolkits and botnet management software are almost certain to only be identified on attacker-controlled servers.
+
+## Pivots
 
 ### Servers
 
