@@ -30,13 +30,14 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
+		classDef primary stroke-width: 2px
 		classDef secondary stroke-dasharray: 5 5
 		
 		%% define nodes
 		IP_ADDRESS(IP Address)
 		DOMAIN(Domain)
 		SERVER(Server)
-		SAMPLE(Sample)
+		SAMPLE(Sample):::primary
 		USER_AGENT(User Agent)
 		SAMPLE_(Sample):::secondary
 		
@@ -50,6 +51,13 @@
 		SAMPLE -- references --> DOMAIN
 		SAMPLE -- references --> IP_ADDRESS
 		SAMPLE -- uses --> USER_AGENT
+		
+		%% define links
+		click IP_ADDRESS "#ip-addresses"
+		click DOMAIN "#domains"
+		click SERVER "#servers"
+		click SAMPLE_ "#samples"
+		click USER_AGENT "#user-agents"
 	```
 </div>
 
@@ -64,23 +72,52 @@
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 
-??? example "Try it out"
+####:octicons-arrow-right-24: Servers it communicates with at runtime
 
-	=== "Shodan (URL)"
-		```
-		TO DO
-		```
-	=== "Shodan (API)"
-		``` console
-		TO DO
-		```
-	=== "Censys (URL)"
-		```
-		TO DO
-		```
-	=== "Censys (API)"
-		``` console
-		TO DO
-		```
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+####:octicons-arrow-right-24: Servers it references
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+---
+
+### Domains
+
+####:octicons-arrow-right-24: Domains it references
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+---
+
+### IP Addresses
+
+####:octicons-arrow-right-24: IP addresses it references
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+---
+
+### User Agents
+
+####:octicons-arrow-right-24: User agents it uses
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+---
+
+### Samples
+
+####:octicons-arrow-right-24: Samples with the same hash
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+####:octicons-arrow-right-24: Samples with code similarity to it
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+####:octicons-arrow-right-24: Samples with overlapping behavior
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 
 [^1]: [#StopRansomware: Black Basta](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-131a)

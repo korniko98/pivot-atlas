@@ -20,7 +20,7 @@ This website aims to map the **pivotability** of every type of artifact that ana
 			<span style="font-size:1.5em;" id="dynamic-word" class="animated-word"></span>
 		</span>
 		<span id="word-list" style="display: none;">
-			phishing domain,IP address,malware sample,file hash,TLS certificate,user agent
+			domain,IP address,sample,file hash,certificate,user agent
 		</span>
 		<span style="font-size:1.5em;font-style: italic;">...what can I do with it?"</span>
 	</div>
@@ -37,10 +37,11 @@ Diagrams are also included for easy and clickable navigation between artifact ty
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
+		classDef primary stroke-width: 2px
 		classDef secondary stroke-dasharray: 5 5
 		
 		%% define nodes
-		IP_ADDRESS(IP Address)
+		IP_ADDRESS(IP Address):::primary
 		IP_ADDRESS_(IP Address):::secondary
 		DOMAIN(Domain)
 		SERVER(Server)

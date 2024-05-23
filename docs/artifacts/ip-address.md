@@ -28,10 +28,11 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
+		classDef primary stroke-width: 2px
 		classDef secondary stroke-dasharray: 5 5
 		
 		%% define nodes
-		IP_ADDRESS(IP Address)
+		IP_ADDRESS(IP Address):::primary
 		IP_ADDRESS_(IP Address):::secondary
 		DOMAIN(Domain)
 		SERVER(Server)
@@ -48,6 +49,13 @@
 		IP_ADDRESS <-- WHOIS --> IP_ADDRESS_
 		SERVER -- hosted by --> IP_ADDRESS
 		SAMPLE -- references --> IP_ADDRESS
+		
+		%% define links
+		click IP_ADDRESS_ "#ip-addresses"
+		click DOMAIN "#domains"
+		click SERVER "#servers"
+		click SAMPLE "#samples"
+		click USER_AGENT "#user-agents"
 	```
 </div>
 
@@ -59,10 +67,10 @@
 
 ## Pivots
 
-### [Servers](/artifacts/server)
+### Servers
 ####:octicons-arrow-right-24: Servers hosted by it
 
-An IP address can host one or more servers on various ports. Scanning different ports can reveal new information about how a threat actor is using a given IP address.
+An IP address can host one or more [servers](/artifacts/server) on various ports. Scanning different ports can reveal new information about how a threat actor is using a given IP address.
 
 [Host scanning services](/tools/#host-scanners) such as [Shodan](https://www.shodan.io) and [Censys](https://search.censys.io) regularly scan the entire IPv4 space and report their findings in queryable databases.
 
@@ -93,10 +101,10 @@ In some cases, client behavior can be pivoted upon between different IP addresse
 
 ---
 
-### [Domains](/artifacts/domain)
+### Domains
 ####:octicons-arrow-right-24: Domains or subdomains that currently resolve to it
 
-An IP address might be resolved by one or more domains or subdomains operated by the same threat actor. In some cases, an IP address might be used for multiple purposes at once (e.g., malware C2, serving phishing pages, proxying traffic, etc.), with every server fronted by a different domain or subdomain.
+An IP address might be resolved by one or more [domains](/artifacts/domain) or subdomains operated by the same threat actor. In some cases, an IP address might be used for multiple purposes at once (e.g., malware C2, serving phishing pages, proxying traffic, etc.), with every server fronted by a different domain or subdomain.
 
 Since most normal network traffic initiates in DNS queries and uses host headers for communicating between clients and servers, actors often configure their malware to communicate with domains rather than directly connecting to an IP address. This affords their activity a measure of stealth, with the added benefit of greater operational flexibility.
 

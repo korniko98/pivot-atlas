@@ -30,18 +30,24 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
+		classDef primary stroke-width: 2px
 		classDef secondary stroke-dasharray: 5 5
 		
 		%% define nodes
 		IP_ADDRESS(IP Address)
 		SAMPLE(Sample)
-		USER_AGENT(User Agent)
+		USER_AGENT(User Agent):::primary
 		USER_AGENT_(User Agent):::secondary
 		
 		%% define edges
 		IP_ADDRESS -- uses --> USER_AGENT
 		USER_AGENT <-- similar --> USER_AGENT_
 		SAMPLE -- uses --> USER_AGENT
+		
+		%% define links
+		click IP_ADDRESS "#ip-addresses"
+		click SAMPLE "#samples"
+		click USER_AGENT_ "#user-agents"
 	```
 </div>
 
@@ -53,47 +59,15 @@
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 
-??? example "Try it out"
+!!! abstract inline end "Example"
 
-	=== "Shodan (URL)"
-		```
-		TO DO
-		```
-	=== "Shodan (API)"
-		``` console
-		TO DO
-		```
-	=== "Censys (URL)"
-		```
-		TO DO
-		```
-	=== "Censys (API)"
-		``` console
-		TO DO
-		```
+	Obsidian Security identified a malicious residential proxy network in which the threat actor had configured their malware to use an outdated Chrome user agent from 2019, which is rare enough as of 2024 to be a strong indicator.[^1]
 
 ####:octicons-arrow-right-24: Addresses of infected clients using it
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 
-??? example "Try it out"
-
-	=== "Shodan (URL)"
-		```
-		TO DO
-		```
-	=== "Shodan (API)"
-		``` console
-		TO DO
-		```
-	=== "Censys (URL)"
-		```
-		TO DO
-		```
-	=== "Censys (API)"
-		``` console
-		TO DO
-		```
+&nbsp;
 
 ---
 
@@ -102,3 +76,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 ####:octicons-arrow-right-24: Samples of malware using it
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+---
+
+### User Agents
+
+####:octicons-arrow-right-24: User agents similar to it
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+[^1]: [Emerging Identity Threats: The Muddy Waters of Residential Proxies](https://www.obsidiansecurity.com/blog/emerging-identity-threats-the-muddy-waters-of-residential-proxies/)

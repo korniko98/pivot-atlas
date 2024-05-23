@@ -24,4 +24,4 @@ function flipWords() {
 flipWords();
 
 // Set interval to change words
-setInterval(flipWords, 2500); // Change the interval time to match the animation duration
+setInterval(flipWords, 2000); // Change the interval time to match the animation duration

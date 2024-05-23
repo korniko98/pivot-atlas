@@ -28,11 +28,12 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
+		classDef primary stroke-width: 2px
 		classDef secondary stroke-dasharray: 5 5
 		
 		%% define nodes
 		IP_ADDRESS(IP Address)
-		DOMAIN(Domain)
+		DOMAIN(Domain):::primary
 		DOMAIN_(Domain):::secondary
 		TLS_CERT(TLS Certificate)
 		SAMPLE(Sample)
@@ -47,6 +48,12 @@
 		DOMAIN <-- TLD --> DOMAIN_
 		DOMAIN <-- time --> DOMAIN_
 		SAMPLE -- references --> DOMAIN
+		
+		%% define links
+		click IP_ADDRESS "#ip-addresses"
+		click DOMAIN_ "#domains"
+		click SAMPLE "#samples"
+		click TLS_CERT "#tls-certificate"
 	```
 
 </div>
