@@ -36,12 +36,14 @@
 		%% define nodes
 		IP_ADDRESS(IP Address)
 		SAMPLE(Sample)
+		CLIENT([Client])
 		USER_AGENT(User Agent):::primary
 		USER_AGENT_(User Agent):::secondary
 		
 		%% define edges
-		IP_ADDRESS -- uses --> USER_AGENT
-		USER_AGENT <-- similar --> USER_AGENT_
+		IP_ADDRESS -. hosts .-> CLIENT
+		CLIENT -- uses --> USER_AGENT
+		USER_AGENT <-- similar ---> USER_AGENT_
 		SAMPLE -- uses --> USER_AGENT
 		
 		%% define links

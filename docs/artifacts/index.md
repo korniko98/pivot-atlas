@@ -16,7 +16,14 @@ In graph terminology, I've chosen to use nodes to represent artifacts — things
 
 ```mermaid
 flowchart LR
-	ARTIFACT("Artifact (node)") -- Pivot (edge) --> ARTIFACT_("Artifact (node)")
+	ARTIFACT("Artifact (node)") -- Pivot (edge) ---> ARTIFACT_("Artifact (node)")
+```
+
+Artifacts such as IP addresses can also contain "virtual" sub-artifacts such as servers or clients, which are represented as follows:
+
+```mermaid
+flowchart LR
+	ARTIFACT("Artifact (node)") -. Pivot (edge) ..-> SUB_ARTIFACT_(["Sub-artifact (node)"])
 ```
 
 Similarly, [fingerprints](/fingerprints) (such as [JARM](/fingerprints#jarm-fingerprint)) are also represented as edges, since they can be considered higher-order abstractions of artifacts (whether lossy or lossless), rather than artifacts in and of themselves. Having said that, certain pivots and fingerprints may eventually "graduate" to artifact status if they are proven to have enough substance.

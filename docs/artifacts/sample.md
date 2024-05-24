@@ -36,21 +36,26 @@
 		%% define nodes
 		IP_ADDRESS(IP Address)
 		DOMAIN(Domain)
-		SERVER(Server)
+		SERVER([Server])
+		CLIENT([Client])
 		SAMPLE(Sample):::primary
 		USER_AGENT(User Agent)
 		SAMPLE_(Sample):::secondary
 		
 		%% define edges
+		SAMPLE -- found on --> CLIENT
+		CLIENT -. hosted by .-> IP_ADDRESS
 		SERVER -- stores --> SAMPLE
 		SAMPLE -- communicates --> SERVER
-		SAMPLE -- references --> SERVER
+		SAMPLE -- references ---> SERVER
 		SAMPLE -- hash --> SAMPLE_
 		SAMPLE -- code similarity --> SAMPLE_
-		SAMPLE -- behavior --> SAMPLE_
+		SAMPLE -- behavior ---> SAMPLE_
+		SAMPLE -- references ---> IP_ADDRESS
+		SERVER -. hosted by .-> IP_ADDRESS
 		SAMPLE -- references --> DOMAIN
-		SAMPLE -- references --> IP_ADDRESS
-		SAMPLE -- uses --> USER_AGENT
+		SAMPLE -- uses ---> USER_AGENT
+		SAMPLE -- references --> USER_AGENT
 		
 		%% define links
 		click IP_ADDRESS "#ip-addresses"
@@ -66,9 +71,17 @@
 
 ## Pivots
 
+### Clients
+
+####:octicons-arrow-right-24: Clients it can be found on
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+---
+
 ### Servers
 
-####:octicons-arrow-right-24: Servers serving it
+####:octicons-arrow-right-24: Servers storing it
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 
@@ -100,7 +113,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 
 ### User Agents
 
-####:octicons-arrow-right-24: User agents it uses
+####:octicons-arrow-right-24: User agents it uses at runtime
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+####:octicons-arrow-right-24: User agents it references
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 

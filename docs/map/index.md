@@ -33,6 +33,7 @@ flowchart LR
 	DOMAIN <-- registrar --> DOMAIN_
 	DOMAIN <-- TLD --> DOMAIN_
 	DOMAIN <-- time --> DOMAIN_
+	DOMAIN <-- URL path --> DOMAIN_
 	IP_ADDRESS -- rDNS --> DOMAIN
 	IP_ADDRESS <-- ASN --> IP_ADDRESS_
 	IP_ADDRESS -- uses --> USER_AGENT

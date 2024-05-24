@@ -35,15 +35,17 @@
 		
 		%% define nodes
 		DOMAIN(Domain)
-		SERVER(Server)
+		SERVER([Server])
+		IP_ADDRESS(IP Address)
 		TLS_CERT(TLS Certificate):::primary
 		TLS_CERT_(TLS Certificate):::secondary
 		
 		%% define edges
-		TLS_CERT -- served by--> SERVER
-		TLS_CERT -- CN --> DOMAIN
-		TLS_CERT <-- authority--> TLS_CERT_
-		TLS_CERT <-- time--> TLS_CERT_
+		TLS_CERT -- served by ---> SERVER
+		SERVER -. hosted by ..-> IP_ADDRESS
+		TLS_CERT -- CN ---> DOMAIN
+		TLS_CERT <-- authority ---> TLS_CERT_
+		TLS_CERT <-- time --> TLS_CERT_
 		
 		%% define links
 		click DOMAIN "#domains"

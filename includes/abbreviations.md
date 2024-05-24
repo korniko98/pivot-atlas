@@ -13,7 +13,7 @@
 *[IPv6]: Internet Protocol version 6
 *[TLS]: Transport Layer Security
 *[SSL]: Secure Sockets Layer
-*[C2]: Command and Control
-*[C&C]: Command and Control
+*[C2]: Command and Control - a centralized server to which malware connects for recieving commands
+*[C&C]: Command and Control - a centralized server to which malware connects for recieving commands
 *[FQDN]: Fully Qualified Domain Name
 *[TLD]: Top-level Domain
