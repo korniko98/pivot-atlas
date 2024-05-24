@@ -65,7 +65,8 @@ th, td {
 
 
 .animated-word {
-  animation: fadeInOut 2.5s infinite;
+  animation: fadeInOut 2s infinite;
+/* animation-delay: 1; */
 }
 
 @keyframes fadeInOut {
@@ -73,11 +74,11 @@ th, td {
         opacity: 0;
     }
 
-    20% {
+    30% {
         opacity: 1;
     }
 
-    80% {
+    60% {
         opacity: 1;
     }
 
@@ -92,5 +93,6 @@ th, td {
 
 #dynamic-word {
   font-weight: bold;
+  text-shadow: 0 0 10px #613D9E;
   color: #A47BEA;
 }

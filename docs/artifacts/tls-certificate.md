@@ -30,19 +30,27 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
+		classDef primary stroke-width: 2px
 		classDef secondary stroke-dasharray: 5 5
 		
 		%% define nodes
 		DOMAIN(Domain)
-		SERVER(Server)
-		TLS_CERT(TLS Certificate)
+		SERVER([Server])
+		IP_ADDRESS(IP Address)
+		TLS_CERT(TLS Certificate):::primary
 		TLS_CERT_(TLS Certificate):::secondary
 		
 		%% define edges
-		TLS_CERT -- served by--> SERVER
-		TLS_CERT -- CN --> DOMAIN
-		TLS_CERT <-- authority--> TLS_CERT_
-		TLS_CERT <-- time--> TLS_CERT_
+		TLS_CERT -- served by ---> SERVER
+		SERVER -. hosted by ..-> IP_ADDRESS
+		TLS_CERT -- CN ---> DOMAIN
+		TLS_CERT <-- authority ---> TLS_CERT_
+		TLS_CERT <-- time --> TLS_CERT_
+		
+		%% define links
+		click DOMAIN "#domains"
+		click SERVER "#servers"
+		click TLS_CERT_ "#tls-certificates"
 	```
 </div>
 
@@ -50,9 +58,13 @@
 
 ### Servers
 
+!!! abstract inline end "Example"
+
+	The default configuration of Cobalt Strike servers is to use a specific self-signed TLS certificate (SHA-1 `6ECE5ECE4192683D2D84E25B0BA7E04F9CB7EB7C`). Some threat actors make the mistake of using this default certificate, which can be leveraged for identification.[^1]
+
 ####:octicons-arrow-right-24: Servers serving it
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Threat actors use [TLS certificates](/artifacts/tls-certificate) to enable encrypted TLS communication between attacker-controlled servers, as well as between infected clients and attacker-controlled servers (such as for encrypting communication between malware and its C&C server). If a threat actor deploys multiple servers as part of the same campaign, they might use the same certificate across a subset of their fleet, or use several certificates with partially overlapping details.
 
 ??? example "Try it out"
 
@@ -108,7 +120,7 @@ TLS certificates contain many fields denoting registrant information, registar i
 
 ---
 
-### Certificates
+### TLS Certificates
 
 ####:octicons-arrow-right-24: Certificates registered with the same authority
 

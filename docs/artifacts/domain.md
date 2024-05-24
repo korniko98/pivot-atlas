@@ -28,25 +28,34 @@
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
+		classDef primary stroke-width: 2px
 		classDef secondary stroke-dasharray: 5 5
 		
 		%% define nodes
 		IP_ADDRESS(IP Address)
-		DOMAIN(Domain)
+		DOMAIN(Domain):::primary
 		DOMAIN_(Domain):::secondary
 		TLS_CERT(TLS Certificate)
 		SAMPLE(Sample)
 		
 		%% define edges
 		DOMAIN -- resolves --> IP_ADDRESS
-		IP_ADDRESS -- rDNS --> DOMAIN
+		IP_ADDRESS -- rDNS ---> DOMAIN
 		DOMAIN -- prev. resolved --> IP_ADDRESS
 		TLS_CERT -- CN --> DOMAIN
-		DOMAIN <-- similar name --> DOMAIN_
+		DOMAIN <-- similar name ---> DOMAIN_
+		DOMAIN <-- registrant ---> DOMAIN_
 		DOMAIN <-- registrar --> DOMAIN_
 		DOMAIN <-- TLD --> DOMAIN_
 		DOMAIN <-- time --> DOMAIN_
-		SAMPLE -- references --> DOMAIN
+		DOMAIN <-- URL path --> DOMAIN_
+		SAMPLE -- references ---> DOMAIN
+		
+		%% define links
+		click IP_ADDRESS "#ip-addresses"
+		click DOMAIN_ "#domains"
+		click SAMPLE "#samples"
+		click TLS_CERT "#tls-certificate"
 	```
 
 </div>
@@ -85,9 +94,28 @@ Threat actors may have a preference for certain top-level domains (TLD), such as
 
 A [domain name registrar](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/) handles registrations of domains and leases them to customers. Some threat actors may show preference for certain registrars when registering their domains for malicious use (possible reasons may include minimal anti-fruad mechanisms in place or acceptance of cryptocurrency as payment). This preference can then be leveraged by analysts for pivoting purposes.
 
+####:octicons-arrow-right-24: Domains with the overlapping registrant details
+
+Domains registered by the same threat actor might have overlapping registration details, which can be retrieved through a reverse WHOIS query. In some cases the details might be exactly the same, while in others there might be commonalities in certain registration fields that match the same regular expressions. In some cases there fields might contain genuine information that could prove useful for other investigative purposes (including attribution), such as an email address or physical location associated with the threat actor. However, these details are often anonymized by privacy protection, particularly if the threat actor has strict operational security.
+
 ####:octicons-arrow-right-24: Domains registered in the same timeframe
 
 Threat actors perform registration in bulk of domains meant for malicious purposes, or at the very least they may register domains around the same time if they're to be used for the same campaign. In such cases, these timeframes can be leveraged by analysts as an effective filter to narrow down the number of results for otherwise noisy queries. Furthermore, if an analyst is lucky, the threat actor may have registered other artifacts during the same timeframe as well, such as IP addresses and TLS certificates.
+
+####:octicons-arrow-right-24: Domain with the same URL path
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+??? example "Try it out"
+
+	=== "URLScan (URL)"
+		```
+		TO DO
+		```
+	=== "URLScan (API)"
+		``` console
+		TO DO
+		```
 
 ---
 
