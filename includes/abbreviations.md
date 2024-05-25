@@ -1,5 +1,4 @@
 *[ASN]: Autonomous System Number
-*[DNS]: Domain Name System
 *[JARM]: An active TLS server fingerprinting tool
 *[JA4+]: A set of methods for fingerprinting SSL/TLS clients and servers
 *[JA3]: A method for fingerprinting SSL/TLS clients

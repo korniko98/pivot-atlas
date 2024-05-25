@@ -165,9 +165,15 @@ When actors purchase an IP address, they must supply registrant information, whi
 
 If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
 
+!!! abstract inline end "Example"
+
+	Cobalt Strike team server is configured to listen on port 50050 by default, and threat actors don't always bother to change the default configuration prior to deployment.[^4]
+
 ####:octicons-arrow-right-24: Addresses with same open ports
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+If an IP address hosting a C&C server has a relatively unique set of open ports, analysts can leverage this to identify other IP addresses hosting servers operated by the same threat actor or running the same malicious applications.
+
+&nbsp;
 
 ---
 
@@ -183,7 +189,7 @@ Besides their use for hosting traditional servers, threat actors can also use IP
 
 !!! abstract inline end "Example"
 
-	Obsidian Security identified a malicious residential proxy network in which the threat actor had configured their malware to use an outdated Chrome user agent from 2019, which is rare enough as of 2024 to be a strong indicator.[^4]
+	Obsidian Security identified a malicious residential proxy network in which the threat actor had configured their malware to use an outdated Chrome user agent from 2019, which is rare enough as of 2024 to be a strong indicator.[^5]
 
 ####:octicons-arrow-right-24: User agents identifying it
 
@@ -225,11 +231,13 @@ Attacker-controlled servers operated by the same threat actor or that are part o
 
 !!! abstract inline end "Example"
 
-	Until January 2019, Cobalt Strike servers contained an “extraneous space” in their default HTTP response header, which could be leveraged for unique identification.[^5]
+	Until January 2019, Cobalt Strike team servers contained an “extraneous space” in their default HTTP response headers (after the word `OK` in `HTTP/1.1 200 OK`). At the time, this mistake could be leveraged for unique identification of such servers.[^6]
 
-####:octicons-arrow-right-24: Servers with same response banner
+####:octicons-arrow-right-24: Servers with same banner or headers
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Depending on the protocols in use, servers normally respond to clients with a specific canned response. HTTP/S servers return response headers, whereas non-HTTP servers return banners. Analysts can leverage this to perform a type of scan called [banner grabbing](https://www.recordedfuture.com/threat-intelligence-101/tools-and-techniques/banner-grabbing) to identify what applications are running on the server.
+
+Given an IP address, analysts can query [host scanning](/tools/#host-scanners) platforms such as [Censys](https://search.censys.io/) to see the results of past scans of any servers it hosts.
 
 ####:octicons-arrow-right-24: Servers with same favicon
 
@@ -260,7 +268,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 
 !!! abstract inline end "Example"
 
-	The default configuration of Cobalt Strike servers is to use a specific self-signed TLS certificate (SHA-1 `6ECE5ECE4192683D2D84E25B0BA7E04F9CB7EB7C`). Some threat actors make the mistake of using this default certificate, which can be leveraged for identification.[^6]
+	The default configuration of Cobalt Strike servers is to use a specific self-signed TLS certificate (SHA-1 `6ECE5ECE4192683D2D84E25B0BA7E04F9CB7EB7C`). Some threat actors make the mistake of using this default certificate, which can be leveraged for identification.[^7]
 
 ####:octicons-arrow-right-24: Certificates served by it
 
@@ -274,7 +282,9 @@ Threat actors use [TLS certificates](/artifacts/tls-certificate) to enable encry
 
 [samples](/artifacts/sample)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+By statically scanning a malware sample or reverse engineering it, analysts can identify server IP addresses that may be included in its source code, depending on how well the sample is [obfuscated](https://attack.mitre.org/techniques/T1027/).
+
+Given an IP address, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
 
 ??? example "Try it out"
 
@@ -289,7 +299,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 
 ####:octicons-arrow-right-24: Samples that communicate with it at runtime
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+By executing a malware sample in a sandboxed environment, or by observing the behavior of malware that has infected a honeypot, one can determine if the infected machine communicates with any IP addresses of C&C or data exfiltration servers.
+
+Given an IP address, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
 
 ??? example "Try it out"
 
@@ -304,7 +316,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 
 ####:octicons-arrow-right-24: Samples it stores
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Attacker-controlled servers hosted on an IP address may store malware for victim devices to download. Gaining access to such servers may therefore afford access to samples of aforementioned malware. Similarly, samples may be retrieved from infected clients by performing forensics, or through security product telemetry.
 
 ??? example "Try it out"
 
@@ -317,11 +329,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 		TO DO
 		```
 
-
-
 [^1]: [Tales from the cloud trenches: Using malicious AWS activity to spot phishing campaigns](https://securitylabs.datadoghq.com/articles/tales-from-the-cloud-trenches-aws-activity-to-phishing/)
 [^2]: [Risky Business: Determining Malicious Probabilities Through ASNs](https://www.akamai.com/blog/security/determining-malicious-probabilities-through-asns/)
 [^3]: [Latrodectus: This Spider Bytes Like Ice](https://www.proofpoint.com/us/blog/threat-insight/latrodectus-spider-bytes-ice)
-[^4]: [Emerging Identity Threats: The Muddy Waters of Residential Proxies](https://www.obsidiansecurity.com/blog/emerging-identity-threats-the-muddy-waters-of-residential-proxies/)
-[^5]: [Identifying Cobalt Strike team servers in the wild](https://blog.fox-it.com/2019/02/26/identifying-cobalt-strike-team-servers-in-the-wild/)
-[^6]: [Hunting Cobalt Strike Servers](https://bank-security.medium.com/hunting-cobalt-strike-servers-385c5bedda7b)
+[^4]: [Cobalt Strike Team Server Population Study](https://www.cobaltstrike.com/blog/cobalt-strike-team-server-population-study)
+[^5]: [Emerging Identity Threats: The Muddy Waters of Residential Proxies](https://www.obsidiansecurity.com/blog/emerging-identity-threats-the-muddy-waters-of-residential-proxies/)
+[^6]: [Identifying Cobalt Strike team servers in the wild](https://blog.fox-it.com/2019/02/26/identifying-cobalt-strike-team-servers-in-the-wild/)
+[^7]: [Hunting Cobalt Strike Servers](https://bank-security.medium.com/hunting-cobalt-strike-servers-385c5bedda7b)
