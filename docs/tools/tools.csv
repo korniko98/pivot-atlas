@@ -1,4 +1,4 @@
-﻿ ,WHOIS,DNS,Hosts,Certs,Honeypots,URLs,Samples,Sandbox,Code Sim.,Code,Netflow,Enrich
+﻿ ,WHOIS,DNS,Hosts,Certs,Honeypots,URLs,Samples,Sandbox,Code Sim.,Code,Traffic,Enrich
 [Whoxy](https://whoxy.com/),":material-checkbox-multiple-marked:{ title=""Also provides WHOIS history"" }", , , , , , , , , , , 
 [DNSChecker](https://dnschecker.org/),:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , , , , 
 [MXToolBox](https://mxtoolbox.com/),:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , , , , 
@@ -31,6 +31,7 @@
 [Intezer Analyse](https://analyze.intezer.com/), , , , , , , , ,:material-checkbox-marked:, , , 
 [GitHub Search](https://github.com/search), , , , , , , , , ,:material-checkbox-marked:, , 
 "[Team Cymru](https://www.team-cymru.com/cyber-threat-hunting-tools) { title=""Premium only"" }", , , , , , , , , , ,:material-checkbox-marked:, 
+[Similarweb](https://www.similarweb.com/), , , , , , , , , , ,":material-checkbox-marked-outline: { title=""Only shows traffic between websites."" }", 
 [Cortex](https://github.com/TheHive-Project/Cortex), , , , , , , , , , , ,:material-checkbox-marked:
 [Yeti](https://yeti-platform.io/), , , , , , , , , , , ,:material-checkbox-marked:
 [IntelOwl](https://github.com/intelowlproject/IntelOwl/), , , , , , , , , , , ,:material-checkbox-marked:

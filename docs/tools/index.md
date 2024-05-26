@@ -38,7 +38,13 @@ Source code repositories such as GitHub allow [querying for code snippets](https
 
 [...]
 
-## Netflow aggregation
+## Traffic aggregation
+
+### Netflow
+
+[...]
+
+### Web traffic
 
 [...]
 

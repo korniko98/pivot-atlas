@@ -1,7 +1,5 @@
 # IP Address
 
-!!! warning "Under Construction"
-
 ## Overview
 
 <div class="grid cards" markdown>
@@ -243,19 +241,27 @@ Given an IP address, analysts can query [host scanning](/tools/#host-scanners) p
 
 [Favicons](https://en.wikipedia.org/wiki/Favicon) are icons displayed in browser windows or tabs when viewing a given webpage, and they are usually associated with a specific company or software component. When threat actors reuse software between different servers, this sometimes leads to these servers also sharing the same favicon, which can be leveraged for pivoting.
 
+!!! abstract inline end "Example"
+
+	Sucuri tracked a website hijacking campaign in which the threat actor compromised the hosting server and then injected malicious code into JavaScript files. This code consistently began with a unique string (`/*trackmyposs*/eval`). By querying [PublicWWW](https://publicwww.com/) for the indicative string, Sucuri were able to effectively identify many such compromised websites.[^7]
+
 ####:octicons-arrow-right-24: Servers with similar content or appearance
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+When threat actors set up landing pages for a phishing campaign, they may reuse certain assets across multiple sites. This can be leveraged by analysts to pivot from one landing page to others by querying [host scanning](/tools/#host-scanners) platforms such as [Censys](https://search.censys.io/) or [URL scanning](/tools/#url-scanners) platforms such as [URLScan](https://urlscan.io/).
+
+In other cases, phishing websites operated by the same threat actor may only share their general visual appearance, which can be leveraged as a somewhat weaker signal as well.
+
+Additionally, when threat actors inject malicious JavaScript or JavaScript tags into hijacked websites, analysts can search for these elements to identify other compromised servers.
 
 ####:octicons-arrow-right-24: Servers with same URL path
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Threat actors may set up various API endpoints on their servers to facilitate the required functionality for their malicious infrastructure. Each of these endpoints may be available on a different URL path (e.g., malware may connect to an `/upload/` endpoint to exfiltrate data). Similarly, threat actors may hijack legitimate servers and deploy a file containing malicious code, which may be located on a consistent URL path across multiple compromised servers. Therefore, given a server with an indicative URL path, analysts can leverage these commonalities to identify other related servers.
 
 ??? example "Try it out"
 
 	=== "URLScan (URL)"
 		```
-		TO DO
+		https://urlscan.io/search/#page.url%3A{PATH}
 		```
 	=== "URLScan (API)"
 		``` console
@@ -268,7 +274,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 
 !!! abstract inline end "Example"
 
-	The default configuration of Cobalt Strike servers is to use a specific self-signed TLS certificate (SHA-1 `6ECE5ECE4192683D2D84E25B0BA7E04F9CB7EB7C`). Some threat actors make the mistake of using this default certificate, which can be leveraged for identification.[^7]
+	The default configuration of Cobalt Strike servers is to use a specific self-signed TLS certificate (SHA-1 `6ECE5ECE4192683D2D84E25B0BA7E04F9CB7EB7C`). Some threat actors make the mistake of using this default certificate, which can be leveraged for identification.[^8]
 
 ####:octicons-arrow-right-24: Certificates served by it
 
@@ -280,9 +286,7 @@ Threat actors use [TLS certificates](/artifacts/tls-certificate) to enable encry
 
 ####:octicons-arrow-right-24: Samples that reference it in their code
 
-[samples](/artifacts/sample)
-
-By statically scanning a malware sample or reverse engineering it, analysts can identify server IP addresses that may be included in its source code, depending on how well the sample is [obfuscated](https://attack.mitre.org/techniques/T1027/).
+By statically scanning a [malware sample](/artifacts/sample) or reverse engineering it, analysts can identify server IP addresses that may be included in its source code, depending on how well the sample is [obfuscated](https://attack.mitre.org/techniques/T1027/).
 
 Given an IP address, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
 
@@ -335,4 +339,5 @@ Attacker-controlled servers hosted on an IP address may store malware for victim
 [^4]: [Cobalt Strike Team Server Population Study](https://www.cobaltstrike.com/blog/cobalt-strike-team-server-population-study)
 [^5]: [Emerging Identity Threats: The Muddy Waters of Residential Proxies](https://www.obsidiansecurity.com/blog/emerging-identity-threats-the-muddy-waters-of-residential-proxies/)
 [^6]: [Identifying Cobalt Strike team servers in the wild](https://blog.fox-it.com/2019/02/26/identifying-cobalt-strike-team-servers-in-the-wild/)
-[^7]: [Hunting Cobalt Strike Servers](https://bank-security.medium.com/hunting-cobalt-strike-servers-385c5bedda7b)
+[^7]: [Massive WordPress JavaScript Injection Campaign Redirects to Ads ](https://blog.sucuri.net/2022/05/massive-wordpress-javascript-injection-campaign-redirects-to-ads.html)
+[^8]: [Hunting Cobalt Strike Servers](https://bank-security.medium.com/hunting-cobalt-strike-servers-385c5bedda7b)

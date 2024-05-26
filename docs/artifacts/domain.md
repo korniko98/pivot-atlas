@@ -39,8 +39,8 @@
 		SAMPLE(Sample)
 		
 		%% define edges
-		DOMAIN -- fDNS --> IP_ADDRESS
-		IP_ADDRESS -- rDNS ---> DOMAIN
+		DOMAIN -- forward DNS --> IP_ADDRESS
+		IP_ADDRESS -- reverse DNS ---> DOMAIN
 		DOMAIN <-- DNS history --> IP_ADDRESS
 		TLS_CERT -- CN ---> DOMAIN
 		DOMAIN <-- similar name ---> DOMAIN_
@@ -51,6 +51,7 @@
 		DOMAIN <-- reg. time --> DOMAIN_
 		DOMAIN <-- URL path --> DOMAIN_
 		SAMPLE -- references ---> DOMAIN
+		SAMPLE -- queries --> DOMAIN
 		
 		%% define links
 		click IP_ADDRESS "#ip-addresses"
@@ -161,9 +162,11 @@ Historic DNS resolutions can be based on either passive DNS collection (pDNS), w
 
 ### Samples
 
-####:octicons-arrow-right-24: Samples that reference it
+####:octicons-arrow-right-24: Samples that reference or query it
 
-Threat actors often configure their malware to communicate with one or more C&C [servers](/artifacts/server), and this usually involves listing a domain within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware). When executed, the infected device will send a DNS request to resolve the domain, and then communicate with the server hosted on the resolving IP address. By running a static analysis of the sample (even through something as simple as using [`strings`](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)), one can reveal any such hardcoded domains it may contain.
+Threat actors often configure their malware to communicate with one or more C&C [servers](/artifacts/server), and this usually involves listing a domain within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware). When executed (on an infected device, honeypot, or in a sandboxed environment), the malware will send a DNS request to resolve the domain, and then communicate with the server hosted on the resolving IP address. By running a static analysis of the sample (even through something as simple as using [`strings`](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)), one can reveal any such hardcoded domains it may contain.
+
+Given a domain, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
 
 [^1]: [#StopRansomware: Black Basta](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-131a)
 [^2]: [Identifying MatanBuchus Domains Through Hardcoded Certificate Values](https://www.embeeresearch.io/tls-certificates-for-threat-intel-dns/)
