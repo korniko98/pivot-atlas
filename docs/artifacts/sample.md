@@ -36,26 +36,25 @@
 		%% define nodes
 		IP_ADDRESS(IP Address)
 		DOMAIN(Domain)
-		SERVER([Server])
-		CLIENT([Client])
+		SERVER([Server / Client])
 		SAMPLE(Sample):::primary
 		USER_AGENT(User Agent)
 		SAMPLE_(Sample):::secondary
 		
 		%% define edges
-		SAMPLE -- found on --> CLIENT
-		CLIENT -. hosted by .-> IP_ADDRESS
-		SERVER -- stores --> SAMPLE
-		SAMPLE -- communicates --> SERVER
-		SAMPLE -- references ---> SERVER
-		SAMPLE -- hash --> SAMPLE_
-		SAMPLE -- code similarity --> SAMPLE_
-		SAMPLE -- behavior ---> SAMPLE_
+
 		SAMPLE -- references ---> IP_ADDRESS
 		SERVER -. hosted by .-> IP_ADDRESS
-		SAMPLE -- references --> DOMAIN
-		SAMPLE -- uses ---> USER_AGENT
+		SERVER -- stores --> SAMPLE
+		SAMPLE -- communicates ---> SERVER
+		SAMPLE -- hash ---> SAMPLE_
+		SAMPLE -- code similarity --> SAMPLE_
+		SAMPLE -- behavior --> SAMPLE_
+
+		SAMPLE -- references ---> DOMAIN
+		SAMPLE -- queries ---> DOMAIN
 		SAMPLE -- references --> USER_AGENT
+		SAMPLE -- identifies as ---> USER_AGENT
 		
 		%% define links
 		click IP_ADDRESS "#ip-addresses"
@@ -75,7 +74,7 @@
 
 ####:octicons-arrow-right-24: Clients it can be found on
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Samples may be retrieved from infected clients by performing forensics, or through security product telemetry.
 
 ---
 
@@ -83,23 +82,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 
 ####:octicons-arrow-right-24: Servers storing it
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Attacker-controlled servers may store malware for victim devices to download. Gaining access to such servers may therefore afford access to samples of aforementioned malware.
 
 ####:octicons-arrow-right-24: Servers it communicates with at runtime
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
-
-####:octicons-arrow-right-24: Servers it references
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+By executing a malware sample in a sandboxed environment, or by observing malware that has infected a honeypot, one can determine if the infected machine communicates with any IP addresses of C&C or data exfiltration servers.
 
 ---
 
 ### Domains
 
-####:octicons-arrow-right-24: Domains it references
+####:octicons-arrow-right-24: Domains it references or queries
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Threat actors often configure their malware to communicate with one or more C&C [servers](/artifacts/server), and this usually involves listing a domain within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware). When executed (on an infected device, honeypot, or in a sandboxed environment), the malware will send a DNS request to resolve the domain, and then communicate with the server hosted on the resolving IP address. By running a static analysis of the sample (even through something as simple as using [`strings`](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)), one can reveal any such hardcoded domains it may contain.
 
 ---
 
@@ -107,13 +102,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 
 ####:octicons-arrow-right-24: IP addresses it references
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+By statically scanning a malware sample or reverse engineering it, analysts can identify server IP addresses that may be included in its source code, depending on how well the sample is [obfuscated](https://attack.mitre.org/techniques/T1027/).
 
 ---
 
 ### User Agents
 
-####:octicons-arrow-right-24: User agents it uses at runtime
+####:octicons-arrow-right-24: User agents identifying it
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 

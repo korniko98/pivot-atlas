@@ -41,30 +41,31 @@ Diagrams are also included for easy and clickable navigation between artifact ty
 		classDef secondary stroke-dasharray: 5 5
 		
 		%% define nodes
-		IP_ADDRESS(IP Address):::primary
-		IP_ADDRESS_(IP Address):::secondary
-		DOMAIN(Domain)
-		SERVER(Server)
+		IP_ADDRESS(IP Address)
+		DOMAIN(Domain):::primary
+		DOMAIN_(Domain):::secondary
+		TLS_CERT(TLS Certificate)
 		SAMPLE(Sample)
-		USER_AGENT(User Agent)
 		
 		%% define edges
-		DOMAIN -- resolves --> IP_ADDRESS
-		IP_ADDRESS -- rDNS --> DOMAIN
-		IP_ADDRESS -- prev. resolved --> DOMAIN
-		IP_ADDRESS <-- ASN --> IP_ADDRESS_
-		IP_ADDRESS -- uses --> USER_AGENT
-		IP_ADDRESS <-- Netflow --> IP_ADDRESS_
-		IP_ADDRESS <-- WHOIS --> IP_ADDRESS_
-		SERVER -- hosted by --> IP_ADDRESS
-		SAMPLE -- references --> IP_ADDRESS
+		DOMAIN -- fDNS --> IP_ADDRESS
+		IP_ADDRESS -- rDNS ---> DOMAIN
+		DOMAIN <-- DNS history --> IP_ADDRESS
+		TLS_CERT -- CN ---> DOMAIN
+		DOMAIN <-- similar name ---> DOMAIN_
+		DOMAIN <-- registrant ---> DOMAIN_
+		DOMAIN <-- registrar --> DOMAIN_
+		DOMAIN <-- NS --> DOMAIN_
+		DOMAIN <-- TLD --> DOMAIN_
+		DOMAIN <-- reg. time --> DOMAIN_
+		DOMAIN <-- URL path --> DOMAIN_
+		SAMPLE -- references ---> DOMAIN
 		
 		%% define links
+		click TLS_CERT "/artifacts/tls-certificate"
 		click IP_ADDRESS "/artifacts/ip-address"
 		click DOMAIN "/artifacts/domain"
-		click SERVER "/artifacts/server"
 		click SAMPLE "/artifacts/sample"
-		click USER_AGENT "/artifacts/user-agent"
 	```
 </div>
 

@@ -14,12 +14,6 @@ This section lists various tools and platforms that enable pivoting. Every tool 
 
 {{ read_csv('tools.csv') }}
 
-## Automation
-
-### Enrichment
-
-Enrichment tools such as [Yeti](https://yeti-platform.io/) often serve a dual purpose of knowledge management and automatic querying of metadata about artifacts.
-
 ## Certificate metadata
 
 ### Registered certificates
@@ -44,11 +38,21 @@ Source code repositories such as GitHub allow [querying for code snippets](https
 
 [...]
 
-## Netflow aggregation
+## Traffic aggregation
+
+### Netflow
+
+[...]
+
+### Web traffic
 
 [...]
 
 ## Host scanners
+
+[...]
+
+## Honeypots
 
 [...]
 
@@ -69,3 +73,9 @@ Source code repositories such as GitHub allow [querying for code snippets](https
 ### Code similarity scanners
 
 [...]
+
+## Automation
+
+### Enrichment
+
+Enrichment tools such as [Yeti](https://yeti-platform.io/) often serve a dual purpose of knowledge management and automatic querying of metadata about artifacts.

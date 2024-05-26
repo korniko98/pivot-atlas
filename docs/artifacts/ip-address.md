@@ -1,7 +1,5 @@
 # IP Address
 
-!!! warning "Under Construction"
-
 ## Overview
 
 <div class="grid cards" markdown>
@@ -37,22 +35,21 @@
 		IP_ADDRESS(IP Address):::primary
 		IP_ADDRESS_(IP Address):::secondary
 		DOMAIN(Domain)
-		SERVER([Server])
-		CLIENT([Client])
-		SERVER_(Server):::secondary
+		SERVER([Server / Client])
+		SERVER_([Server]):::secondary
 		SAMPLE(Sample)
 		USER_AGENT(User Agent)
 		TLS_CERT(TLS Certificate)
 		
 		%% define edges
-		IP_ADDRESS -. hosts ..-> CLIENT
-		CLIENT -- uses --> USER_AGENT
+		SERVER -- identifies as ---> USER_AGENT
 		IP_ADDRESS <-- ASN --> IP_ADDRESS_
 		IP_ADDRESS <-- Netflow --> IP_ADDRESS_
-		IP_ADDRESS <-- WHOIS ---> IP_ADDRESS_
+		IP_ADDRESS <-- WHOIS details ---> IP_ADDRESS_
+		IP_ADDRESS <-- WHOIS history ---> IP_ADDRESS_
 		IP_ADDRESS <-- ports --> IP_ADDRESS_
 		IP_ADDRESS -. hosts ..-> SERVER
-		SERVER -- serves --> TLS_CERT
+		TLS_CERT -- served by ---> SERVER
 		SERVER <-- fingerprint ---> SERVER_
 		SERVER <-- banner ---> SERVER_
 		SERVER <-- favicon ---> SERVER_
@@ -61,9 +58,9 @@
 		SERVER -- stores ---> SAMPLE
 		SAMPLE -- communicates --> SERVER
 		SAMPLE -- references --> IP_ADDRESS
-		DOMAIN -- resolves ---> IP_ADDRESS
-		IP_ADDRESS -- rDNS --> DOMAIN
-		IP_ADDRESS -- prev. resolved --> DOMAIN
+		DOMAIN -- forward DNS --> IP_ADDRESS
+		DOMAIN <-- DNS history --> IP_ADDRESS
+		IP_ADDRESS -- reverse DNS ---> DOMAIN
 		
 		%% define links
 		click IP_ADDRESS_ "#ip-addresses"
@@ -71,6 +68,7 @@
 		click SERVER "#servers"
 		click SAMPLE "#samples"
 		click USER_AGENT "#user-agents"
+		click TLS_CERT "#tls-certificates"
 	```
 </div>
 
@@ -83,7 +81,7 @@
 ## Pivots
 
 ### Domains
-####:octicons-arrow-right-24: Domains that currently resolve to it
+####:octicons-arrow-right-24: Domains resolving to it
 
 An IP address might be resolved by one or more [domains or subdomains](/artifacts/domain) operated by the same threat actor. In some cases, an IP address might be used for multiple purposes at once (e.g., malware C2, serving phishing pages, proxying traffic, etc.), with every server fronted by a different domain or subdomain.
 
@@ -98,7 +96,7 @@ While querying a domain for its resolving IP address is called forward DNS (fDNS
 		https://dnschecker.org/reverse-dns.php?query={IP_ADDRESS}
 		```
 
-####:octicons-arrow-right-24: Domains that have previously resolved to it
+####:octicons-arrow-right-24: Domains that previously resolved to it
 
 Pivoting to past DNS records is especially useful when investigating a long-term campaign or cases in which a threat actor has already shut down their operations.
 
@@ -115,7 +113,7 @@ Historic DNS resolutions can be based on either passive DNS collection (pDNS), w
 
 ### IP Addresses
 
-####:octicons-arrow-right-24: Addresses in the same ASN
+####:octicons-arrow-right-24: Addresses in same ASN
 
 Some Autonomous System Numbers (ASN) are known to be operated by malicious actors[^2], and in some cases an address's ASN may contain additional addresses in use by the same actor.
 
@@ -134,7 +132,7 @@ Some Autonomous System Numbers (ASN) are known to be operated by malicious actor
 		TO DO
 		```
 
-####:octicons-arrow-right-24: Addresses with overlapping registration details
+####:octicons-arrow-right-24: Addresses with similar registration details
 
 When actors purchase an IP address, they must supply registrant information, which is made publicly available through the WHOIS protocol. This requirement is different than for registering a domain, a process which allows for registrant privacy. While stealthy actors will often provide fake registration details, these can sometimes still be useful for pivoting if they are rare enough. Note that if a threat actor leases a (static or dynamic) IP address from a cloud provider, a WHOIS query will only return information about the provider.
 
@@ -153,17 +151,27 @@ When actors purchase an IP address, they must supply registrant information, whi
 		TO DO
 		```
 
+####:octicons-arrow-right-24: Addresses with historically similar registration details
+
+When actors purchase an IP address, they must supply registrant information, which is made publicly available through the WHOIS protocol. This requirement is different than for registering a domain, a process which allows for registrant privacy. While stealthy actors will often provide fake registration details, these can sometimes still be useful for pivoting if they are rare enough. Note that if a threat actor leases a (static or dynamic) IP address from a cloud provider, a WHOIS query will only return information about the provider.
+
 !!! abstract inline end "Example"
 
 	Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
 
-####:octicons-arrow-right-24: Addresses observed communicating with it
+####:octicons-arrow-right-24: Client addresses communicating with it
 
 If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
 
-####:octicons-arrow-right-24: Addresses with the same open ports
+!!! abstract inline end "Example"
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+	Cobalt Strike team server is configured to listen on port 50050 by default, and threat actors don't always bother to change the default configuration prior to deployment.[^4]
+
+####:octicons-arrow-right-24: Addresses with same open ports
+
+If an IP address hosting a C&C server has a relatively unique set of open ports, analysts can leverage this to identify other IP addresses hosting servers operated by the same threat actor or running the same malicious applications.
+
+&nbsp;
 
 ---
 
@@ -179,9 +187,9 @@ Besides their use for hosting traditional servers, threat actors can also use IP
 
 !!! abstract inline end "Example"
 
-	Obsidian Security identified a malicious residential proxy network in which the threat actor had configured their malware to use an outdated Chrome user agent from 2019, which is rare enough as of 2024 to be a strong indicator.[^4]
+	Obsidian Security identified a malicious residential proxy network in which the threat actor had configured their malware to use an outdated Chrome user agent from 2019, which is rare enough as of 2024 to be a strong indicator.[^5]
 
-####:octicons-arrow-right-24: User agents observed from it
+####:octicons-arrow-right-24: User agents identifying it
 
 In some cases, client behavior can be pivoted upon between different IP addresses based on shared user agents or certain commonalities between them. However, this is considered a relatively weak correlation, since the same user agent could have legitimate uses as well, unless its unique.
 
@@ -215,35 +223,45 @@ An IP address can host one or more [servers](/artifacts/server) on various ports
 		TO DO
 		```
 
-####:octicons-arrow-right-24: Servers with the same fingerprint
+####:octicons-arrow-right-24: Servers with same fingerprint
 
 Attacker-controlled servers operated by the same threat actor or that are part of the same campaign often have overlapping techstacks (meaning that they run the same set of software components). Moreover, these servers might be configured in the exact same way. This can result in a subset of malicious servers that can be uniquely identified by their fingerprint (or a set of fingerprint types), such as [JARM](/fingerprints#jarm-fingerprint), [HHHash](/fingerprints/#hhhash-fingerprint), or one of the [JA4+](/fingerprints/#ja4-fingerprints) fingerprints.
 
 !!! abstract inline end "Example"
 
-	Until January 2019, Cobalt Strike servers contained an “extraneous space” in their default HTTP response header, which could be leveraged for unique identification.[^5]
+	Until January 2019, Cobalt Strike team servers contained an “extraneous space” in their default HTTP response headers (after the word `OK` in `HTTP/1.1 200 OK`). At the time, this mistake could be leveraged for unique identification of such servers.[^6]
 
-####:octicons-arrow-right-24: Servers with the same response banner
+####:octicons-arrow-right-24: Servers with same banner or headers
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Depending on the protocols in use, servers normally respond to clients with a specific canned response. HTTP/S servers return response headers, whereas non-HTTP servers return banners. Analysts can leverage this to perform a type of scan called [banner grabbing](https://www.recordedfuture.com/threat-intelligence-101/tools-and-techniques/banner-grabbing) to identify what applications are running on the server.
 
-####:octicons-arrow-right-24: Servers with the same favicon
+Given an IP address, analysts can query [host scanning](/tools/#host-scanners) platforms such as [Censys](https://search.censys.io/) to see the results of past scans of any servers it hosts.
+
+####:octicons-arrow-right-24: Servers with same favicon
 
 [Favicons](https://en.wikipedia.org/wiki/Favicon) are icons displayed in browser windows or tabs when viewing a given webpage, and they are usually associated with a specific company or software component. When threat actors reuse software between different servers, this sometimes leads to these servers also sharing the same favicon, which can be leveraged for pivoting.
 
-####:octicons-arrow-right-24: Servers with similar content or visual appearance
+!!! abstract inline end "Example"
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+	Sucuri tracked a website hijacking campaign in which the threat actor compromised the hosting server and then injected malicious code into JavaScript files. This code consistently began with a unique string (`/*trackmyposs*/eval`). By querying [PublicWWW](https://publicwww.com/) for the indicative string, Sucuri were able to effectively identify many such compromised websites.[^7]
 
-####:octicons-arrow-right-24: Servers with the same URL path
+####:octicons-arrow-right-24: Servers with similar content or appearance
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+When threat actors set up landing pages for a phishing campaign, they may reuse certain assets across multiple sites. This can be leveraged by analysts to pivot from one landing page to others by querying [host scanning](/tools/#host-scanners) platforms such as [Censys](https://search.censys.io/) or [URL scanning](/tools/#url-scanners) platforms such as [URLScan](https://urlscan.io/).
+
+In other cases, phishing websites operated by the same threat actor may only share their general visual appearance, which can be leveraged as a somewhat weaker signal as well.
+
+Additionally, when threat actors inject malicious JavaScript or JavaScript tags into hijacked websites, analysts can search for these elements to identify other compromised servers.
+
+####:octicons-arrow-right-24: Servers with same URL path
+
+Threat actors may set up various API endpoints on their servers to facilitate the required functionality for their malicious infrastructure. Each of these endpoints may be available on a different URL path (e.g., malware may connect to an `/upload/` endpoint to exfiltrate data). Similarly, threat actors may hijack legitimate servers and deploy a file containing malicious code, which may be located on a consistent URL path across multiple compromised servers. Therefore, given a server with an indicative URL path, analysts can leverage these commonalities to identify other related servers.
 
 ??? example "Try it out"
 
 	=== "URLScan (URL)"
 		```
-		TO DO
+		https://urlscan.io/search/#page.url%3A{PATH}
 		```
 	=== "URLScan (API)"
 		``` console
@@ -256,7 +274,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 
 !!! abstract inline end "Example"
 
-	The default configuration of Cobalt Strike servers is to use a specific self-signed TLS certificate (SHA-1 `6ECE5ECE4192683D2D84E25B0BA7E04F9CB7EB7C`). Some threat actors make the mistake of using this default certificate, which can be leveraged for identification.[^6]
+	The default configuration of Cobalt Strike servers is to use a specific self-signed TLS certificate (SHA-1 `6ECE5ECE4192683D2D84E25B0BA7E04F9CB7EB7C`). Some threat actors make the mistake of using this default certificate, which can be leveraged for identification.[^8]
 
 ####:octicons-arrow-right-24: Certificates served by it
 
@@ -268,9 +286,9 @@ Threat actors use [TLS certificates](/artifacts/tls-certificate) to enable encry
 
 ####:octicons-arrow-right-24: Samples that reference it in their code
 
-[samples](/artifacts/sample)
+By statically scanning a [malware sample](/artifacts/sample) or reverse engineering it, analysts can identify server IP addresses that may be included in its source code, depending on how well the sample is [obfuscated](https://attack.mitre.org/techniques/T1027/).
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Given an IP address, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
 
 ??? example "Try it out"
 
@@ -285,7 +303,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 
 ####:octicons-arrow-right-24: Samples that communicate with it at runtime
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+By executing a malware sample in a sandboxed environment, or by observing the behavior of malware that has infected a honeypot, one can determine if the infected machine communicates with any IP addresses of C&C or data exfiltration servers.
+
+Given an IP address, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
 
 ??? example "Try it out"
 
@@ -300,7 +320,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 
 ####:octicons-arrow-right-24: Samples it stores
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Attacker-controlled servers hosted on an IP address may store malware for victim devices to download. Gaining access to such servers may therefore afford access to samples of aforementioned malware. Similarly, samples may be retrieved from infected clients by performing forensics, or through security product telemetry.
 
 ??? example "Try it out"
 
@@ -313,11 +333,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 		TO DO
 		```
 
-
-
 [^1]: [Tales from the cloud trenches: Using malicious AWS activity to spot phishing campaigns](https://securitylabs.datadoghq.com/articles/tales-from-the-cloud-trenches-aws-activity-to-phishing/)
 [^2]: [Risky Business: Determining Malicious Probabilities Through ASNs](https://www.akamai.com/blog/security/determining-malicious-probabilities-through-asns/)
 [^3]: [Latrodectus: This Spider Bytes Like Ice](https://www.proofpoint.com/us/blog/threat-insight/latrodectus-spider-bytes-ice)
-[^4]: [Emerging Identity Threats: The Muddy Waters of Residential Proxies](https://www.obsidiansecurity.com/blog/emerging-identity-threats-the-muddy-waters-of-residential-proxies/)
-[^5]: [Identifying Cobalt Strike team servers in the wild](https://blog.fox-it.com/2019/02/26/identifying-cobalt-strike-team-servers-in-the-wild/)
-[^6]: [Hunting Cobalt Strike Servers](https://bank-security.medium.com/hunting-cobalt-strike-servers-385c5bedda7b)
+[^4]: [Cobalt Strike Team Server Population Study](https://www.cobaltstrike.com/blog/cobalt-strike-team-server-population-study)
+[^5]: [Emerging Identity Threats: The Muddy Waters of Residential Proxies](https://www.obsidiansecurity.com/blog/emerging-identity-threats-the-muddy-waters-of-residential-proxies/)
+[^6]: [Identifying Cobalt Strike team servers in the wild](https://blog.fox-it.com/2019/02/26/identifying-cobalt-strike-team-servers-in-the-wild/)
+[^7]: [Massive WordPress JavaScript Injection Campaign Redirects to Ads ](https://blog.sucuri.net/2022/05/massive-wordpress-javascript-injection-campaign-redirects-to-ads.html)
+[^8]: [Hunting Cobalt Strike Servers](https://bank-security.medium.com/hunting-cobalt-strike-servers-385c5bedda7b)
