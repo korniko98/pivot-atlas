@@ -14,7 +14,7 @@
 -   :octicons-bug-16:{ .lg .middle } __Usecase__
 
 	<span style="font-size:0.9em;">
-    Threat actors often configure their malware to use common user agents in order to blend in with legitimate communications, but they sometimes make mistakes such as typos or choosing a nonsensical user agent, which can allow detection and pivoting (e.g., an infected Linux machine using a Windows user agent).
+    Threat actors often configure their tools to use common user agents in order to blend in with legitimate communications, but they sometimes make mistakes such as typos or choosing a nonsensical user agent, which can allow detection and pivoting (e.g., an infected Linux machine using a Windows user agent).
 	</span>
 </div>
 
@@ -53,21 +53,22 @@
 	```
 </div>
 
+!!! warning "Unique user agents"
+	In some cases, client behavior can indeed be pivoted upon between different IP addresses based on shared user agents or certain commonalities between them. However, this is usually considered a relatively weak correlation, since the same user agent could have legitimate uses as well, unless its unique in some way. Identifying such unique attributes or combinations of attributes is one of the many challenges of analysis.
+
 ## Pivots
 
 ### IP Addresses
-
-####:octicons-arrow-right-24: Addresses of attacker-controlled servers using it
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 
 !!! abstract inline end "Example"
 
 	Obsidian Security identified a malicious residential proxy network in which the threat actor had configured their malware to use an outdated Chrome user agent from 2019, which is rare enough as of 2024 to be a strong indicator.[^1]
 
-####:octicons-arrow-right-24: Addresses of infected clients using it
+####:octicons-arrow-right-24: Addresses of clients identifying as it
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Various components of malicious activity involve clients identifying as certain user agents. This includes devices infected with malware, machines running attacker-side toolkits, as well as machines running crawlers and scanners.
+
+&nbsp;
 
 &nbsp;
 
@@ -75,7 +76,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 
 ### Samples
 
-####:octicons-arrow-right-24: Samples of malware using it
+####:octicons-arrow-right-24: Samples using it or identifying as it
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 

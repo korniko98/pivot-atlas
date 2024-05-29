@@ -40,6 +40,7 @@
 		SAMPLE(Sample):::primary
 		USER_AGENT(User Agent)
 		SAMPLE_(Sample):::secondary
+		CODE([Code])
 		
 		%% define edges
 
@@ -55,6 +56,8 @@
 		SAMPLE -- queries ---> DOMAIN
 		SAMPLE -- references --> USER_AGENT
 		SAMPLE -- identifies as ---> USER_AGENT
+		
+		CODE -. compiles to ..-> SAMPLE
 		
 		%% define links
 		click IP_ADDRESS "#ip-addresses"
@@ -74,7 +77,9 @@
 
 ####:octicons-arrow-right-24: Clients it can be found on
 
-Samples may be retrieved from infected clients by performing forensics, or through security product telemetry.
+Samples of malware may be retrieved from infected clients by performing forensics, or through security product telemetry.
+
+Conversely, samples of attacker-side toolkits can be found on threat actor machines (e.g., their laptops) and remote jump boxes they operate for connecting to servers or infected devices.
 
 ---
 
@@ -82,11 +87,11 @@ Samples may be retrieved from infected clients by performing forensics, or throu
 
 ####:octicons-arrow-right-24: Servers storing it
 
-Attacker-controlled servers may store malware for victim devices to download. Gaining access to such servers may therefore afford access to samples of aforementioned malware.
+Attacker-controlled servers may store malware for victim devices to download during an infection process. Gaining access to such servers may therefore afford access to samples of the aforementioned malware.
 
 ####:octicons-arrow-right-24: Servers it communicates with at runtime
 
-By executing a malware sample in a sandboxed environment, or by observing malware that has infected a honeypot, one can determine if the infected machine communicates with any IP addresses of C&C or data exfiltration servers.
+By executing a malware sample in a sandboxed environment, by observing malware that has infected a honeypot, or by analyzing security product telemetry sourced from an infected device, one can determine if the infected machine communicates with any IP addresses of attacker-controlled servers for C&C, data exfiltration, etc.
 
 ---
 
@@ -94,7 +99,9 @@ By executing a malware sample in a sandboxed environment, or by observing malwar
 
 ####:octicons-arrow-right-24: Domains it references or queries
 
-Threat actors often configure their malware to communicate with one or more C&C [servers](/artifacts/server), and this usually involves listing a domain within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware). When executed (on an infected device, honeypot, or in a sandboxed environment), the malware will send a DNS request to resolve the domain, and then communicate with the server hosted on the resolving IP address. By running a static analysis of the sample (even through something as simple as using [`strings`](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)), one can reveal any such hardcoded domains it may contain.
+Threat actors often configure their malware to communicate with one or more C&C [servers](/artifacts/server), and this usually involves listing a domain within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware).
+
+When executed (on an infected device, honeypot, or in a sandboxed environment), the malware will send a DNS request to resolve the domain, and then communicate with the server hosted on the resolving IP address. By running a static analysis of the sample (even through something as simple as using [`strings`](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)), one can reveal any such hardcoded domains it may contain.
 
 ---
 
@@ -108,11 +115,7 @@ By statically scanning a malware sample or reverse engineering it, analysts can 
 
 ### User Agents
 
-####:octicons-arrow-right-24: User agents identifying it
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
-
-####:octicons-arrow-right-24: User agents it references
+####:octicons-arrow-right-24: User agents identifying it or referenced by it
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 
@@ -131,5 +134,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 ####:octicons-arrow-right-24: Samples with overlapping behavior
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+---
+
+### Source Code
+
+####:octicons-arrow-right-24: Code which compiles to it
+
+If a threat actor is using an open-source tool that isn't unique to their own operations, its source code is likely to be available in a code repository.
+
+Conversely, source code for proprietary tools can be found on attacker-controlled machines, and is sometimes published online as a result of hack-and-leak operations oconducted against the threat actor, or following internal disputes within threat actor groups.
 
 [^1]: [#StopRansomware: Black Basta](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-131a)

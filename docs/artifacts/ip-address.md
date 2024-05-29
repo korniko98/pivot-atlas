@@ -77,6 +77,8 @@
 
 !!! warning "Clients vs. servers"
 	IP addresses can be assigned by threat actors to either clients or [servers](/artifacts/server), which affects how they appear in logs and therefore how one should pivot on them. For example, clients can be observed scanning victims' networks or connecting to compromised target machines, whereas servers are applications that recieve connections from compromised devices or attacker-controlled clients.
+	
+	In some cases, the same IP address can operate as both as server and a client. For example, threat actors may use the same IP address for both crawling and C&C. Similarly, threat actors may establish networks of ORBs composed of compromised devices - these would function as proxies, connecting both to and from other devices.
 
 ## Pivots
 
@@ -191,9 +193,9 @@ Besides their use for hosting traditional servers, threat actors can also use IP
 
 ####:octicons-arrow-right-24: User agents identifying it
 
-In some cases, client behavior can be pivoted upon between different IP addresses based on shared user agents or certain commonalities between them. However, this is considered a relatively weak correlation, since the same user agent could have legitimate uses as well, unless its unique.
+Various components of malicious activity involve clients identifying as certain user agents. This includes devices infected with malware, machines running attacker-side toolkits, as well as machines running crawlers and scanners.
 
-&nbsp;
+In some cases, client behavior can indeed be pivoted upon between different IP addresses based on shared user agents or certain commonalities between them. However, this is usually considered a relatively weak correlation, since the same user agent could have legitimate uses as well, unless its unique in some way.
 
 ---
 
