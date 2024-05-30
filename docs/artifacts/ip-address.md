@@ -159,14 +159,6 @@ When actors purchase an IP address, they must supply registrant information, whi
 
 !!! abstract inline end "Example"
 
-	Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
-
-####:octicons-arrow-right-24: Client addresses communicating with it
-
-If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
-
-!!! abstract inline end "Example"
-
 	Cobalt Strike team server is configured to listen on port 50050 by default, and threat actors don't always bother to change the default configuration prior to deployment.[^4]
 
 ####:octicons-arrow-right-24: Addresses with same open ports
@@ -179,9 +171,21 @@ If an IP address hosting a C&C server has a relatively unique set of open ports,
 
 ### Clients
 
+!!! abstract inline end "Example"
+
+	Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
+
+####:octicons-arrow-right-24: Clients communicating with it
+
+If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
+
 ####:octicons-arrow-right-24: Clients connecting from it
 
 Besides their use for hosting traditional servers, threat actors can also use IP addresses to connect as clients to victim infrastructure. Threat actors can do so using IP addresses they own or via proxy or VPN servers. Client behavior (whether automated or "hands-on-keyboard") can be observed during brute-force attacks, password spray attacks, as well as remote connection sessions such as logging into a target database.
+
+####:octicons-arrow-right-24: Clients with same fingerprint
+
+Infected or attacker-controlled clients running the same tools often have overlapping techstacks (meaning that they run the same set of software components). Moreover, these clients might be configured in the exact same way. This can result in a subset of such clients that can be uniquely identified by their fingerprint (or a set of fingerprint types), such as one of the [JA4+](/fingerprints/#ja4-fingerprints) fingerprints.
 
 ---
 

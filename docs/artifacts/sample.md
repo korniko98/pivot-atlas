@@ -117,7 +117,9 @@ By statically scanning a malware sample or reverse engineering it, analysts can 
 
 ####:octicons-arrow-right-24: User agents identifying it or referenced by it
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Malware, attacker-side toolkits, and attacker-operated crawlers must identify as a specific [user agent](/artifacts/user-agent) if they communicate over HTTP/S (as a requirement of the protocol). While most threat actors will therefore configure their tools to use a prevalent user agent (or rotate between a set of common user agents) in order to blend in with background noise, at times they might make the mistake of using a unique user agent (perhaps as result of a typo) or a nonsensical one (such as a machine identifying as an iPhone but fingerprinted as an IoT device). In such cases, the combination of user agent and other parameters might be uniquely identifiable enough to be used as an effective indicator for discovering infected clients or attacker-controlled infrastructure.
+
+By observing a given sample in a sandboxed environment, honeypot, infected device, or via security product telemetry, analysts can identify which user agents it identifies as. Similarly, analysts can reveal such user agents through static analysis or reverse engineering of the sample, depending on its level of obfuscation.
 
 ---
 

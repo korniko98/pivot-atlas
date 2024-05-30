@@ -76,9 +76,11 @@ Various components of malicious activity involve clients identifying as certain 
 
 ### Samples
 
-####:octicons-arrow-right-24: Samples using it or identifying as it
+####:octicons-arrow-right-24: Samples identifying as it or referencing it
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Malware, attacker-side toolkits, and attacker-operated crawlers must identify as a specific [user agent](/artifacts/user-agent) if they communicate over HTTP/S (as a requirement of the protocol). While most threat actors will therefore configure their tools to use a prevalent user agent (or rotate between a set of common user agents) in order to blend in with background noise, at times they might make the mistake of using a unique user agent (perhaps as result of a typo) or a nonsensical one (such as an IoT device identifying as an iPhone). In such cases, the combination of user agent and other parameters might be uniquely identifiable enough to be used as an effective indicator for discovering infected clients or attacker-controlled infrastructure.
+
+Given a user agent, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any previously encountered samples identifying as it or referencing it in their code.
 
 ---
 
