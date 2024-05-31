@@ -168,6 +168,37 @@ Threat actors often configure their malware to communicate with one or more C&C 
 
 Given a domain, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
 
+```mermaid
+flowchart LR
+	classDef primary stroke-width: 2px
+	classDef secondary stroke-dasharray: 5 5
+	classDef tool fill:#1433F7, stroke:#556CFF, fill-opacity:0.2
+	classDef fingerprint fill:#02FF25, stroke:#02FF25, fill-opacity:0.2
+	
+	%% define nodes
+	DOMAIN(Domain)
+	SAMPLE(Sample):::primary
+	SAMPLE_(Sample):::secondary
+	MALWARE_ZOO(Malware Zoo):::tool
+	HASH(Hash):::fingerprint
+	
+	%% define edges
+	SAMPLE -- upload --> MALWARE_ZOO
+	MALWARE_ZOO -- reveals query --> DOMAIN
+	MALWARE_ZOO -- reveals reference --> DOMAIN
+	SAMPLE -. calculate .-> HASH
+	HASH -- query --> MALWARE_ZOO
+	MALWARE_ZOO -- results --> SAMPLE_
+	SAMPLE_ -- references --> DOMAIN
+	SAMPLE_ -- queries --> DOMAIN
+	
+	%% define links
+	click DOMAIN "#domains"
+	click SAMPLE_ "#samples"
+	click HASH "/fingerprints/#file-hash"
+	click MALWARE_ZOO "/tools/#malware-zoos"
+```
+
 [^1]: [#StopRansomware: Black Basta](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-131a)
 [^2]: [Identifying MatanBuchus Domains Through Hardcoded Certificate Values](https://www.embeeresearch.io/tls-certificates-for-threat-intel-dns/)
 [^3]: [Passive DNS Pivoting - Uncovering APT Infrastructure Through Historical Records and Subdomain Analysis](https://www.embeeresearch.io/uncovering-apt-infrastructure-with-passive-dns-pivoting/)
