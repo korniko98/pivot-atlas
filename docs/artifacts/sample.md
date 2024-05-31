@@ -125,7 +125,7 @@ By observing a given sample in a sandboxed environment, honeypot, infected devic
 
 ### Samples
 
-####:octicons-arrow-right-24: Samples with the same hash
+####:octicons-arrow-right-24: Samples with same hash
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 
@@ -136,6 +136,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 ####:octicons-arrow-right-24: Samples with overlapping behavior
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+####:octicons-arrow-right-24: Samples with overlapping observables
+
+Malware is not often deployed as a single file on the disk of an infected device, but rather leaves traces in multiple locations, such as files in certain paths, registry keys, process names, etc. By observing an infected device, sandbox, honeypot, or by checking security product telemetry, an analyst can identify such traces and leverage them to detect other instances of the same sample, or variants of it.
+
+Given a sample, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples, usually using [YARA rules](https://virustotal.github.io/yara/) for this purpose.
 
 ---
 
