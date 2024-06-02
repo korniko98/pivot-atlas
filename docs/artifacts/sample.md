@@ -65,6 +65,7 @@
 		click SERVER "#servers"
 		click SAMPLE_ "#samples"
 		click USER_AGENT "#user-agents"
+		click CODE "#source-code"
 	```
 </div>
 
@@ -102,6 +103,49 @@ By executing a malware sample in a sandboxed environment, by observing malware t
 Threat actors often configure their malware to communicate with one or more C&C [servers](/artifacts/server), and this usually involves listing a domain within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware).
 
 When executed (on an infected device, honeypot, or in a sandboxed environment), the malware will send a DNS request to resolve the domain, and then communicate with the server hosted on the resolving IP address. By running a static analysis of the sample (even through something as simple as using [`strings`](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)), one can reveal any such hardcoded domains it may contain.
+
+<div class="grid cards" markdown>
+-   :material-map-search:{ .lg .middle } __Pivot Minimap__
+	```mermaid
+	flowchart LR
+		classDef primary stroke-width: 2px
+		classDef secondary stroke-dasharray: 5 5
+		classDef tool fill:#1433F7, stroke:#556CFF, fill-opacity:0.2
+		classDef fingerprint fill:#02FF25, stroke:#02FF25, fill-opacity:0.2
+		
+		%% define nodes
+		DOMAIN(Domain)
+		SAMPLE(Sample):::primary
+		sg1:::tool
+
+		FILE_HASH[File Hash]:::fingerprint
+
+		
+		%% define edges
+		SAMPLE -. hashed to .-> FILE_HASH
+		FILE_HASH -- queried in --> sg2
+
+		
+		subgraph sg1 [Malware Zoo]
+		subgraph sg2 [Database]
+		SAMPLE_(Sample):::secondary
+		end
+		subgraph sg3 [Analysis]
+		SANDBOX[Sandbox]
+		STRINGS[Strings]
+		end
+		end
+		SAMPLE -- uploaded to --> sg3
+		SANDBOX -- queries --> DOMAIN
+		STRINGS -- references --> DOMAIN
+		SAMPLE_ -- relates to ---> DOMAIN
+		
+		%% define links
+		click SAMPLE_ "#samples"
+		click HASH "/fingerprints/#file-hash"
+		click MALWARE_ZOO "/tools/#malware-zoos"
+	```
+</div>
 
 ---
 

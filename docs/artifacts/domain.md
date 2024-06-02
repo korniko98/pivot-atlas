@@ -106,13 +106,15 @@ Threat actors perform registration in bulk of domains meant for malicious purpos
 
 ####:octicons-arrow-right-24: Domain with same URL path
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Threat actors may set up various API endpoints on their servers to facilitate the required functionality for their malicious infrastructure. Each of these endpoints may be available on a different URL path (e.g., malware may connect to an `/upload/` endpoint to exfiltrate data). Similarly, threat actors may hijack legitimate servers and deploy a file containing malicious code, which may be located on a consistent URL path across multiple compromised servers.
+
+Given a domain resolving to an attacker-controlled server, analysts can query for any of its known URL paths in the databases of [URL scanning services](/tools/url-scanners) such as [URLScan](https://urlscan.io/). This can surface other domains with the same paths which might resolve to potentially related servers.
 
 ??? example "Try it out"
 
 	=== "URLScan (URL)"
 		```
-		TO DO
+		https://urlscan.io/search/#page.url%3A%22{PATH}%22
 		```
 	=== "URLScan (API)"
 		``` console
@@ -167,37 +169,6 @@ Historic DNS resolutions can be based on either passive DNS collection (pDNS), w
 Threat actors often configure their malware to communicate with one or more C&C [servers](/artifacts/server), and this usually involves listing a domain within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware). When executed (on an infected device, honeypot, or in a sandboxed environment), the malware will send a DNS request to resolve the domain, and then communicate with the server hosted on the resolving IP address. By running a static analysis of the sample (even through something as simple as using [`strings`](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)), one can reveal any such hardcoded domains it may contain.
 
 Given a domain, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
-
-```mermaid
-flowchart LR
-	classDef primary stroke-width: 2px
-	classDef secondary stroke-dasharray: 5 5
-	classDef tool fill:#1433F7, stroke:#556CFF, fill-opacity:0.2
-	classDef fingerprint fill:#02FF25, stroke:#02FF25, fill-opacity:0.2
-	
-	%% define nodes
-	DOMAIN(Domain)
-	SAMPLE(Sample):::primary
-	SAMPLE_(Sample):::secondary
-	MALWARE_ZOO(Malware Zoo):::tool
-	HASH(Hash):::fingerprint
-	
-	%% define edges
-	SAMPLE -- upload --> MALWARE_ZOO
-	MALWARE_ZOO -- reveals query --> DOMAIN
-	MALWARE_ZOO -- reveals reference --> DOMAIN
-	SAMPLE -. calculate .-> HASH
-	HASH -- query --> MALWARE_ZOO
-	MALWARE_ZOO -- results --> SAMPLE_
-	SAMPLE_ -- references --> DOMAIN
-	SAMPLE_ -- queries --> DOMAIN
-	
-	%% define links
-	click DOMAIN "#domains"
-	click SAMPLE_ "#samples"
-	click HASH "/fingerprints/#file-hash"
-	click MALWARE_ZOO "/tools/#malware-zoos"
-```
 
 [^1]: [#StopRansomware: Black Basta](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-131a)
 [^2]: [Identifying MatanBuchus Domains Through Hardcoded Certificate Values](https://www.embeeresearch.io/tls-certificates-for-threat-intel-dns/)
