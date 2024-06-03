@@ -28,13 +28,25 @@ Many host scanning tools provide certificate metadata sourced from the servers h
 
 Source code repositories such as GitHub allow [querying for code snippets](https://github.com/search), which can be useful for identifying malware source code.
 
-## DNS data
+## WHOIS data
 
 ### WHOIS Lookup
 
 [...]
 
-### DNS History / Passive DNS
+You can also use a [WHOIS CLI tool](https://www.arin.net/resources/registry/whois/rws/cli/) to perform lookups.
+
+### WHOIS History
+
+[...]
+
+## DNS data
+
+### DNS
+
+[...]
+
+### DNS History
 
 [...]
 

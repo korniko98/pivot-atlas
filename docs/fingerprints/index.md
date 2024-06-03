@@ -35,3 +35,7 @@ Much like file hashes, threat intel practitioners use certificate hashes as one-
 ## HHHash Fingerprint
 
 [HTTP Headers Hashing](https://www.foo.be/2023/07/HTTP-Headers-Hashing_HHHash) is a technique used to create a fingerprint of an HTTP [server](/artifacts/server) based on the headers it returns.
+
+## IP Address Feature Vector
+
+[IP similarity](https://www.greynoise.io/blog/how-we-built-ip-similarity) is a method developed by [Greynoise](https://www.greynoise.io/) to measure similarity between different IP addresses by calculating a vector of certain features (such as which user agents identify any clients connecting from the IP address, which ports they scan for on other servers, and which URL paths they enumerate).

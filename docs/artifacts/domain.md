@@ -106,13 +106,15 @@ Threat actors perform registration in bulk of domains meant for malicious purpos
 
 ####:octicons-arrow-right-24: Domain with same URL path
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Threat actors may set up various API endpoints on their servers to facilitate the required functionality for their malicious infrastructure. Each of these endpoints may be available on a different URL path (e.g., malware may connect to an `/upload/` endpoint to exfiltrate data). Similarly, threat actors may hijack legitimate servers and deploy a file containing malicious code, which may be located on a consistent URL path across multiple compromised servers.
+
+Given a domain resolving to an attacker-controlled server, analysts can query for any of its known URL paths in the databases of [URL scanning services](/tools/url-scanners) such as [URLScan](https://urlscan.io/). This can surface other domains with the same paths which might resolve to potentially related servers.
 
 ??? example "Try it out"
 
 	=== "URLScan (URL)"
 		```
-		TO DO
+		https://urlscan.io/search/#page.url%3A%22{PATH}%22
 		```
 	=== "URLScan (API)"
 		``` console

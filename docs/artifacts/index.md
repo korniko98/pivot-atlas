@@ -6,7 +6,9 @@ icon: material/diamond-stone
 
 This section contains information about various types of artifacts encountered during threat intelligence investigations, such as [malware samples](/artifacts/sample) and [domains](/artifacts/domain). Within this section, you can find explanations about each artifact type and how they relate to malicious cyber activity, as well as real-world examples of artifacts surfaced in the course of historic investigations.
 
-Additionally, every page contains a pivot map showing the various paths analysts can take in order to pivot between different artifact types, explanations of these pivots and accompanying examples, as well as placeholder queries for performing certain pivots via popular [tools](/tools).
+Additionally, every page contains a pivot map showing various paths analysts can take in order to pivot between different artifact types, explanations of these pivots and accompanying examples, as well as placeholder queries for performing certain pivots via popular [tools](/tools).
+
+Looking forward, as both threat intel tradecraft and new pivoting tools are developed, novel and creative pivots are expected to be added to this corpus. Moreover, there are almost certainly past investigations that involved pivots that have yet to be incorporated here, and these will also be added as this backlog is addressed.
 
 !!! note "Placeholder queries"
 	Some pivot descriptions contain a "Try it out" callout - you can click these to view the syntax of URLs and API calls for various tools that enable the relevant pivot. These contain placeholders for the artifact or observable in question (in the form of `{IP_ADDRESS}`, `{PATH}`, etc.) - simply copy the text and replace the placeholder with the relevant string prior to using the command.

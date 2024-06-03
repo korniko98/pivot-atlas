@@ -77,6 +77,8 @@
 
 !!! warning "Clients vs. servers"
 	IP addresses can be assigned by threat actors to either clients or [servers](/artifacts/server), which affects how they appear in logs and therefore how one should pivot on them. For example, clients can be observed scanning victims' networks or connecting to compromised target machines, whereas servers are applications that recieve connections from compromised devices or attacker-controlled clients.
+	
+	In some cases, the same IP address can operate as both as server and a client. For example, threat actors may use the same IP address for both crawling and C&C. Similarly, threat actors may establish networks of ORBs composed of compromised devices - these would function as proxies, connecting both to and from other devices.
 
 ## Pivots
 
@@ -157,14 +159,6 @@ When actors purchase an IP address, they must supply registrant information, whi
 
 !!! abstract inline end "Example"
 
-	Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
-
-####:octicons-arrow-right-24: Client addresses communicating with it
-
-If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
-
-!!! abstract inline end "Example"
-
 	Cobalt Strike team server is configured to listen on port 50050 by default, and threat actors don't always bother to change the default configuration prior to deployment.[^4]
 
 ####:octicons-arrow-right-24: Addresses with same open ports
@@ -177,9 +171,21 @@ If an IP address hosting a C&C server has a relatively unique set of open ports,
 
 ### Clients
 
+!!! abstract inline end "Example"
+
+	Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
+
+####:octicons-arrow-right-24: Clients communicating with it
+
+If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
+
 ####:octicons-arrow-right-24: Clients connecting from it
 
 Besides their use for hosting traditional servers, threat actors can also use IP addresses to connect as clients to victim infrastructure. Threat actors can do so using IP addresses they own or via proxy or VPN servers. Client behavior (whether automated or "hands-on-keyboard") can be observed during brute-force attacks, password spray attacks, as well as remote connection sessions such as logging into a target database.
+
+####:octicons-arrow-right-24: Clients with same fingerprint
+
+Infected or attacker-controlled clients running the same tools often have overlapping techstacks (meaning that they run the same set of software components). Moreover, these clients might be configured in the exact same way. This can result in a subset of such clients that can be uniquely identified by their fingerprint (or a set of fingerprint types), such as one of the [JA4+](/fingerprints/#ja4-fingerprints) fingerprints.
 
 ---
 
@@ -187,13 +193,13 @@ Besides their use for hosting traditional servers, threat actors can also use IP
 
 !!! abstract inline end "Example"
 
-	Obsidian Security identified a malicious residential proxy network in which the threat actor had configured their malware to use an outdated Chrome user agent from 2019, which is rare enough as of 2024 to be a strong indicator.[^5]
+	 Permiso identified a threat actor using [S3 Browser](https://s3browser.com/) and identifying as the user agent `S3 Browser 9.5.5 <https://s3browser.com>`. While this tool and user agent can be used legitimately, in this case it was never used by employees in the target environment, and was therefore unique to this actor's activity in that specific context.[^5]
 
 ####:octicons-arrow-right-24: User agents identifying it
 
-In some cases, client behavior can be pivoted upon between different IP addresses based on shared user agents or certain commonalities between them. However, this is considered a relatively weak correlation, since the same user agent could have legitimate uses as well, unless its unique.
+Various components of malicious activity involve clients identifying as certain [user agents](/artifacts/user-agent). In some cases, client behavior can be pivoted upon between different IP addresses based on shared user agents. However, this is usually considered a relatively weak correlation, since the same user agent could have legitimate uses as well, unless it's unique.
 
-&nbsp;
+Given the IP address of a device infected with malware, or a machine running an attacker-side tool (such as a toolkit, crawler or scanner), analysts can review network activity logs to determine which user agents identify the IP address.
 
 ---
 
@@ -255,13 +261,15 @@ Additionally, when threat actors inject malicious JavaScript or JavaScript tags 
 
 ####:octicons-arrow-right-24: Servers with same URL path
 
-Threat actors may set up various API endpoints on their servers to facilitate the required functionality for their malicious infrastructure. Each of these endpoints may be available on a different URL path (e.g., malware may connect to an `/upload/` endpoint to exfiltrate data). Similarly, threat actors may hijack legitimate servers and deploy a file containing malicious code, which may be located on a consistent URL path across multiple compromised servers. Therefore, given a server with an indicative URL path, analysts can leverage these commonalities to identify other related servers.
+Threat actors may set up various API endpoints on their servers to facilitate the required functionality for their malicious infrastructure. Each of these endpoints may be available on a different URL path (e.g., malware may connect to an `/upload/` endpoint to exfiltrate data). Similarly, threat actors may hijack legitimate servers and deploy a file containing malicious code, which may be located on a consistent URL path across multiple compromised servers.
+
+Therefore, given a server with an indicative URL path, analysts can run a wide scan to identify related servers with the same URL path that may be available on other IP addresses. Alternatively, analysts can query the databases of [URL scanning services](/tools/url-scanners) such as [URLScan](https://urlscan.io/) for a given URL path in order to surface domains resolving to potentially related servers.
 
 ??? example "Try it out"
 
 	=== "URLScan (URL)"
 		```
-		https://urlscan.io/search/#page.url%3A{PATH}
+		https://urlscan.io/search/#page.url%3A%22{PATH}%22
 		```
 	=== "URLScan (API)"
 		``` console
@@ -337,7 +345,7 @@ Attacker-controlled servers hosted on an IP address may store malware for victim
 [^2]: [Risky Business: Determining Malicious Probabilities Through ASNs](https://www.akamai.com/blog/security/determining-malicious-probabilities-through-asns/)
 [^3]: [Latrodectus: This Spider Bytes Like Ice](https://www.proofpoint.com/us/blog/threat-insight/latrodectus-spider-bytes-ice)
 [^4]: [Cobalt Strike Team Server Population Study](https://www.cobaltstrike.com/blog/cobalt-strike-team-server-population-study)
-[^5]: [Emerging Identity Threats: The Muddy Waters of Residential Proxies](https://www.obsidiansecurity.com/blog/emerging-identity-threats-the-muddy-waters-of-residential-proxies/)
+[^5]: [Anatomy of an Attack: Exposed Keys Lead to Crypto Mining](https://permiso.io/blog/s/anatomy-of-attack-exposed-keys-to-crypto-mining/)
 [^6]: [Identifying Cobalt Strike team servers in the wild](https://blog.fox-it.com/2019/02/26/identifying-cobalt-strike-team-servers-in-the-wild/)
 [^7]: [Massive WordPress JavaScript Injection Campaign Redirects to Ads ](https://blog.sucuri.net/2022/05/massive-wordpress-javascript-injection-campaign-redirects-to-ads.html)
 [^8]: [Hunting Cobalt Strike Servers](https://bank-security.medium.com/hunting-cobalt-strike-servers-385c5bedda7b)
