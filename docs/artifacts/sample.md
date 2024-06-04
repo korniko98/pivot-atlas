@@ -175,7 +175,7 @@ By observing a given sample in a sandboxed environment, honeypot, infected devic
 
 ####:octicons-arrow-right-24: Samples with same hash
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Since a file hash is unique, querying for a hash in a ["malware zoo"](/tools/#malware-zoos) platform such as [VirusTotal](https://virustotal.com) can lead to other copies of the same sample. This can be useful for analysis if these other copies have different metadata than the original, such as their filename, where they were uploaded from, and relationships with other artifacts (for example, one copy of the sample might have been stored in a compressed archive along with other, different samples, or it might have been available for download at one point from a phishing website).
 
 ####:octicons-arrow-right-24: Samples with code similarity to it
 

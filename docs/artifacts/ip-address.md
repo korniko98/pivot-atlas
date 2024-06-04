@@ -157,7 +157,7 @@ When actors purchase an IP address, they must supply registrant information, whi
 		TO DO
 		```
 
-####:octicons-arrow-right-24: Addresses with historically similar registration details
+####:octicons-arrow-right-24: Addresses with historically similar registrant details
 
 When actors purchase an IP address, they must supply registrant information, which is made publicly available through the WHOIS protocol. This requirement is different than for registering a domain, a process which allows for registrant privacy. While stealthy actors will often provide fake registration details, these can sometimes still be useful for pivoting if they are rare enough. Note that if a threat actor leases a (static or dynamic) IP address from a cloud provider, a WHOIS query will only return information about the provider.
 
