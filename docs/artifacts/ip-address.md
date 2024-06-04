@@ -1,4 +1,8 @@
-# IP Address
+---
+icon: material/laptop
+---
+
+# :material-laptop: IP Address
 
 ## Overview
 
@@ -56,7 +60,7 @@
 		SERVER <-- content ---> SERVER_
 		SERVER <-- URL path ---> SERVER_
 		SERVER -- stores ---> SAMPLE
-		SAMPLE -- communicates --> SERVER
+		SAMPLE -- connects --> SERVER
 		SAMPLE -- references --> IP_ADDRESS
 		DOMAIN -- forward DNS --> IP_ADDRESS
 		DOMAIN <-- DNS history --> IP_ADDRESS
@@ -175,7 +179,7 @@ If an IP address hosting a C&C server has a relatively unique set of open ports,
 
 	Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
 
-####:octicons-arrow-right-24: Clients communicating with it
+####:octicons-arrow-right-24: Clients connecting to it
 
 If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
 

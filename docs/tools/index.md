@@ -4,7 +4,7 @@ hide:
 icon: material/tools
 ---
 
-#:material-tools:Tools
+#:material-tools: Tools
 
 !!! warning "Under Construction"
 

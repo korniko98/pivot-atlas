@@ -4,7 +4,7 @@ hide:
 icon: material/lightbulb
 ---
 
-#:material-lightbulb:Tips
+#:material-lightbulb: Tips
 
 This section lists various tips for beginning pivoters. If you'd like to learn more about pivoting in particular and threat intel research in general, I highly recommend checking out the references mentioned in the [FAQ](/#where-can-i-learn-more-about-pivoting).
 

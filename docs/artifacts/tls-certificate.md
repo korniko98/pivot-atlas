@@ -1,4 +1,8 @@
-# TLS Certificate
+---
+icon: material/file-certificate
+---
+
+# :material-file-certificate: TLS Certificate
 
 !!! warning "Under Construction"
 
@@ -27,6 +31,27 @@
 </div>
 
 <div class="grid cards" markdown>
+-   :octicons-package-16:{ .lg .middle } __Components__
+	
+	<span style="font-size:0.9em;">
+	The certificate used by this website as of 2024-06-04 contains some of the following pivotable data:
+	</span>
+    ```
+	Serial Number:
+		04:23:7a:e2:8d:c6:17:e3:78:6e:dd:e6:0a:42:24:40:1c:1e
+	Issuer: (CA ID: 183267)
+		commonName                = R3
+		organizationName          = Let's Encrypt
+		countryName               = US
+	Validity
+		Not Before: May 20 05:50:30 2024 GMT
+		Not After : Aug 18 05:50:29 2024 GMT
+	Subject:
+		commonName                = gopivot.ing
+	```
+</div>
+
+<div class="grid cards" markdown>
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
 	flowchart LR
@@ -44,7 +69,8 @@
 		TLS_CERT -- served by ---> SERVER
 		SERVER -. hosted by ..-> IP_ADDRESS
 		TLS_CERT -- CN ---> DOMAIN
-		TLS_CERT <-- authority ---> TLS_CERT_
+		TLS_CERT <-- CN ---> TLS_CERT_
+		TLS_CERT <-- CA ---> TLS_CERT_
 		TLS_CERT <-- time --> TLS_CERT_
 		
 		%% define links
@@ -91,7 +117,7 @@ Threat actors use [TLS certificates](/artifacts/tls-certificate) to enable encry
 
 !!! abstract inline end "Example"
 
-	Embee Research analyzed certificate data related to a domain associated with MatanBuchus in order to surface additional domains using certificates with the same subdomains, certificate authority, and registration period.[^1]
+	Embee Research analyzed certificate data related to a domain associated with MatanBuchus in order to surface additional domains using certificates with the same subdomains, certificate authority, and registration period.[^2]
 
 ####:octicons-arrow-right-24: Domains matching its common name (CN)
 
@@ -122,7 +148,11 @@ TLS certificates contain many fields denoting registrant information, registar i
 
 ### TLS Certificates
 
-####:octicons-arrow-right-24: Certificates registered with the same authority
+####:octicons-arrow-right-24: Certificates with the same common name (CN)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+
+####:octicons-arrow-right-24: Certificates registered with the same authority (CA)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
 
@@ -144,10 +174,16 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 		``` console
 		TO DO
 		```
+
+!!! abstract inline end "Example"
+
+	ThreatConnect determined that most certificates suspected to be in use by the Russian threat actor APT28 / Fancy Bear as of March 2018 were registered during working hours of Moscow's time zone. While this wasn't unique enough for pivoting to unknown certificates, it did serve to increase their confidence in their attribution of related activity to this threat actor.[^3]
 
 ####:octicons-arrow-right-24: Certificates registered in the same timeframe
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Threat actors may register many TLS certificates throughout their period of activity, or for the purpose of a particular operation or campaign. In order to maintain OPSEC, they may register every certificate at a different time and at irregular intervals. However, less savvy threat actors could very well register many of their certificates around the same time, a mistake which analysts can leverage along with other parameters in order to identify additional potentially related certificates.
+
+&nbsp;
 
 ??? example "Try it out"
 
@@ -168,4 +204,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero liber
 		TO DO
 		```
 
-[^1]: [Identifying MatanBuchus Domains Through Hardcoded Certificate Values](https://www.embeeresearch.io/tls-certificates-for-threat-intel-dns/)
+[^1]: [Hunting Cobalt Strike Servers](https://bank-security.medium.com/hunting-cobalt-strike-servers-385c5bedda7b)
+[^2]: [Identifying MatanBuchus Domains Through Hardcoded Certificate Values](https://www.embeeresearch.io/tls-certificates-for-threat-intel-dns/)
+[^3]: [A Song of Intel and Fancy](https://threatconnect.com/blog/using-fancy-bear-ssl-certificate-information-to-identify-their-infrastructure/)

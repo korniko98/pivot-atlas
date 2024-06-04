@@ -1,4 +1,8 @@
-# Sample
+---
+icon: material/bug
+---
+
+# :material-bug: Sample
 
 !!! warning "Under Construction"
 

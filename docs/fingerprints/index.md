@@ -4,7 +4,7 @@ hide:
 icon: material/fingerprint
 ---
 
-#:material-fingerprint:Fingerprints
+#:material-fingerprint: Fingerprints
 
 In order to make threat intel sharing easier and analysis more practical, reports and feeds rely on fingerprinting as a sort of shorthand for representing artifacts. These fingerprints are commonly refered to as IOCs, short for "Indicators of Compromise".
 

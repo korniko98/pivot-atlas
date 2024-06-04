@@ -2,7 +2,7 @@
 icon: material/diamond-stone
 ---
 
-#:material-diamond-stone:Artifacts
+#:material-diamond-stone: Artifacts
 
 This section contains information about various types of artifacts encountered during threat intelligence investigations, such as [malware samples](/artifacts/sample) and [domains](/artifacts/domain). Within this section, you can find explanations about each artifact type and how they relate to malicious cyber activity, as well as real-world examples of artifacts surfaced in the course of historic investigations.
 

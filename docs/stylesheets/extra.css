@@ -66,7 +66,6 @@ th, td {
 
 .animated-word {
   animation: fadeInOut 2s infinite;
-/* animation-delay: 1; */
 }
 
 @keyframes fadeInOut {
@@ -82,7 +81,7 @@ th, td {
         opacity: 1;
     }
 
-    to {
+    100% {
         opacity: 0;
     }
 }

@@ -22,3 +22,4 @@
 *[CLI]: Command Line Interface
 *[ORB]: Operational Relay Box
 *[ORBs]: Operational Relay Box
+*[OPSEC]: Operational Security

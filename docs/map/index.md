@@ -4,7 +4,7 @@ hide:
 icon: material/map
 ---
 
-#:material-map:Map
+#:material-map: Map
 
 !!! warning "Under Construction"
 
