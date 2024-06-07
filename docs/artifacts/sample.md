@@ -1,6 +1,8 @@
-# Sample
+---
+icon: material/bug
+---
 
-!!! warning "Under Construction"
+# :material-bug: Sample
 
 ## Overview
 
@@ -48,9 +50,9 @@
 		SERVER -. hosted by .-> IP_ADDRESS
 		SERVER -- stores --> SAMPLE
 		SAMPLE -- communicates ---> SERVER
-		SAMPLE -- hash ---> SAMPLE_
-		SAMPLE -- code similarity --> SAMPLE_
-		SAMPLE -- behavior --> SAMPLE_
+		SAMPLE <-- hash ---> SAMPLE_
+		SAMPLE <-- code similarity --> SAMPLE_
+		SAMPLE <-- behavior --> SAMPLE_
 
 		SAMPLE -- references ---> DOMAIN
 		SAMPLE -- queries ---> DOMAIN
@@ -171,15 +173,17 @@ By observing a given sample in a sandboxed environment, honeypot, infected devic
 
 ####:octicons-arrow-right-24: Samples with same hash
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Since a file hash is unique, querying for a hash in a ["malware zoo"](/tools/#malware-zoos) platform such as [VirusTotal](https://virustotal.com) can lead to other copies of the same sample. This can be useful for analysis if these other copies have different metadata than the original, such as their filename, where they were uploaded from, and relationships with other artifacts (for example, one copy of the sample might have been stored in a compressed archive along with other, different samples, or it might have been available for download at one point from a phishing website).
 
 ####:octicons-arrow-right-24: Samples with code similarity to it
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Threat actors may develop their tools over long periods of time, going through multiple iterations of the same tool. Additionally, they might reuse certain self-developed software components across more than one tool, or use the same development environment when working on different tools. In all of these cases, code similarity analysis can reveal such commonalities between different samples, if they exist.
+
+Analysts can upload a given sample to a code similarity platform, and check if any other previously uploaded samples are similar to it.
 
 ####:octicons-arrow-right-24: Samples with overlapping behavior
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pretium libero libero, at rutrum libero finibus id. In sit amet maximus dui, sed rhoncus lectus. Donec a neque facilisis lacus vestibulum convallis eu et nibh. Vivamus non viverra sapien. Cras scelerisque sem eget sem luctus pulvinar.
+Threat actors might develop several variations of the same tool, or implement overlapping functionality in different tools, depending on their operational requirements. By dynamically scanning a given sample in a sandbox, observing it on a honeypot, or monitoring it through security product telemetry, analysts can characterize the sample's behavior and map it to certain sets of TTPs. If these are unique enough, analysts can leverage this to surface additional samples exhibiting the same combination of behavioral traits, such as by querying for them in ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com).
 
 ####:octicons-arrow-right-24: Samples with overlapping observables
 

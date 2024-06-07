@@ -1,4 +1,8 @@
-# User Agent
+---
+icon: material/sunglasses
+---
+
+# :material-sunglasses: User Agent
 
 ## Overview
 
@@ -40,9 +44,10 @@
 		
 		%% define edges
 		IP_ADDRESS -. hosts .-> CLIENT
-		CLIENT -- uses --> USER_AGENT
+		CLIENT -- identifies as --> USER_AGENT
 		USER_AGENT <-- similar ---> USER_AGENT_
-		SAMPLE -- uses --> USER_AGENT
+		SAMPLE -- identifies as --> USER_AGENT
+		SAMPLE -- references --> USER_AGENT
 		
 		%% define links
 		click IP_ADDRESS "#ip-addresses"

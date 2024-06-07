@@ -4,5 +4,5 @@ hide:
 icon: material/newspaper
 ---
 
-#:material-newspaper:Updates
+#:material-newspaper: Updates
 

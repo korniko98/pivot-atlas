@@ -63,10 +63,8 @@ th, td {
   background-color: rgba(164, 123, 234, 0.1);
 }
 
-
 .animated-word {
   animation: fadeInOut 2s infinite;
-/* animation-delay: 1; */
 }
 
 @keyframes fadeInOut {
@@ -82,7 +80,7 @@ th, td {
         opacity: 1;
     }
 
-    to {
+    100% {
         opacity: 0;
     }
 }

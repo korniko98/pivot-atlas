@@ -1,4 +1,8 @@
-# IP Address
+---
+icon: material/laptop
+---
+
+# :material-laptop: IP Address
 
 ## Overview
 
@@ -56,7 +60,7 @@
 		SERVER <-- content ---> SERVER_
 		SERVER <-- URL path ---> SERVER_
 		SERVER -- stores ---> SAMPLE
-		SAMPLE -- communicates --> SERVER
+		SAMPLE -- connects --> SERVER
 		SAMPLE -- references --> IP_ADDRESS
 		DOMAIN -- forward DNS --> IP_ADDRESS
 		DOMAIN <-- DNS history --> IP_ADDRESS
@@ -153,7 +157,7 @@ When actors purchase an IP address, they must supply registrant information, whi
 		TO DO
 		```
 
-####:octicons-arrow-right-24: Addresses with historically similar registration details
+####:octicons-arrow-right-24: Addresses with historically similar registrant details
 
 When actors purchase an IP address, they must supply registrant information, which is made publicly available through the WHOIS protocol. This requirement is different than for registering a domain, a process which allows for registrant privacy. While stealthy actors will often provide fake registration details, these can sometimes still be useful for pivoting if they are rare enough. Note that if a threat actor leases a (static or dynamic) IP address from a cloud provider, a WHOIS query will only return information about the provider.
 
@@ -175,7 +179,7 @@ If an IP address hosting a C&C server has a relatively unique set of open ports,
 
 	Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
 
-####:octicons-arrow-right-24: Clients communicating with it
+####:octicons-arrow-right-24: Clients connecting to it
 
 If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
 
