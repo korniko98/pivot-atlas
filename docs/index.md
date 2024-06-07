@@ -8,7 +8,7 @@ icon: material/information
 
 ## Introduction
 
-Welcome to **Pivot Atlas**, a pivoting handbook for cyber threat intelligence analysts, containing simple reference material for how to make the best use of various threat activity observables, such as [IP addresses](/artifacts/ip-address) and [file hashes](/fingerprints#file-hash).
+Welcome to **Pivot Atlas**, an educational pivoting handbook for cyber threat intelligence analysts, containing simple reference material for how to make the best use of various threat activity observables, such as [IP addresses](/artifacts/ip-address) and [file hashes](/fingerprints#file-hash).
 
 This website aims to map the **pivotability** of every type of artifact that analysts might encounter in the course of their investigations:
 
@@ -26,7 +26,7 @@ This website aims to map the **pivotability** of every type of artifact that ana
 	</div>
 	
 	<span style="font-size:1.1em;">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— You, probably.
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— You, possibly.
 	</span>
 
 For any given observable, analysts can use this handbook to figure out what steps they should take to reveal potentially related malicious infrastructure or tooling. Every listed pivoting method can be performed using one or more [tools](/tools) (depending on preference or which platforms you have access to), and query examples are provided for the most commonly used tools.
@@ -69,8 +69,6 @@ Diagrams are also included for easy and clickable navigation between artifact ty
 	```
 </div>
 
-This project is a work in progress, but in time it might serve as a comprehensive guide to pivoting. If you would like to learn more about pivoting and cyber threat intelligence, please check out the references listed at the end of this page. If you would like to contribute content to this project, please feel free to reach out on [Twitter](https://twitter.com/AmitaiCo) or submit a pull request [here](https://github.com/korniko98/pivot-atlas).
-
 ## Frequently asked questions (FAQ)
 
 ### How should I use Pivot Atlas?
@@ -94,3 +92,7 @@ If you'd like to learn more about how threat actors operate, the following books
 
 * [Network Attacks and Exploitation: A Framework](https://www.wiley.com/en-us/Network+Attacks+and+Exploitation%3A+A+Framework-p-9781118987124) by Matthew Monte
 * [Attribution of Advanced Persistent Threats](https://link.springer.com/book/10.1007/978-3-662-61313-9) by [Timo Steffens](https://twitter.com/Timo_Steffens)
+
+---
+
+This project is a work in progress, but in time it might serve as a comprehensive guide to pivoting. If you would like to learn more about pivoting and cyber threat intelligence, please check out the references listed at the end of this page. If you would like to contribute content to this project, please feel free to reach out on [Twitter](https://twitter.com/AmitaiCo) or submit an issue or pull request [here](https://github.com/korniko98/pivot-atlas).

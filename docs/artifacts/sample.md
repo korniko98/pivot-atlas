@@ -50,9 +50,9 @@ icon: material/bug
 		SERVER -. hosted by .-> IP_ADDRESS
 		SERVER -- stores --> SAMPLE
 		SAMPLE -- communicates ---> SERVER
-		SAMPLE -- hash ---> SAMPLE_
-		SAMPLE -- code similarity --> SAMPLE_
-		SAMPLE -- behavior --> SAMPLE_
+		SAMPLE <-- hash ---> SAMPLE_
+		SAMPLE <-- code similarity --> SAMPLE_
+		SAMPLE <-- behavior --> SAMPLE_
 
 		SAMPLE -- references ---> DOMAIN
 		SAMPLE -- queries ---> DOMAIN

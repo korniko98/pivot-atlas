@@ -43,7 +43,7 @@ plugins:
     - git-committers:
         repository: korniko98/pivot-atlas
         branch: main
-    #- social
+    - social
 markdown_extensions:
   - pymdownx.details
   - admonition
