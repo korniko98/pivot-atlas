@@ -49,8 +49,8 @@ Diagrams are also included for easy and clickable navigation between artifact ty
 		SAMPLE(Sample)
 		
 		%% define edges
-		DOMAIN -- fDNS --> IP_ADDRESS
-		IP_ADDRESS -- rDNS ---> DOMAIN
+		DOMAIN -- forward DNS --> IP_ADDRESS
+		IP_ADDRESS -- reverse DNS ---> DOMAIN
 		DOMAIN <-- DNS history --> IP_ADDRESS
 		TLS_CERT -- CN ---> DOMAIN
 		DOMAIN <-- similar name ---> DOMAIN_
@@ -61,6 +61,7 @@ Diagrams are also included for easy and clickable navigation between artifact ty
 		DOMAIN <-- reg. time --> DOMAIN_
 		DOMAIN <-- URL path --> DOMAIN_
 		SAMPLE -- references ---> DOMAIN
+		SAMPLE -- queries --> DOMAIN
 		
 		%% define links
 		click TLS_CERT "/artifacts/tls-certificate"
