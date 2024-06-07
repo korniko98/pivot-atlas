@@ -1,5 +1,6 @@
 ---
 icon: material/web
+title: Domain
 ---
 
 # :material-web: Domain

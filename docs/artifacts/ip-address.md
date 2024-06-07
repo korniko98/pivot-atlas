@@ -1,5 +1,6 @@
 ---
 icon: material/laptop
+title: IP Address
 ---
 
 # :material-laptop: IP Address

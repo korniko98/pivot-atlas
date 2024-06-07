@@ -1,5 +1,6 @@
 ---
 icon: material/sunglasses
+title: User Agent
 ---
 
 # :material-sunglasses: User Agent
