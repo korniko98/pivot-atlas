@@ -3,7 +3,7 @@ site_url: https://gopivot.ing
 repo_url: https://github.com/korniko98/pivot-atlas
 repo_name: korniko98/pivot-atlas
 edit_uri: edit/main/docs/
-site_description: An educational pivoting handbook for cyber threat intelligence analysts
+site_description: A pivoting handbook for cyber threat intel analysts
 theme:
   name: material
   icon:

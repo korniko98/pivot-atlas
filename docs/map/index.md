@@ -3,6 +3,7 @@ hide:
   - navigation
   - toc
 icon: material/map
+title: Map
 ---
 
 #:material-map: Map

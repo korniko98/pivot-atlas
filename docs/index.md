@@ -2,6 +2,7 @@
 hide:
   - navigation
 icon: material/information
+title: About
 ---
 
 #:material-information:About

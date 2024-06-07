@@ -1,5 +1,6 @@
 ---
 icon: material/file-certificate
+title: TLS Certificate
 ---
 
 # :material-file-certificate: TLS Certificate

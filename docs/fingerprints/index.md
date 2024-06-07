@@ -2,6 +2,7 @@
 hide:
   - navigation
 icon: material/fingerprint
+title: Fingerprints
 ---
 
 #:material-fingerprint: Fingerprints

@@ -1,5 +1,6 @@
 ---
 icon: material/diamond-stone
+title: Artifacts
 ---
 
 #:material-diamond-stone: Artifacts

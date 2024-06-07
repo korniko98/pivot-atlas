@@ -2,6 +2,7 @@
 hide:
   - navigation
 icon: material/tools
+title: Tools
 ---
 
 #:material-tools: Tools

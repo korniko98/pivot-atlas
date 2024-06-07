@@ -1,5 +1,6 @@
 ---
 icon: material/bug
+title: Sample
 ---
 
 # :material-bug: Sample

@@ -2,6 +2,7 @@
 hide:
   - navigation
 icon: material/lightbulb
+title: Tips
 ---
 
 #:material-lightbulb: Tips
