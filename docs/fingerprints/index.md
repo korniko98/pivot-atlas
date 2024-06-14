@@ -27,15 +27,15 @@ Much like file hashes, threat intel practitioners use certificate hashes as one-
 
 ## JA4+ Fingerprints
 
-[JA4+](https://medium.com/foxio/ja4-network-fingerprinting-9376fe9ca637) is a set of methods for fingerprinting various types of clients and [servers](/artifacts/server) based on specific aspects of the network traffic they generate. JA4+ builds upon its previous iterations, [JA3 and JA3S](https://engineering.salesforce.com/tls-fingerprinting-with-ja3-and-ja3s-247362855967/) (originally named after the first letters of its inventors' names).
+[JA4+](https://medium.com/foxio/ja4-network-fingerprinting-9376fe9ca637) is a set of methods for fingerprinting various types of clients and servers hosted on [IP addresses](/artifacts/ip-address) based on specific aspects of the network traffic they generate. JA4+ builds upon its previous iterations, [JA3 and JA3S](https://engineering.salesforce.com/tls-fingerprinting-with-ja3-and-ja3s-247362855967/) (originally named after the first letters of its inventors' names).
 
 ## JARM Fingerprint
 
-[JARM](https://engineering.salesforce.com/easily-identify-malicious-servers-on-the-internet-with-jarm-e095edac525a/) is an active TLS [server](/artifacts/server) fingerprinting tool (also named after the first letters of its inventors' names). JARM is "active" in the sense that it involves sending multiple TLS Client Hello packets to a target server and recording certain attributes of the resulting TLS Server Hello responses, which are then hashed.
+[JARM](https://engineering.salesforce.com/easily-identify-malicious-servers-on-the-internet-with-jarm-e095edac525a/) is an active TLS server fingerprinting tool (also named after the first letters of its inventors' names). JARM is "active" in the sense that it involves sending multiple TLS Client Hello packets to a target server and recording certain attributes of the resulting TLS Server Hello responses, which are then hashed.
 
 ## HHHash Fingerprint
 
-[HTTP Headers Hashing](https://www.foo.be/2023/07/HTTP-Headers-Hashing_HHHash) is a technique used to create a fingerprint of an HTTP [server](/artifacts/server) based on the headers it returns.
+[HTTP Headers Hashing](https://www.foo.be/2023/07/HTTP-Headers-Hashing_HHHash) is a technique used to create a fingerprint of an HTTP server based on the headers it returns.
 
 ## IP Address Feature Vector
 

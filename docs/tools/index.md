@@ -15,7 +15,7 @@ This aspect of analysis is made evident in the comparison table below, which dem
 
 {{ read_csv('tools.csv') }}
 
-## Certificate metadata
+## Certificate data
 
 ### Registered certificates
 

@@ -81,7 +81,7 @@ title: IP Address
 	IP addresses can be either static or dynamic, with the first type remaining under the control of the same user for prolonged periods of time, and the second type often changing hands. Therefore, dynamic IP addresses are much less useful for pivoting than their static counterparts, since any pivots could lead to entirely unrelated activity, depending on the timeframe of our query.
 
 !!! warning "Clients vs. servers"
-	IP addresses can be assigned by threat actors to either clients or [servers](/artifacts/server), which affects how they appear in logs and therefore how one should pivot on them. For example, clients can be observed scanning victims' networks or connecting to compromised target machines, whereas servers are applications that recieve connections from compromised devices or attacker-controlled clients.
+	IP addresses can be assigned by threat actors to either clients or servers, which affects how they appear in logs and therefore how one should pivot on them. For example, clients can be observed scanning victims' networks or connecting to compromised target machines, whereas servers are applications that recieve connections from compromised devices or attacker-controlled clients.
 	
 	In some cases, the same IP address can operate as both as server and a client. For example, threat actors may use the same IP address for both crawling and C&C. Similarly, threat actors may establish networks of ORBs composed of compromised devices - these would function as proxies, connecting both to and from other devices.
 
@@ -211,7 +211,7 @@ Given the IP address of a device infected with malware, or a machine running an 
 ### Servers
 ####:octicons-arrow-right-24: Servers hosted by it
 
-An IP address can host one or more [servers](/artifacts/server) on various ports. Scanning different ports can reveal new information about how a threat actor is using a given IP address.
+An IP address can host one or more servers on various ports. Scanning different ports can reveal new information about how a threat actor is using a given IP address.
 
 [Host scanning services](/tools/#host-scanners) such as [Shodan](https://www.shodan.io) and [Censys](https://search.censys.io) regularly scan the entire IPv4 space and report their findings in queryable databases.
 

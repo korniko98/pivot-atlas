@@ -79,7 +79,7 @@ Diagrams are also included for easy and clickable navigation between artifact ty
 * To learn about various tools of the trade, head on over to the **[Tools](/tools)** section.
 
 ### What's the best way to contribute to this project?
-You are welcome to submit information about publicly known examples of investigations demonstrating novel or creative pivots (or anything else you've noticed may be missing from this website). You can also review the "Future plans" section of [this blogpost](/updates/2024/05/13/hello-world/) for ideas on areas that require expansion or improvement. To contribute, you can either submit a pull request yourself or simply add an issue to the [GitHub project](https://github.com/korniko98/pivot-atlas/issues/new) (pull requests are preferred but issues are welcome).
+You are welcome to submit information about publicly known examples of investigations demonstrating novel or creative pivots (or anything else you've noticed may be missing from this website). You can also review the "Future plans" section of [this blogpost](/updates/2024/06/07/hello-world/) for ideas on areas that require expansion or improvement. To contribute, you can either submit a pull request yourself or simply add an issue to the [GitHub project](https://github.com/korniko98/pivot-atlas/issues/new) (pull requests are preferred but issues are welcome).
 
 ### Where can I learn more about pivoting?
 If you'd like to learn more about pivoting in cyber threat intelligence, be sure to check out the following resources:
@@ -92,8 +92,9 @@ If you'd like to learn more about pivoting in cyber threat intelligence, be sure
 ### Where can I learn more about offensive cyber operations?
 If you'd like to learn more about how threat actors operate, the following books are an excellent place to start:
 
-* [Network Attacks and Exploitation: A Framework](https://www.wiley.com/en-us/Network+Attacks+and+Exploitation%3A+A+Framework-p-9781118987124) by Matthew Monte
+* [Network Attacks and Exploitation: A Framework](https://www.wiley.com/en-us/Network+Attacks+and+Exploitation%3A+A+Framework-p-9781118987124) by [Matthew Monte](https://x.com/networkattack)
 * [Attribution of Advanced Persistent Threats](https://link.springer.com/book/10.1007/978-3-662-61313-9) by [Timo Steffens](https://twitter.com/Timo_Steffens)
+* [Visual Threat Intelligence](https://store.securitybreak.io/threatintel) by [Thomas Roccia](https://twitter.com/fr0gger_)
 
 ---
 

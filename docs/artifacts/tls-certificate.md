@@ -159,7 +159,7 @@ Threat actors may register multiple certificates using the same certificate auth
 
 ####:octicons-arrow-right-24: Certificates registered in the same timeframe
 
-Threat actors may register many TLS certificates throughout their period of activity, or for the purpose of a particular operation or campaign. In order to maintain OPSEC, they may register every certificate at a different time and at irregular intervals. However, less savvy threat actors could very well register many of their certificates around the same time, a mistake which analysts can leverage along with other parameters in order to identify additional potentially related certificates.
+Threat actors may register many TLS certificates throughout their period of activity, or for the purpose of a particular operation or campaign. In order to maintain OPSEC, threat actors may register every certificate at a different time and at irregular intervals. However, less savvy threat actors could very well register many of their certificates around the same time, a mistake which analysts can leverage along with other parameters in order to identify additional potentially related certificates.
 
 &nbsp;
 
