@@ -105,6 +105,31 @@ A [domain name registrar](https://www.cloudflare.com/learning/dns/glossary/what-
 
 Domains registered by the same threat actor might have overlapping registration details, which can be retrieved through a reverse WHOIS query or by querying [WHOIS databases](/tools/#whois-data). In some cases the details might be exactly the same, while in others there might be commonalities in certain registration fields that match the same regular expressions. In some cases these fields might contain genuine information that could prove useful for other investigative purposes (including attribution), such as an email address or physical location associated with the threat actor. However, these details are often anonymized by privacy protection, particularly if the threat actor has strict operational security.
 
+<div class="grid cards" markdown>
+-   :octicons-package-16:{ .lg .middle } __Features__
+	
+	<span style="font-size:0.9em;">
+	The registrant details of [`gopivoting.org`](https://who.is/whois/gopivot.ing) are protected and therefore not very pivotable:
+	</span>
+    ```
+	Registrant Contact Information:
+		Name:				REDACTED FOR PRIVACY
+		Organization:		Domains By Proxy, LLC
+		Address:			REDACTED FOR PRIVACY
+		Address:			REDACTED FOR PRIVACY
+		City:				REDACTED FOR PRIVACY
+		State / Province:	Arizona
+		Postal Code:		REDACTED FOR PRIVACY
+		Country:			US
+		Phone:				REDACTED FOR PRIVACY
+		Email:				Please query the WHOIS server
+							of the owning registrar identified
+							in this output for information on
+							how to contact the Registrant, Admin,
+							or Tech contact of the queried domain name.
+	```
+</div>
+
 ####:octicons-arrow-right-24: Domains registered in same timeframe
 
 Threat actors perform registration in bulk of domains meant for malicious purposes, or at the very least they may register domains around the same time if they're to be used for the same campaign. In such cases, these timeframes can be leveraged by analysts as an effective filter to narrow down the number of results for otherwise noisy registration detail queries within [WHOIS databases](/tools/#whois-data). Furthermore, if an analyst is lucky, the threat actor may have registered other artifacts during the same timeframe as well, such as [IP addresses](/artifacts/ip-address) and [TLS certificates](/artifacts/tls-certificates).

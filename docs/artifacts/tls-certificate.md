@@ -30,10 +30,10 @@ title: TLS Certificate
 </div>
 
 <div class="grid cards" markdown>
--   :octicons-package-16:{ .lg .middle } __Components__
+-   :octicons-package-16:{ .lg .middle } __Features__
 	
 	<span style="font-size:0.9em;">
-	The certificate used by this website as of 2024-06-04 contains some of the following pivotable data:
+	The certificate used by `gopivoting.org` as of 2024-06-04 contains the following pivotable data:
 	</span>
     ```
 	Serial Number:
