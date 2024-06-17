@@ -15,7 +15,7 @@ This aspect of analysis is made evident in the comparison table below, which dem
 
 {{ read_csv('tools.csv') }}
 
-## Certificate metadata
+## Certificate data
 
 ### Registered certificates
 
@@ -60,6 +60,8 @@ Platforms such as [Silent Push](https://silentpush.com/) retain DNS resolution d
 Companies such as [Team Cymru](https://www.team-cymru.com/cyber-threat-hunting-tools) collect and aggregate netflow data from globally deployed sensors, allowing analysts to query their platform for any evidence of historical connections between IP addresses.
 
 Additionally, platforms such as [SimilarWeb](https://www.similarweb.com/) aggregate information about client connections to websites, allowing analysts to query for traffic statistics relating to any given site's current or historical popularity in certain regions, as well as common redirections between websites.
+
+Another source of traffic information about websites in particular is [urlscan.io](https://urlscan.io/), which allows analysts to check what servers a given website connects to in order to download data (such as JavaScript code), and what other websites it may be forwarding users to (this can be a useful pivot for surfacing relationships between phishing landing pages, hijacked websites and infection servers).
 
 ## Host scanners
 

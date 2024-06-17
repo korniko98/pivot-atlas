@@ -72,10 +72,16 @@ title: User Agent
 
 Various components of malicious activity involve clients identifying as certain user agents. This includes devices infected with malware, machines running attacker-side toolkits, as well as machines running crawlers and scanners.
 
-&nbsp;
+Given a user agent, analysts can review any available access logs or honeypot logs for matching connections, thereby surfacing the clients' associated IP addresses.
 
-&nbsp;
+For crawlers and scanners in particular, analysts can query [honeypot](http://127.0.0.1:8000/tools/#honeypots) platforms such as [GreyNoise](https://viz.greynoise.io/) to identify IP addresses identifying as a given user agent.
 
+??? example "Try it out"
+
+	=== "GreyNoise (URL)"
+		```
+		https://viz.greynoise.io/query/raw_data.web.useragents:"{USER_AGENT}"
+		```
 ---
 
 ### Samples

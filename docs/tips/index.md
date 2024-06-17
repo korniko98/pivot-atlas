@@ -7,7 +7,7 @@ title: Tips
 
 #:material-lightbulb: Tips
 
-This section lists various tips for beginning pivoters. If you'd like to learn more about pivoting in particular and threat intel research in general, I highly recommend checking out the references mentioned in the [FAQ](/#where-can-i-learn-more-about-pivoting).
+This section lists various tips for beginning pivoters. If you'd like to learn more about pivoting in particular and threat intel research in general, be sure to check out the references mentioned in the [FAQ](/#where-can-i-learn-more-about-pivoting).
 
 ## Focus on rarity
 
@@ -16,6 +16,14 @@ As a rule, queries that return more results are less helpful than those that ret
 For this reason, it makes sense to pivot on **rare** (low-prevalence) properties of artifacts, since these are most likely to return precise results, and thereby more easily surface new information.
 
 For example, if a suspicious server has many properties which are shared by thousands of other servers (such as listening on port 80), but its IP address is located in a small ASN with only a few dozen other addresses, then you should probably prioritize the ASN for further investigation before pursuing other avenues of exploration.
+
+One way of identifying rare properties is [frequency analysis](https://en.wikipedia.org/wiki/Frequency_analysis), which involves calculating the prevalence of every property of a given artifact in order to identify outliers of interest. Some platforms perform these calculations for you, such as the "Guided Pivots" feature of [DomainTools](https://domaintools.com/). This process can be especially helpful if an investigation has so far only surfaced a small number of artifacts, by highlighting which aspects of those artifacts are the most pivotable. However, frequency analysis can also be useful when a pivot surfaces too many artifacts, as it can be used to prioritize artifacts with the rarest properties, which are usually most likely to be interesting and therefore worth pursuing further.
+
+## Use both inclusion and exclusion
+
+In order to build high-precision queries, it can often be helpful to use a mix of inclusions (`X AND Y`) and exclusions (`X AND NOT Y`). Exclusions can compensate for situations where the things we're searching for have mostly non-unique features. Let's say we encounter a malicious Python script and set out looking for other similar scripts. Merely being written in Python is hardly unique, and while there are many possible inclusions we could use, such as specific lines of code which we might expect to appear in other variants, we can also consider incorporating exclusions in our query in order to further improve precision. For example, we could try ruling out the usage of certain common imports that are unlikely to be used in malware; any sort of licensing information; or comments.
+
+To learn more about querying strategies, check out [this blogpost](https://amitaico.substack.com/p/querying-in-research).
 
 ## Combine multiple pivots
 

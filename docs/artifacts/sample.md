@@ -103,7 +103,7 @@ By executing a malware sample in a sandboxed environment, by observing malware t
 
 ####:octicons-arrow-right-24: Domains it references or queries
 
-Threat actors often configure their malware to communicate with one or more C&C [servers](/artifacts/server), and this usually involves listing a domain within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware).
+Threat actors often configure their malware to communicate with one or more C&C servers, and this usually involves listing a [domain](/artifacts/domain) within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware).
 
 When executed (on an infected device, honeypot, or in a sandboxed environment), the malware will send a DNS request to resolve the domain, and then communicate with the server hosted on the resolving IP address. By running a static analysis of the sample (even through something as simple as using [`strings`](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)), one can reveal any such hardcoded domains it may contain.
 

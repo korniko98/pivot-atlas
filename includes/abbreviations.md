@@ -23,3 +23,9 @@
 *[ORB]: Operational Relay Box
 *[ORBs]: Operational Relay Box
 *[OPSEC]: Operational Security
+*[IOC]: Indicator of Compromise
+*[IOCs]: Indicator of Compromise
+*[EDR]: Endpoint Detection & Response
+*[EDRs]: Endpoint Detection & Response
+*[TTP]: Tactics, Techniques and Procedures
+*[TTPs]: Tactics, Techniques and Procedures

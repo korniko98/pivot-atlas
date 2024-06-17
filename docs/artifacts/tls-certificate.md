@@ -30,10 +30,10 @@ title: TLS Certificate
 </div>
 
 <div class="grid cards" markdown>
--   :octicons-package-16:{ .lg .middle } __Components__
+-   :octicons-package-16:{ .lg .middle } __Features__
 	
 	<span style="font-size:0.9em;">
-	The certificate used by this website as of 2024-06-04 contains some of the following pivotable data:
+	The certificate used by `gopivoting.org` as of 2024-06-04 contains the following pivotable data:
 	</span>
     ```
 	Serial Number:
@@ -92,23 +92,17 @@ title: TLS Certificate
 
 Threat actors use [TLS certificates](/artifacts/tls-certificate) to enable encrypted TLS communication between attacker-controlled servers, as well as between infected clients and attacker-controlled servers (such as for encrypting communication between malware and its C&C server). If a threat actor deploys multiple servers as part of the same campaign, they might use the same certificate across a subset of their fleet, or use several certificates with partially overlapping details.
 
+Given a certificate, analysts can query [host scanning services](/tools/#host-scanners) such as [Shodan](https://www.shodan.io) and [Censys](https://search.censys.io) for the certificate itself or for any of its individual details (such as serial number or common name) to identify potentially related servers.
+
 ??? example "Try it out"
 
-	=== "Shodan (URL)"
+	=== "Shodan (URL) - Serial number"
 		```
-		TO DO
+		https://www.shodan.io/search?query=ssl.cert.serial%3A{SERIAL_NUMBER}
 		```
-	=== "Shodan (API)"
-		``` console
-		TO DO
+	=== "Shodan (URL) - Common name"
 		```
-	=== "Censys (URL)"
-		```
-		TO DO
-		```
-	=== "Censys (API)"
-		``` console
-		TO DO
+		https://www.shodan.io/search?query=ssl.cert.subject.cn%3A{COMMON_NAME}
 		```
 ---
 
@@ -134,7 +128,7 @@ TLS certificates contain many fields denoting registrant information, registar i
 
 Threat actors may register more than one certificate with the same common name (CN), and use each certificate on a different server, even if the domain name resolving to a server does not match the common name of the certificate.
 
-&nbsp;
+Given a certificate, analysts can query [certificate databases](/tools/#certificate-data) for its CN to identify potentially related certificates.
 
 &nbsp;
 
@@ -149,9 +143,20 @@ Threat actors may register more than one certificate with the same common name (
 
 Threat actors may reuse certain subject details when registering more than one certificate. If these details are relatively unique (on their own or in combination), analysts can pivot on them to discover additional potentially related certificates.
 
+Given a certificate, analysts can query [certificate databases](/tools/#certificate-data) for any of its subject details (individually or in combination) to identify potentially related certificates.
+
 ####:octicons-arrow-right-24: Certificates registered with same CA
 
 Threat actors may register multiple certificates using the same certificate authority (CA), which is listed in the issuer organization field. If the CA itself is uncommon, or if a combination of CA and other factors is relatively unique, analysts can leverage this commonality to identify additional certificates registered by the same actor.
+
+Given a certificate, analysts can query [certificate databases](/tools/#certificate-data) for the CA (or the CA in combination with other fields) to identify potentially related certificates.
+
+??? example "Try it out"
+
+	=== "crt.sh (URL)"
+		```
+		https://crt.sh/?CAName={CA_NAME}
+		```
 
 !!! abstract inline end "Example"
 
@@ -159,7 +164,7 @@ Threat actors may register multiple certificates using the same certificate auth
 
 ####:octicons-arrow-right-24: Certificates registered in the same timeframe
 
-Threat actors may register many TLS certificates throughout their period of activity, or for the purpose of a particular operation or campaign. In order to maintain OPSEC, they may register every certificate at a different time and at irregular intervals. However, less savvy threat actors could very well register many of their certificates around the same time, a mistake which analysts can leverage along with other parameters in order to identify additional potentially related certificates.
+Threat actors may register many TLS certificates throughout their period of activity, or for the purpose of a particular operation or campaign. In order to maintain OPSEC, threat actors may register every certificate at a different time and at irregular intervals. However, less savvy threat actors could very well register many of their certificates around the same time, a mistake which analysts can leverage along with other parameters in order to identify additional potentially related certificates.
 
 &nbsp;
 

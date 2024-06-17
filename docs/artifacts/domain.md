@@ -17,7 +17,7 @@ title: Domain
 -   :octicons-bug-16:{ .lg .middle } __Usecase__
 
 	<span style="font-size:0.9em;">
-    Threat actors acquire FQDNs and configure them to resolve to servers they control. This allows them to to direct phishing victims to FQDNs which resolve to malicious landing pages, and allow malware-infected devices to send an initial DNS resolution request for FQDNs associated with C&C servers.
+    Threat actors acquire FQDNs and configure them to resolve to servers they control. This allows them to direct phishing victims to FQDNs which resolve to malicious landing pages, and allow malware-infected devices to send an initial DNS resolution request for FQDNs associated with C&C servers.
 	</span>
 </div>
 
@@ -80,40 +80,54 @@ title: Domain
 
 ####:octicons-arrow-right-24: Domains with similar names
 
-Threat actors may register multiple domains with a similar naming scheme, which can be levereged by analysts to discover additional potentially related domains. Additionally, threat actors may use names similar to their target organizations' domain names, which can be a useful indicator of malicious intent when reviewing potentially related domains.
-
-??? example "Try it out"
-
-	=== "Validin (URL)"
-		```
-		TO DO
-		```
-	=== "Validin (API)"
-		``` console
-		TO DO
-		```
+Threat actors may register multiple domains with a similar naming scheme, which can be levereged by analysts to discover additional potentially related domains by querying [DNS databases](/tools/#dns-data). Additionally, threat actors may use names similar to their target organizations' domain names, which can be a useful indicator of malicious intent when reviewing potentially related domains.
 
 ####:octicons-arrow-right-24: Domains with same TLD
 
-Threat actors may have a preference for certain top-level domains (TLD), such as `.xyz`, which is usually very cheap or even free (for this reason, some organizations block this TLD as a precautionary measure). In such cases, applying a TLD filter alongside filters for other parameters (such as registrar) can narrow domain search results to a number reasonably small enough to manually review.
+Threat actors may have a preference for certain top-level domains (TLD), such as `.xyz`, which is usually very cheap or even free (for this reason, some organizations block this TLD as a precautionary measure). In such cases, applying a TLD filter alongside filters for other parameters (such as registrar) can narrow domain search results within [DNS databases](/tools/#dns-data) to a number reasonably small enough to manually review.
 
 ####:octicons-arrow-right-24: Domains with same registrar
 
-A [domain name registrar](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/) handles registrations of domains and leases them to customers. Some threat actors may show preference for certain registrars when registering their domains for malicious use (possible reasons may include minimal anti-fruad mechanisms in place or acceptance of cryptocurrency as payment). This preference can then be leveraged by analysts for pivoting purposes.
+A [domain name registrar](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/) handles registrations of domains and leases them to customers. Some threat actors may show preference for certain registrars when registering their domains for malicious use (possible reasons may include minimal anti-fruad mechanisms in place or acceptance of cryptocurrency as payment). This preference can then be leveraged by analysts for pivoting purposes by querying [WHOIS databases](/tools/#whois-data).
 
 ####:octicons-arrow-right-24: Domains with similar registrant details
 
-Domains registered by the same threat actor might have overlapping registration details, which can be retrieved through a reverse WHOIS query. In some cases the details might be exactly the same, while in others there might be commonalities in certain registration fields that match the same regular expressions. In some cases there fields might contain genuine information that could prove useful for other investigative purposes (including attribution), such as an email address or physical location associated with the threat actor. However, these details are often anonymized by privacy protection, particularly if the threat actor has strict operational security.
+Domains registered by the same threat actor might have overlapping registration details, which can be retrieved through a reverse WHOIS query or by querying [WHOIS databases](/tools/#whois-data). In some cases the details might be exactly the same, while in others there might be commonalities in certain registration fields that match the same regular expressions. In some cases these fields might contain genuine information that could prove useful for other investigative purposes (including attribution), such as an email address or physical location associated with the threat actor. However, these details are often anonymized by privacy protection, particularly if the threat actor has strict operational security.
+
+<div class="grid cards" markdown>
+-   :octicons-package-16:{ .lg .middle } __Features__
+	
+	<span style="font-size:0.9em;">
+	The registrant details of [`gopivoting.org`](https://who.is/whois/gopivot.ing) are protected and therefore not very pivotable:
+	</span>
+    ```
+	Registrant Contact Information:
+		Name:				REDACTED FOR PRIVACY
+		Organization:		Domains By Proxy, LLC
+		Address:			REDACTED FOR PRIVACY
+		Address:			REDACTED FOR PRIVACY
+		City:				REDACTED FOR PRIVACY
+		State / Province:	Arizona
+		Postal Code:		REDACTED FOR PRIVACY
+		Country:			US
+		Phone:				REDACTED FOR PRIVACY
+		Email:				Please query the WHOIS server
+							of the owning registrar identified
+							in this output for information on
+							how to contact the Registrant, Admin,
+							or Tech contact of the queried domain name.
+	```
+</div>
 
 ####:octicons-arrow-right-24: Domains registered in same timeframe
 
-Threat actors perform registration in bulk of domains meant for malicious purposes, or at the very least they may register domains around the same time if they're to be used for the same campaign. In such cases, these timeframes can be leveraged by analysts as an effective filter to narrow down the number of results for otherwise noisy queries. Furthermore, if an analyst is lucky, the threat actor may have registered other artifacts during the same timeframe as well, such as IP addresses and TLS certificates.
+Threat actors perform registration in bulk of domains meant for malicious purposes, or at the very least they may register domains around the same time if they're to be used for the same campaign. In such cases, these timeframes can be leveraged by analysts as an effective filter to narrow down the number of results for otherwise noisy registration detail queries within [WHOIS databases](/tools/#whois-data). Furthermore, if an analyst is lucky, the threat actor may have registered other artifacts during the same timeframe as well, such as [IP addresses](/artifacts/ip-address) and [TLS certificates](/artifacts/tls-certificates).
 
 ####:octicons-arrow-right-24: Domain with same URL path
 
 Threat actors may set up various API endpoints on their servers to facilitate the required functionality for their malicious infrastructure. Each of these endpoints may be available on a different URL path (e.g., malware may connect to an `/upload/` endpoint to exfiltrate data). Similarly, threat actors may hijack legitimate servers and deploy a file containing malicious code, which may be located on a consistent URL path across multiple compromised servers.
 
-Given a domain resolving to an attacker-controlled server, analysts can query for any of its known URL paths in the databases of [URL scanning services](/tools/url-scanners) such as [URLScan](https://urlscan.io/). This can surface other domains with the same paths which might resolve to potentially related servers.
+Given a domain resolving to an attacker-controlled server, analysts can query for any of its known URL paths in the databases of [URL scanning services](/tools/#url-scanners) such as [URLScan](https://urlscan.io/). This can surface other domains with the same paths which might resolve to potentially related servers.
 
 ??? example "Try it out"
 
@@ -136,7 +150,7 @@ Given a domain resolving to an attacker-controlled server, analysts can query fo
 
 ####:octicons-arrow-right-24: Certificates listing it as common name (CN)
 
-TLS certificates contain a common name field (CN) indicating which domain or subdomains the certificate applies to. Therefore, pivoting on a domain can lead to certificates listing the domain itself or its subdomains in its common name field (CN). The resulting certificates might reveal new information listed in their other various fields, and further pivoting on the certificates' hashes might lead to other IP addresses that have previously resolved the same domain.
+TLS certificates contain a common name field (CN) indicating which domain or subdomains the certificate applies to. Therefore, pivoting on a domain by querying [certificate databases](/tools/#certificate-data) can lead to certificates listing the domain itself or its subdomains in its common name field (CN). The resulting certificates might reveal new information listed in their other various fields, and further pivoting on the certificates' hashes might lead to other IP addresses that have previously resolved the same domain.
 
 ---
 
@@ -144,9 +158,9 @@ TLS certificates contain a common name field (CN) indicating which domain or sub
 
 ####:octicons-arrow-right-24: IP address to which it resolves
 
-A domain operated by a threat actor can resolve to an IP address hosting one or more servers. Note that the same IP address might be used for multiple purposes at once (e.g., malware C2, serving phishing pages, proxying traffic, etc.), with every server fronted by a different domain or subdomain.
+A domain operated by a threat actor can resolve to an [IP address](/artifacts/ip-address) hosting one or more servers. Note that the same IP address might be used for multiple purposes at once (e.g., malware C2, serving phishing pages, proxying traffic, etc.), with every server fronted by a different domain or subdomain.
 
-While querying a domain for its resolving IP address is called forward DNS (fDNS for short), the opposite query is known as reverse DNS (or rDNS).
+While querying a domain for its resolving IP address is called forward DNS (fDNS for short), the opposite query is known as reverse DNS (or rDNS). Analysts can perform such lookups using [DNS tools](/tools/#dns) such as [DNSChecker](https://dnschecker.org/).
 
 !!! abstract inline end "Example"
 
@@ -171,9 +185,11 @@ Historic DNS resolutions can be based on either passive DNS collection (pDNS), w
 
 ####:octicons-arrow-right-24: Samples that reference or query it
 
-Threat actors often configure their malware to communicate with one or more C&C [servers](/artifacts/server), and this usually involves listing a domain within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware). When executed (on an infected device, honeypot, or in a sandboxed environment), the malware will send a DNS request to resolve the domain, and then communicate with the server hosted on the resolving IP address. By running a static analysis of the sample (even through something as simple as using [`strings`](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)), one can reveal any such hardcoded domains it may contain.
+Threat actors often configure their malware to communicate with one or more C&C servers, and this usually involves listing a domain within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware). When executed (on an infected device, honeypot, or in a sandboxed environment), the malware will send a DNS request to resolve the domain, and then communicate with the server hosted on the resolving IP address. By running a static analysis of a [sample](/artifacts/sample) (even through something as simple as using [`strings`](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)), one can reveal any such hardcoded domains it may contain.
 
-Given a domain, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
+However, some threat actors may obfuscate hardcoded domains as an anti-analysis technique, in which case one must use dynamic analysis to record the malware's DNS requests, or reverse engineer the sample to overcome the obfuscation.
+
+Regardless, given a domain, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
 
 [^1]: [#StopRansomware: Black Basta](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-131a)
 [^2]: [Identifying MatanBuchus Domains Through Hardcoded Certificate Values](https://www.embeeresearch.io/tls-certificates-for-threat-intel-dns/)
