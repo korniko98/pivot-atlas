@@ -21,7 +21,9 @@ One way of identifying rare properties is [frequency analysis](https://en.wikipe
 
 ## Use both inclusion and exclusion
 
-...
+In order to build high-precision queries, it can often be helpful to use a mix of inclusions (`X AND Y`) and exclusions (`X AND NOT Y`). Exclusions can compensate for situations where the things we're searching for have mostly non-unique features. Let's say we encounter a malicious Python script and set out looking for other similar scripts. Merely being written in Python is hardly unique, and while there are many possible inclusions we could use, such as specific lines of code which we might expect to appear in other variants, we can also consider incorporating exclusions in our query in order to further improve precision. For example, we could try ruling out the usage of certain common imports that are unlikely to be used in malware; any sort of licensing information; or comments.
+
+To learn more about querying strategies, check out [this blogpost](https://amitaico.substack.com/p/querying-in-research).
 
 ## Combine multiple pivots
 
