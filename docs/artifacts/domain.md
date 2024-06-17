@@ -82,17 +82,6 @@ title: Domain
 
 Threat actors may register multiple domains with a similar naming scheme, which can be levereged by analysts to discover additional potentially related domains by querying [DNS databases](/tools/#dns-data). Additionally, threat actors may use names similar to their target organizations' domain names, which can be a useful indicator of malicious intent when reviewing potentially related domains.
 
-??? example "Try it out"
-
-	=== "Validin (URL)"
-		```
-		TO DO
-		```
-	=== "Validin (API)"
-		``` console
-		TO DO
-		```
-
 ####:octicons-arrow-right-24: Domains with same TLD
 
 Threat actors may have a preference for certain top-level domains (TLD), such as `.xyz`, which is usually very cheap or even free (for this reason, some organizations block this TLD as a precautionary measure). In such cases, applying a TLD filter alongside filters for other parameters (such as registrar) can narrow domain search results within [DNS databases](/tools/#dns-data) to a number reasonably small enough to manually review.
@@ -169,7 +158,7 @@ TLS certificates contain a common name field (CN) indicating which domain or sub
 
 ####:octicons-arrow-right-24: IP address to which it resolves
 
-A domain operated by a threat actor can resolve to an IP address hosting one or more servers. Note that the same IP address might be used for multiple purposes at once (e.g., malware C2, serving phishing pages, proxying traffic, etc.), with every server fronted by a different domain or subdomain.
+A domain operated by a threat actor can resolve to an [IP address](/artifacts/ip-address) hosting one or more servers. Note that the same IP address might be used for multiple purposes at once (e.g., malware C2, serving phishing pages, proxying traffic, etc.), with every server fronted by a different domain or subdomain.
 
 While querying a domain for its resolving IP address is called forward DNS (fDNS for short), the opposite query is known as reverse DNS (or rDNS). Analysts can perform such lookups using [DNS tools](/tools/#dns) such as [DNSChecker](https://dnschecker.org/).
 
@@ -196,7 +185,7 @@ Historic DNS resolutions can be based on either passive DNS collection (pDNS), w
 
 ####:octicons-arrow-right-24: Samples that reference or query it
 
-Threat actors often configure their malware to communicate with one or more C&C servers, and this usually involves listing a domain within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware). When executed (on an infected device, honeypot, or in a sandboxed environment), the malware will send a DNS request to resolve the domain, and then communicate with the server hosted on the resolving IP address. By running a static analysis of the sample (even through something as simple as using [`strings`](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)), one can reveal any such hardcoded domains it may contain.
+Threat actors often configure their malware to communicate with one or more C&C servers, and this usually involves listing a domain within the malware's code (in such instances, the domain is said to be "hardcoded" in the malware). When executed (on an infected device, honeypot, or in a sandboxed environment), the malware will send a DNS request to resolve the domain, and then communicate with the server hosted on the resolving IP address. By running a static analysis of a [sample](/artifacts/sample) (even through something as simple as using [`strings`](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)), one can reveal any such hardcoded domains it may contain.
 
 However, some threat actors may obfuscate hardcoded domains as an anti-analysis technique, in which case one must use dynamic analysis to record the malware's DNS requests, or reverse engineer the sample to overcome the obfuscation.
 

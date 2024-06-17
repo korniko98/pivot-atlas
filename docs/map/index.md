@@ -8,7 +8,7 @@ title: Map
 
 #:material-map: Map
 
-The following diagram shows all pivots between various [artifact](/artifacts) types, as detailed on this website. Note that the list of pivots and artifacts isn't conclusive, and will grow and change as more content is added (the diagram may take a few seconds to load in your browser if you're visiting this website for the first time):
+The following [Mermaid](https://mermaid.js.org/) diagram shows all possible pivots between various [artifact](/artifacts) types, as detailed in other smaller diagrams found throughout this website. A short explanation of how to read this map is available [here](/artifacts/#organizing-principles) (detailing the meaning of dotted lines, dashed borders, and other design choices). Note that the list of pivots and artifacts displayed here isn't conclusive, and will grow and change as more content is added to this website. The diagram may take a few seconds to load in your browser if you're visiting for the first time.
 
 ```mermaid
 flowchart LR
@@ -48,7 +48,7 @@ flowchart LR
 	IP_ADDRESS -- reverse DNS  ---> DOMAIN
 	IP_ADDRESS -. hosts ..-> SERVER
 	IP_ADDRESS <-- ASN ---> IP_ADDRESS_
-	IP_ADDRESS <-- Netflow ---> IP_ADDRESS_
+	IP_ADDRESS <-- traffic ---> IP_ADDRESS_
 	IP_ADDRESS <-- ports ---> IP_ADDRESS_
 	IP_ADDRESS <-- WHOIS details  ---> IP_ADDRESS_
 	IP_ADDRESS <-- WHOIS history  ---> IP_ADDRESS_

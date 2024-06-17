@@ -12,6 +12,7 @@
 [IPinfo](https://ipinfo.io/), ,:material-checkbox-marked:, , , , , , , , , , 
 "[Spamhaus](https://www.spamhaus.org/) { title=""Premium only"" }", ,":material-checkbox-multiple-marked:{ title=""Also provides DNS history"" }", , , , , , , , , , 
 "[ZETAlytics](https://zetalytics.com/) { title=""Premium only"" }", ,":material-checkbox-multiple-marked:{ title=""Also provides DNS history"" }", , , , , , , , , , 
+"[Circle.lu](https://www.circl.lu/services/)  { title=""Limited access"" }", ,":material-checkbox-multiple-marked:{ title=""Also provides DNS history"" }", ,:material-checkbox-marked:, , , , , , , , 
 [Shodan](https://shodan.io/), , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , , 
 [Censys](https://search.censys.io/), , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , , 
 [BinaryEdge](https://app.binaryedge.io/), , ,:material-checkbox-marked:,:material-checkbox-marked:, , , , , , , , 

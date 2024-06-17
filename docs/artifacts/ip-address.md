@@ -49,7 +49,7 @@ title: IP Address
 		%% define edges
 		SERVER -- identifies as ---> USER_AGENT
 		IP_ADDRESS <-- ASN --> IP_ADDRESS_
-		IP_ADDRESS <-- Netflow --> IP_ADDRESS_
+		IP_ADDRESS <-- traffic --> IP_ADDRESS_
 		IP_ADDRESS <-- WHOIS details ---> IP_ADDRESS_
 		IP_ADDRESS <-- WHOIS history ---> IP_ADDRESS_
 		IP_ADDRESS <-- ports --> IP_ADDRESS_
@@ -98,9 +98,16 @@ While querying a domain for its resolving IP address is called forward DNS (fDNS
 
 ??? example "Try it out"
 
-	=== "DNSChecker"
+	=== "DNSChecker (URL) - rDNS"
 		```
 		https://dnschecker.org/reverse-dns.php?query={IP_ADDRESS}
+		```
+	=== "Driftnet (API) - rDNS"
+		``` console
+		curl -s -H 'Authorization: Bearer {API_TOKEN}' \
+		'https://api.driftnet.io/v1/domain/rdns?ip={IP_ADDRESS}' \
+		| jq . \
+		| less -S
 		```
 
 ####:octicons-arrow-right-24: Domains that previously resolved to it
@@ -124,43 +131,38 @@ Historic DNS resolutions can be based on either passive DNS collection (pDNS), w
 
 Some Autonomous System Numbers (ASN) are known to be operated by malicious actors[^2], and in some cases an address's ASN may contain additional addresses in use by the same actor.
 
-??? example "Try it out"
-
-	=== "WHOIS (API)"
-		``` console
-		TO DO
-		```
-	=== "Dig (API)"
-		``` console
-		TO DO
-		```
-	=== "Driftnet (URL)"
-		```
-		TO DO
-		```
+Given an ASN, analysts can use [DNS tools](http://127.0.0.1:8000/tools/#dns-data) such as [MXToolBox](https://mxtoolbox.com/SuperTool.aspx) to identify the IP ranges associated with it.
 
 ####:octicons-arrow-right-24: Addresses with similar registration details
 
-When actors purchase an IP address, they must supply registrant information, which is made publicly available through the WHOIS protocol. This requirement is different than for registering a domain, a process which allows for registrant privacy. While stealthy actors will often provide fake registration details, these can sometimes still be useful for pivoting if they are rare enough. Note that if a threat actor leases a (static or dynamic) IP address from a cloud provider, a WHOIS query will only return information about the provider.
+When actors purchase an IP address, they must supply registrant information, which is made publicly available through the WHOIS protocol. Unlike domain registration, leasing an IP address does not allow for registrant privacy; the registrant must supply their personal or business details. While stealthy actors will often provide fake registration details, these can sometimes still be useful for pivoting if they are rare enough and the actor uses the same details more than once. Note that if a threat actor leases a (static or dynamic) IP address from a cloud provider, a WHOIS query will only return information about the provider.
 
-??? example "Try it out"
-
-	=== "WHOIS (API)"
-		``` console
-		TO DO
-		```
-	=== "Dig (API)"
-		``` console
-		TO DO
-		```
-	=== "Driftnet (URL)"
-		```
-		TO DO
-		```
+<div class="grid cards" markdown>
+-   :octicons-package-16:{ .lg .middle } __Features__
+	
+	<span style="font-size:0.9em;">
+	Some of the registrant details of [`140.82.112.3`](https://who.is/whois-ip/ip-address/140.82.112.3), which resolves `github.com` as of 17/06/24:
+	</span>
+    ```
+	OrgName:		GitHub, Inc.
+	OrgId:			GITHU
+	Address:		88 Colin P Kelly Jr Street
+	City:			San Francisco
+	StateProv:		CA
+	PostalCode:		94107
+	Country:		US
+	RegDate:		2012-10-22
+	Updated:		2021-05-20
+	OrgNOCHandle:	GITHU-ARIN
+	OrgNOCPhone:	+1-415-735-4488
+	OrgNOCEmail:	hostmaster@github.com
+	OrgNOCRef:		https://rdap.arin.net/registry/entity/GITHU-ARIN
+	```
+</div>
 
 ####:octicons-arrow-right-24: Addresses with historically similar registrant details
 
-When actors purchase an IP address, they must supply registrant information, which is made publicly available through the WHOIS protocol. This requirement is different than for registering a domain, a process which allows for registrant privacy. While stealthy actors will often provide fake registration details, these can sometimes still be useful for pivoting if they are rare enough. Note that if a threat actor leases a (static or dynamic) IP address from a cloud provider, a WHOIS query will only return information about the provider.
+As mentioned above, threat actors may lease different IP addresses at different times but reuse certain registration details (which might be real or fake). By reviewing [WHOIS history](/tools/#whois-history) platforms, analysts can reveal past similarities which may no longer exist in the current record.
 
 !!! abstract inline end "Example"
 
@@ -168,7 +170,7 @@ When actors purchase an IP address, they must supply registrant information, whi
 
 ####:octicons-arrow-right-24: Addresses with same open ports
 
-If an IP address hosting a C&C server has a relatively unique set of open ports, analysts can leverage this to identify other IP addresses hosting servers operated by the same threat actor or running the same malicious applications.
+If an IP address hosting a C&C server has a relatively unique set of open ports (e.g., `80`, `443`, `5432`, and `6379`), analysts can leverage this to query [host scanning services](/tools/#host-scanners) such as [Shodan](https://www.shodan.io) and [Censys](https://search.censys.io) for other IP addresses with the exact same set of open ports, some of which might be hosting servers operated by the same threat actor or running the same malicious applications.
 
 &nbsp;
 
@@ -182,7 +184,7 @@ If an IP address hosting a C&C server has a relatively unique set of open ports,
 
 ####:octicons-arrow-right-24: Clients connecting to it
 
-If you have access to [aggregated Netflow data](/tools/#flow-logs), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
+If you have access to [traffic aggregation data](/tools/#traffic-aggregation), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
 
 ####:octicons-arrow-right-24: Clients connecting from it
 
@@ -225,14 +227,6 @@ An IP address can host one or more servers on various ports. Scanning different 
 		``` console
 		$ curl -X GET "https://api.shodan.io/shodan/host/{IP_ADDRESS}?key={YOUR_API_KEY}"
 		```
-	=== "Censys (URL)"
-		```
-		https://search.censys.io/hosts/{IP_ADDRESS}
-		```
-	=== "Censys (API)"
-		``` console
-		TO DO
-		```
 
 ####:octicons-arrow-right-24: Servers with same fingerprint
 
@@ -250,19 +244,17 @@ Given an IP address, analysts can query [host scanning](/tools/#host-scanners) p
 
 ####:octicons-arrow-right-24: Servers with same favicon
 
-[Favicons](https://en.wikipedia.org/wiki/Favicon) are icons displayed in browser windows or tabs when viewing a given webpage, and they are usually associated with a specific company or software component. When threat actors reuse software between different servers, this sometimes leads to these servers also sharing the same favicon, which can be leveraged for pivoting.
+[Favicons](https://en.wikipedia.org/wiki/Favicon) are icons displayed in browser windows or tabs when viewing a given webpage, and they are usually associated with a specific company or software component. When threat actors reuse software between different servers, this sometimes leads to these servers also sharing the same favicon, which can be leveraged for pivoting by querying [host scanning services](/tools/#host-scanners) such as [Shodan](https://www.shodan.io) (see [this blogpost](https://blog.shodan.io/deep-dive-http-favicon/) from Shodan for more information).
 
 !!! abstract inline end "Example"
 
 	Sucuri tracked a website hijacking campaign in which the threat actor compromised the hosting server and then injected malicious code into JavaScript files. This code consistently began with a unique string (`/*trackmyposs*/eval`). By querying [PublicWWW](https://publicwww.com/) for the indicative string, Sucuri were able to effectively identify many such compromised websites.[^7]
 
-####:octicons-arrow-right-24: Servers with similar content or appearance
+####:octicons-arrow-right-24: Servers with similar content
 
-When threat actors set up landing pages for a phishing campaign, they may reuse certain assets across multiple sites. This can be leveraged by analysts to pivot from one landing page to others by querying [host scanning](/tools/#host-scanners) platforms such as [Censys](https://search.censys.io/) or [URL scanning](/tools/#url-scanners) platforms such as [URLScan](https://urlscan.io/).
+When threat actors set up landing pages for a phishing campaign, they may reuse certain assets across multiple sites. Similarly, threat actors might inject the same malicious JavaScript or JavaScript tags into hijacked websites. This can be leveraged by analysts to pivot from one landing page or compromised website to others through [host scanning](/tools/#host-scanners) platforms such as [Censys](https://search.censys.io/) or [URL scanning](/tools/#url-scanners) platforms such as [URLScan](https://urlscan.io/), by searching for these particular elements.
 
-In other cases, phishing websites operated by the same threat actor may only share their general visual appearance, which can be leveraged as a somewhat weaker signal as well.
-
-Additionally, when threat actors inject malicious JavaScript or JavaScript tags into hijacked websites, analysts can search for these elements to identify other compromised servers.
+In other cases, phishing websites operated by the same threat actor may only share their general visual appearance, which can occasionally be leveraged for pivoting as well, albeit as a much weaker signal, and only if content-based scanning fails to surface actual code overlap.
 
 ####:octicons-arrow-right-24: Servers with same URL path
 
@@ -276,11 +268,6 @@ Therefore, given a server with an indicative URL path, analysts can run a wide s
 		```
 		https://urlscan.io/search/#page.url%3A%22{PATH}%22
 		```
-	=== "URLScan (API)"
-		``` console
-		TO DO
-		```
-
 ---
 
 ### TLS Certificates
@@ -303,48 +290,15 @@ By statically scanning a [malware sample](/artifacts/sample) or reverse engineer
 
 Given an IP address, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
 
-??? example "Try it out"
-
-	=== "VirusTotal (URL)"
-		```
-		TO DO
-		```
-	=== "VirusTotal (API)"
-		``` console
-		TO DO
-		```
-
 ####:octicons-arrow-right-24: Samples that communicate with it at runtime
 
 By executing a malware sample in a sandboxed environment, or by observing the behavior of malware that has infected a honeypot, one can determine if the infected machine communicates with any IP addresses of C&C or data exfiltration servers.
 
 Given an IP address, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
 
-??? example "Try it out"
-
-	=== "VirusTotal (URL)"
-		```
-		TO DO
-		```
-	=== "VirusTotal (API)"
-		``` console
-		TO DO
-		```
-
 ####:octicons-arrow-right-24: Samples it stores
 
 Attacker-controlled servers hosted on an IP address may store malware for victim devices to download. Gaining access to such servers may therefore afford access to samples of aforementioned malware. Similarly, samples may be retrieved from infected clients by performing forensics, or through security product telemetry.
-
-??? example "Try it out"
-
-	=== "VirusTotal (URL)"
-		```
-		TO DO
-		```
-	=== "VirusTotal (API)"
-		``` console
-		TO DO
-		```
 
 [^1]: [Tales from the cloud trenches: Using malicious AWS activity to spot phishing campaigns](https://securitylabs.datadoghq.com/articles/tales-from-the-cloud-trenches-aws-activity-to-phishing/)
 [^2]: [Risky Business: Determining Malicious Probabilities Through ASNs](https://www.akamai.com/blog/security/determining-malicious-probabilities-through-asns/)

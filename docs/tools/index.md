@@ -61,6 +61,8 @@ Companies such as [Team Cymru](https://www.team-cymru.com/cyber-threat-hunting-t
 
 Additionally, platforms such as [SimilarWeb](https://www.similarweb.com/) aggregate information about client connections to websites, allowing analysts to query for traffic statistics relating to any given site's current or historical popularity in certain regions, as well as common redirections between websites.
 
+Another source of traffic information about websites in particular is [urlscan.io](https://urlscan.io/), which allows analysts to check what servers a given website connects to in order to download data (such as JavaScript code), and what other websites it may be forwarding users to (this can be a useful pivot for surfacing relationships between phishing landing pages, hijacked websites and infection servers).
+
 ## Host scanners
 
 Platforms such as [Censys](https://search.censys.io/), [Shodan](https://www.shodan.io/), and [Validin](https://www.validin.com/) regularly scan IP addresses to determine what servers they're hosting, allowing analysts to query for current or historical information in their scan databases.

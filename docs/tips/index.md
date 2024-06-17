@@ -17,6 +17,12 @@ For this reason, it makes sense to pivot on **rare** (low-prevalence) properties
 
 For example, if a suspicious server has many properties which are shared by thousands of other servers (such as listening on port 80), but its IP address is located in a small ASN with only a few dozen other addresses, then you should probably prioritize the ASN for further investigation before pursuing other avenues of exploration.
 
+One way of identifying rare properties is [frequency analysis](https://en.wikipedia.org/wiki/Frequency_analysis), which involves calculating the prevalence of every property of a given artifact in order to identify outliers of interest. Some platforms perform these calculations for you, such as the "Guided Pivots" feature of [DomainTools](https://domaintools.com/). This process can be especially helpful if an investigation has so far only surfaced a small number of artifacts, by highlighting which aspects of those artifacts are the most pivotable. However, frequency analysis can also be useful when a pivot surfaces too many artifacts, as it can be used to prioritize artifacts with the rarest properties, which are usually most likely to be interesting and therefore worth pursuing further.
+
+## Use both inclusion and exclusion
+
+...
+
 ## Combine multiple pivots
 
 Having considered the significance of rarity, during your investigations you may yet encounter artifacts with properties that don't stand out among the rest in any significant way. However, sometimes you can identify rarity by filtering on multiple properties at once.
