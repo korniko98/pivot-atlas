@@ -131,7 +131,7 @@ Historic DNS resolutions can be based on either passive DNS collection (pDNS), w
 
 Some Autonomous System Numbers (ASN) are known to be operated by malicious actors[^2], and in some cases an address's ASN may contain additional addresses in use by the same actor.
 
-Given an ASN, analysts can use [DNS tools](http://127.0.0.1:8000/tools/#dns-data) such as [MXToolBox](https://mxtoolbox.com/SuperTool.aspx) to identify the IP ranges associated with it.
+Given an ASN, analysts can use [DNS tools](/tools/#dns-data) such as [MXToolBox](https://mxtoolbox.com/SuperTool.aspx) to identify the IP ranges associated with it.
 
 ####:octicons-arrow-right-24: Addresses with similar registration details
 
