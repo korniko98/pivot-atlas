@@ -9,9 +9,9 @@ title: About
 
 ## Introduction
 
-Welcome to **Pivot Atlas**, an educational pivoting handbook for cyber threat intelligence analysts, containing simple reference material for how to make the best use of various threat activity observables, such as [IP addresses](/artifacts/ip-address) and [file hashes](/fingerprints#file-hash).
+Welcome to **Pivot Atlas**, an educational pivoting handbook for cyber threat intelligence analysts developed by [Amitai Cohen](https://twitter.com/AmitaiCo).
 
-This website aims to map the **pivotability** of every type of artifact that analysts might encounter in the course of their investigations:
+This website contains simple reference material for how to make the best use of various threat activity observables, such as [IP addresses](/artifacts/ip-address) and [file hashes](/fingerprints#file-hash). The goal is to map the **pivotability** of every type of artifact that analysts might encounter in the course of their investigations:
 
 !!! quote ""
     <div class="word-flip">
