@@ -74,13 +74,13 @@ title: Domain
 
 ### Domains
 
-!!! abstract inline end "Example"
-
-	Black Basta registered various bee-themed domains which resolved to C&C servers. These included `realbumblebee[.]net`, `recentbee[.]net`, and `currentbee[.]net`.[^1]
-
 ####:octicons-arrow-right-24: Domains with similar names
 
 Threat actors may register multiple domains with a similar naming scheme, which can be levereged by analysts to discover additional potentially related domains by querying [DNS databases](/tools/#dns-data). Additionally, threat actors may use names similar to their target organizations' domain names, which can be a useful indicator of malicious intent when reviewing potentially related domains.
+
+!!! abstract "Example"
+
+	Black Basta registered various bee-themed domains which resolved to C&C servers. These included `realbumblebee[.]net`, `recentbee[.]net`, and `currentbee[.]net`.[^1]
 
 ####:octicons-arrow-right-24: Domains with same TLD
 
@@ -144,13 +144,13 @@ Given a domain resolving to an attacker-controlled server, analysts can query fo
 
 ### TLS Certificates
 
-!!! abstract inline end "Example"
-
-	Embee Research analyzed certificate data related to a domain associated with MatanBuchus in order to surface additional domains using certificates with the same subdomains, certificate authority, and registration period.[^2]
-
 ####:octicons-arrow-right-24: Certificates listing it as common name (CN)
 
 TLS certificates contain a common name field (CN) indicating which domain or subdomains the certificate applies to. Therefore, pivoting on a domain by querying [certificate databases](/tools/#certificate-data) can lead to certificates listing the domain itself or its subdomains in its common name field (CN). The resulting certificates might reveal new information listed in their other various fields, and further pivoting on the certificates' hashes might lead to other IP addresses that have previously resolved the same domain.
+
+!!! abstract "Example"
+
+	Embee Research analyzed certificate data related to a domain associated with MatanBuchus in order to surface additional domains using certificates with the same subdomains, certificate authority, and registration period.[^2]
 
 ---
 
@@ -162,15 +162,15 @@ A domain operated by a threat actor can resolve to an [IP address](/artifacts/ip
 
 While querying a domain for its resolving IP address is called forward DNS (fDNS for short), the opposite query is known as reverse DNS (or rDNS). Analysts can perform such lookups using [DNS tools](/tools/#dns) such as [DNSChecker](https://dnschecker.org/).
 
-!!! abstract inline end "Example"
-
-	Embee Research analyzed passive DNS data related to several domains associated with ACTINIUM in order to surface additional IP addresses to which they previously resolved.[^3]
-
 ####:octicons-arrow-right-24: IP addresses to which it previously resolved
 
 Pivoting to past DNS records is especially useful when investigating a long-term campaign or cases in which a threat actor has already shut down their operations.
 
 Historic DNS resolutions can be based on either passive DNS collection (pDNS), which involves continuously recording DNS queries from various sources and aggregating their results into a queryable database, or active forward DNS collection (fDNS), which involves regularly querying for known domains and storing their resolutions.
+
+!!! abstract "Example"
+
+	Embee Research analyzed passive DNS data related to several domains associated with ACTINIUM in order to surface additional IP addresses to which they previously resolved.[^3]
 
 ??? example "Try it out"
 

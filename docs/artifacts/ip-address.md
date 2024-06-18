@@ -104,7 +104,7 @@ While querying a domain for its resolving IP address is called forward DNS (fDNS
 		```
 	=== "Driftnet (API) - rDNS"
 		``` console
-		curl -s -H 'Authorization: Bearer {API_TOKEN}' \
+		$ curl -s -H 'Authorization: Bearer {API_TOKEN}' \
 		'https://api.driftnet.io/v1/domain/rdns?ip={IP_ADDRESS}' \
 		| jq . \
 		| less -S
@@ -164,27 +164,25 @@ When actors purchase an IP address, they must supply registrant information, whi
 
 As mentioned above, threat actors may lease different IP addresses at different times but reuse certain registration details (which might be real or fake). By reviewing [WHOIS history](/tools/#whois-history) platforms, analysts can reveal past similarities which may no longer exist in the current record.
 
-!!! abstract inline end "Example"
-
-	Cobalt Strike team server is configured to listen on port 50050 by default, and threat actors don't always bother to change the default configuration prior to deployment.[^4]
-
 ####:octicons-arrow-right-24: Addresses with same open ports
 
 If an IP address hosting a C&C server has a relatively unique set of open ports (e.g., `80`, `443`, `5432`, and `6379`), analysts can leverage this to query [host scanning services](/tools/#host-scanners) such as [Shodan](https://www.shodan.io) and [Censys](https://search.censys.io) for other IP addresses with the exact same set of open ports, some of which might be hosting servers operated by the same threat actor or running the same malicious applications.
 
-&nbsp;
+!!! abstract "Example"
+
+	Cobalt Strike team server is configured to listen on port 50050 by default, and threat actors don't always bother to change the default configuration prior to deployment.[^4]
 
 ---
 
 ### Clients
 
-!!! abstract inline end "Example"
-
-	Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
-
 ####:octicons-arrow-right-24: Clients connecting to it
 
 If you have access to [traffic aggregation data](/tools/#traffic-aggregation), you can check for other IP addresses that may have been observed in communication with this IP address. This can reveal victim devices communicating with malicious infrastructure, or other components of a threat actor's operation (such as proxy servers).
+
+!!! abstract "Example"
+
+	Proofpoint and Team Cymru analyzed Netflow data to surface a common server observed in communication with multiple C2 servers used by Latrodectus malware operators.[^3]
 
 ####:octicons-arrow-right-24: Clients connecting from it
 
@@ -198,15 +196,15 @@ Infected or attacker-controlled clients running the same tools often have overla
 
 ### User Agents
 
-!!! abstract inline end "Example"
-
-	 Permiso identified a threat actor using [S3 Browser](https://s3browser.com/) and identifying as the user agent `S3 Browser 9.5.5 <https://s3browser.com>`. While this tool and user agent can be used legitimately, in this case it was never used by employees in the target environment, and was therefore unique to this actor's activity in that specific context.[^5]
-
 ####:octicons-arrow-right-24: User agents identifying it
 
 Various components of malicious activity involve clients identifying as certain [user agents](/artifacts/user-agent). In some cases, client behavior can be pivoted upon between different IP addresses based on shared user agents. However, this is usually considered a relatively weak correlation, since the same user agent could have legitimate uses as well, unless it's unique.
 
 Given the IP address of a device infected with malware, or a machine running an attacker-side tool (such as a toolkit, crawler or scanner), analysts can review network activity logs to determine which user agents identify the IP address.
+
+!!! abstract "Example"
+
+	 Permiso identified a threat actor using [S3 Browser](https://s3browser.com/) and identifying as the user agent `S3 Browser 9.5.5 <https://s3browser.com>`. While this tool and user agent can be used legitimately, in this case it was never used by employees in the target environment, and was therefore unique to this actor's activity in that specific context.[^5]
 
 ---
 
@@ -232,29 +230,29 @@ An IP address can host one or more servers on various ports. Scanning different 
 
 Attacker-controlled servers operated by the same threat actor or that are part of the same campaign often have overlapping techstacks (meaning that they run the same set of software components). Moreover, these servers might be configured in the exact same way. This can result in a subset of malicious servers that can be uniquely identified by their fingerprint (or a set of fingerprint types), such as [JARM](/fingerprints#jarm-fingerprint), [HHHash](/fingerprints/#hhhash-fingerprint), or one of the [JA4+](/fingerprints/#ja4-fingerprints) fingerprints.
 
-!!! abstract inline end "Example"
-
-	Until January 2019, Cobalt Strike team servers contained an “extraneous space” in their default HTTP response headers (after the word `OK` in `HTTP/1.1 200 OK`). At the time, this mistake could be leveraged for unique identification of such servers.[^6]
-
 ####:octicons-arrow-right-24: Servers with same banner or headers
 
 Depending on the protocols in use, servers normally respond to clients with a specific canned response. HTTP/S servers return response headers, whereas non-HTTP servers return banners. Analysts can leverage this to perform a type of scan called [banner grabbing](https://www.recordedfuture.com/threat-intelligence-101/tools-and-techniques/banner-grabbing) to identify what applications are running on the server.
 
 Given an IP address, analysts can query [host scanning](/tools/#host-scanners) platforms such as [Censys](https://search.censys.io/) to see the results of past scans of any servers it hosts.
 
+!!! abstract "Example"
+
+	Until January 2019, Cobalt Strike team servers contained an “extraneous space” in their default HTTP response headers (after the word `OK` in `HTTP/1.1 200 OK`). At the time, this mistake could be leveraged for unique identification of such servers.[^6]
+
 ####:octicons-arrow-right-24: Servers with same favicon
 
 [Favicons](https://en.wikipedia.org/wiki/Favicon) are icons displayed in browser windows or tabs when viewing a given webpage, and they are usually associated with a specific company or software component. When threat actors reuse software between different servers, this sometimes leads to these servers also sharing the same favicon, which can be leveraged for pivoting by querying [host scanning services](/tools/#host-scanners) such as [Shodan](https://www.shodan.io) (see [this blogpost](https://blog.shodan.io/deep-dive-http-favicon/) from Shodan for more information).
-
-!!! abstract inline end "Example"
-
-	Sucuri tracked a website hijacking campaign in which the threat actor compromised the hosting server and then injected malicious code into JavaScript files. This code consistently began with a unique string (`/*trackmyposs*/eval`). By querying [PublicWWW](https://publicwww.com/) for the indicative string, Sucuri were able to effectively identify many such compromised websites.[^7]
 
 ####:octicons-arrow-right-24: Servers with similar content
 
 When threat actors set up landing pages for a phishing campaign, they may reuse certain assets across multiple sites. Similarly, threat actors might inject the same malicious JavaScript or JavaScript tags into hijacked websites. This can be leveraged by analysts to pivot from one landing page or compromised website to others through [host scanning](/tools/#host-scanners) platforms such as [Censys](https://search.censys.io/) or [URL scanning](/tools/#url-scanners) platforms such as [URLScan](https://urlscan.io/), by searching for these particular elements.
 
 In other cases, phishing websites operated by the same threat actor may only share their general visual appearance, which can occasionally be leveraged for pivoting as well, albeit as a much weaker signal, and only if content-based scanning fails to surface actual code overlap.
+
+!!! abstract "Example"
+
+	Sucuri tracked a website hijacking campaign in which the threat actor compromised the hosting server and then injected malicious code into JavaScript files. This code consistently began with a unique string (`/*trackmyposs*/eval`). By querying [PublicWWW](https://publicwww.com/) for the indicative string, Sucuri were able to effectively identify many such compromised websites.[^7]
 
 ####:octicons-arrow-right-24: Servers with same URL path
 
@@ -272,13 +270,13 @@ Therefore, given a server with an indicative URL path, analysts can run a wide s
 
 ### TLS Certificates
 
-!!! abstract inline end "Example"
-
-	The default configuration of Cobalt Strike servers is to use a specific self-signed TLS certificate (SHA-1 `6ECE5ECE4192683D2D84E25B0BA7E04F9CB7EB7C`). Some threat actors make the mistake of using this default certificate, which can be leveraged for identification.[^8]
-
 ####:octicons-arrow-right-24: Certificates served by it
 
 Threat actors use [TLS certificates](/artifacts/tls-certificate) to enable encrypted TLS communication between attacker-controlled servers, as well as between infected clients and attacker-controlled servers (such as for encrypting communication between malware and its C&C server). If a threat actor deploys multiple servers as part of the same campaign, they might use the same certificate across a subset of their fleet, or use several certificates with partially overlapping details.
+
+!!! abstract "Example"
+
+	The default configuration of Cobalt Strike servers is to use a specific self-signed TLS certificate (SHA-1 `6ECE5ECE4192683D2D84E25B0BA7E04F9CB7EB7C`). Some threat actors make the mistake of using this default certificate, which can be leveraged for identification.[^8]
 
 ---
 

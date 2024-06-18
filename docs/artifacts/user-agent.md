@@ -64,17 +64,17 @@ title: User Agent
 
 ### IP Addresses
 
-!!! abstract inline end "Example"
-
-	Obsidian Security identified a malicious residential proxy network in which the threat actor had configured their malware to use an outdated Chrome user agent from 2019, which is rare enough as of 2024 to be a strong indicator.[^2]
-
 ####:octicons-arrow-right-24: Addresses of clients identifying as it
 
 Various components of malicious activity involve clients identifying as certain user agents. This includes devices infected with malware, machines running attacker-side toolkits, as well as machines running crawlers and scanners.
 
 Given a user agent, analysts can review any available access logs or honeypot logs for matching connections, thereby surfacing the clients' associated IP addresses.
 
-For crawlers and scanners in particular, analysts can query [honeypot](http://127.0.0.1:8000/tools/#honeypots) platforms such as [GreyNoise](https://viz.greynoise.io/) to identify IP addresses identifying as a given user agent.
+For crawlers and scanners in particular, by using platforms such as [GreyNoise](https://viz.greynoise.io/) that operate [honeypots](/tools/#honeypots) and enable users to query their database, analysts can query for a given user agent and thereby identify any IP addresses that identify as it when conducting Internet-wide scans.
+
+!!! abstract "Example"
+
+	Obsidian Security identified a malicious residential proxy network in which the threat actor had configured their malware to use an outdated Chrome user agent from 2019, which is rare enough as of 2024 to be a strong indicator.[^2]
 
 ??? example "Try it out"
 

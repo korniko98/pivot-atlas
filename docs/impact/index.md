@@ -39,19 +39,19 @@ The latter approach can be taken a step further by developing mitigations that b
 
 ## Collaboration
 
-Analysts can share information gleaned from an investigation with other analysts working at other organizations, or even include their findings in a public report as a way to share them with everyone (including threat actors, unfortunately, who will get the chance to learn from their mistakes and improve their operational security, making future detection more difficult).
+Analysts can [share information](https://blog.bushidotoken.net/2024/04/strengthening-proactive-cti-through.html) gleaned from an investigation with other analysts working at other organizations, or even include their findings in a public report as a way to share them with everyone (including threat actors, unfortunately, who will get the chance to learn from their mistakes and improve their operational security, making future detection more difficult).
 
 Sharing information with other trusted analysts is mutually beneficial, since every organization has different (at times overlapping) visibility into threat activity, depending on their business sector, types of monitored environments, and other differentiators.
 
 ## Friction
 
-A potential goal of industry collaboration, as well as public-private partnerships, can be to hinder malicious activity through coordinated takedowns of attacker infrastructure. This can be achieved by leveraging legal systems (such as claiming copyright to phishing domains), or conducting responsive cyber activity (such as gaining access to infected devices and remotely reverting the infection).
+A potential goal of industry collaboration, as well as public-private partnerships, can be to hinder malicious activity through coordinated takedowns of attacker infrastructure. This can be achieved by [leveraging legal systems](https://blogs.microsoft.com/on-the-issues/2022/04/07/cyberattacks-ukraine-strontium-russia/) (such as claiming copyright to phishing domains), or conducting [proactive cyber activity](https://www.fbi.gov/news/stories/fbi-partners-dismantle-qakbot-infrastructure-in-multinational-cyber-takedown) (such as gaining access to infected devices and remotely reverting the infection).
 
 While these activities typically don't deter threat actors in the long term, they do cause friction that can slow them down and raise their operating costs significantly.
 
 ## Attribution
 
-Highly effective pivoting can occasionally lead to artifacts that indicate the real-world identity of the associated threat actor. Attribution is sometimes made possible due to threat actors' OPSEC mistakes (such as using real registrant information when leasing an IP address), or due to threat actors reusing certain artifacts for different operations (such as proprietary malware).
+Highly effective pivoting can occasionally lead to artifacts that indicate the [real-world identity](https://intrusiontruth.wordpress.com/2018/08/15/apt10-was-managed-by-the-tianjin-bureau-of-the-chinese-ministry-of-state-security/) of the associated threat actor. Attribution is sometimes made possible due to threat actors' OPSEC mistakes (such as using real registrant information when leasing an IP address), or due to threat actors reusing certain artifacts for different operations (such as IP addresses or proprietary malware).
 
 Attribution is also sometimes the result of research involving cross-referencing open-source information gleaned from pivoting with classified intelligence obtained from elsewhere, though this process is normally only achievable by governments or through public-private partnerships.
 
@@ -59,4 +59,4 @@ Attribution is also sometimes the result of research involving cross-referencing
 
 Attribution itself can be operationalized in order to [impose cost](https://www.lawfaremedia.org/article/cost-imposition-point-understanding-us-cyber-operations-and-strategy-behind-achieving-effects) (whether personal or national) and coerce threat actors to change their behavior through deterrence.
 
-Another possible goal is to make the problem go away in the most literal and long-term sense, such as through legal or even military action (in cyberspace or beyond). For instance, once a hacker's identity is revealed, they can be arrested and incarcerated. Similarly, governments can sanction the individuals and organizations behind malicious state-sponsored activity, or respond to cyber activity in kind.
+Another possible goal is to make the problem go away in the most literal and long-term sense, such as through legal or even military action (in cyberspace or beyond). For instance, once a hacker's identity is revealed, they can be [arrested and incarcerated](https://thehackernews.com/2023/08/two-lapsus-hackers-convicted-in-london.html). Similarly, governments can [sanction](https://home.treasury.gov/news/press-releases/jy2292) the individuals and organizations behind malicious state-sponsored activity, or respond to cyber activity [in kind](https://www.nytimes.com/2019/02/26/us/politics/us-cyber-command-russia.html).

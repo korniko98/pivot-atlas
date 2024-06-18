@@ -84,15 +84,15 @@ title: TLS Certificate
 
 ### Servers
 
-!!! abstract inline end "Example"
-
-	The default configuration of Cobalt Strike servers is to use a specific self-signed TLS certificate (SHA-1 `6ECE5ECE4192683D2D84E25B0BA7E04F9CB7EB7C`). Some threat actors make the mistake of using this default certificate, which can be leveraged for identification.[^1]
-
 ####:octicons-arrow-right-24: Servers serving it
 
 Threat actors use [TLS certificates](/artifacts/tls-certificate) to enable encrypted TLS communication between attacker-controlled servers, as well as between infected clients and attacker-controlled servers (such as for encrypting communication between malware and its C&C server). If a threat actor deploys multiple servers as part of the same campaign, they might use the same certificate across a subset of their fleet, or use several certificates with partially overlapping details.
 
 Given a certificate, analysts can query [host scanning services](/tools/#host-scanners) such as [Shodan](https://www.shodan.io) and [Censys](https://search.censys.io) for the certificate itself or for any of its individual details (such as serial number or common name) to identify potentially related servers.
+
+!!! abstract "Example"
+
+	The default configuration of Cobalt Strike servers is to use a specific self-signed TLS certificate (SHA-1 `6ECE5ECE4192683D2D84E25B0BA7E04F9CB7EB7C`). Some threat actors make the mistake of using this default certificate, which can be leveraged for identification.[^1]
 
 ??? example "Try it out"
 
@@ -108,21 +108,15 @@ Given a certificate, analysts can query [host scanning services](/tools/#host-sc
 
 ### Domains
 
-!!! abstract inline end "Example"
-
-	Embee Research analyzed certificate data related to a domain associated with MatanBuchus in order to surface additional domains using certificates with the same subdomains, certificate authority, and registration period.[^2]
-
 ####:octicons-arrow-right-24: Domains matching its CN
 
 TLS certificates contain many fields denoting registrant information, registar information, and various "names" indicating which domain or subdomains the certificate applies to. Further pivoting on the domain listed in the common name field (CN) can lead to other certificates listing the same one or similar ones.
 
-&nbsp;
+!!! abstract "Example"
+
+	Embee Research analyzed certificate data related to a domain associated with MatanBuchus in order to surface additional domains using certificates with the same subdomains, certificate authority, and registration period.[^2]
 
 ### TLS Certificates
-
-!!! abstract inline end "Example"
-
-	ThreatConnect identified an IP address associated with APT28 serving a certificate that listed the common name `ecitcom[.]net`. Pivoting on this name led to several other servers using certificates with the same CN, that resolved domains with completely different names.[^3]
 
 ####:octicons-arrow-right-24: Certificates with same CN
 
@@ -130,7 +124,9 @@ Threat actors may register more than one certificate with the same common name (
 
 Given a certificate, analysts can query [certificate databases](/tools/#certificate-data) for its CN to identify potentially related certificates.
 
-&nbsp;
+!!! abstract "Example"
+
+	ThreatConnect identified an IP address associated with APT28 serving a certificate that listed the common name `ecitcom[.]net`. Pivoting on this name led to several other servers using certificates with the same CN, that resolved domains with completely different names.[^3]
 
 ??? example "Try it out"
 
@@ -158,15 +154,13 @@ Given a certificate, analysts can query [certificate databases](/tools/#certific
 		https://crt.sh/?CAName={CA_NAME}
 		```
 
-!!! abstract inline end "Example"
-
-	ThreatConnect determined that most certificates suspected to be in use by APT28 as of March 2018 were registered during working hours of Moscow's time zone. While this wasn't unique enough for pivoting to unknown certificates, it did serve to increase their confidence in their attribution of related activity to this threat actor.[^3]
-
 ####:octicons-arrow-right-24: Certificates registered in the same timeframe
 
 Threat actors may register many TLS certificates throughout their period of activity, or for the purpose of a particular operation or campaign. In order to maintain OPSEC, threat actors may register every certificate at a different time and at irregular intervals. However, less savvy threat actors could very well register many of their certificates around the same time, a mistake which analysts can leverage along with other parameters in order to identify additional potentially related certificates.
 
-&nbsp;
+!!! abstract "Example"
+
+	ThreatConnect determined that most certificates suspected to be in use by APT28 as of March 2018 were registered during working hours of Moscow's time zone. While this wasn't unique enough for pivoting to unknown certificates, it did serve to increase their confidence in their attribution of related activity to this threat actor.[^3]
 
 [^1]: [Hunting Cobalt Strike Servers](https://bank-security.medium.com/hunting-cobalt-strike-servers-385c5bedda7b)
 [^2]: [Identifying MatanBuchus Domains Through Hardcoded Certificate Values](https://www.embeeresearch.io/tls-certificates-for-threat-intel-dns/)
