@@ -161,6 +161,10 @@ Given a certificate, analysts can query [certificate databases](/tools/#certific
 		```
 		https://crt.sh/?CAName={CA_NAME}
 		```
+	=== "Censys (URL) - Common name"
+		```
+		https://search.censys.io/search?resource=certificates&q=parsed.subject.common_name%3A{COMMON_NAME}
+		```
 
 ####:octicons-arrow-right-24: Certificates registered in the same timeframe
 
