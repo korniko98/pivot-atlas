@@ -104,6 +104,14 @@ Given a certificate, analysts can query [host scanning services](/tools/#host-sc
 		```
 		https://www.shodan.io/search?query=ssl.cert.subject.cn%3A{COMMON_NAME}
 		```
+	=== "Censys (URL) - Fingerprint SHA-256"
+		```
+		https://search.censys.io/search?resource=hosts&q=services.tls.certificates.leaf_data.fingerprint%3A+005a1e83bf89badab2b9958b9c008fbb25c862f78ed996b2ae32ff4a7178c8d4
+		```
+	=== "Censys (URL) - Common name"
+		```
+		https://search.censys.io/search?resource=hosts&sort=RELEVANCE&per_page=25&virtual_hosts=INCLUDE&q=services.tls.certificate.parsed.subject.common_name%3A{COMMON_NAME}
+		```
 ---
 
 ### Domains
