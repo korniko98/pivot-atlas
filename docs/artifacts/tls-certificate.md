@@ -88,7 +88,7 @@ title: TLS Certificate
 
 Threat actors use [TLS certificates](/artifacts/tls-certificate) to enable encrypted TLS communication between attacker-controlled servers, as well as between infected clients and attacker-controlled servers (such as for encrypting communication between malware and its C&C server). If a threat actor deploys multiple servers as part of the same campaign, they might use the same certificate across a subset of their fleet, or use several certificates with partially overlapping details.
 
-Given a certificate, analysts can query [host scanning services](/tools/#host-scanners) such as [Shodan](https://www.shodan.io) and [Censys](https://search.censys.io) for the certificate itself or for any of its individual details (such as serial number or common name) to identify potentially related servers.
+Given a certificate, analysts can query [host scanning services](/tools/#host-scanners) such as [Shodan](https://www.shodan.io) and [Censys](https://search.censys.io) for the certificate itself (by its hash) or for any of its individual details (such as serial number or common name) to identify potentially related servers.
 
 !!! abstract "Example"
 
@@ -100,17 +100,21 @@ Given a certificate, analysts can query [host scanning services](/tools/#host-sc
 		```
 		https://www.shodan.io/search?query=ssl.cert.serial%3A{SERIAL_NUMBER}
 		```
-	=== "Shodan (URL) - Common name"
+	=== "Shodan (URL) - CN"
 		```
 		https://www.shodan.io/search?query=ssl.cert.subject.cn%3A{COMMON_NAME}
 		```
-	=== "Censys (URL) - Fingerprint SHA-256"
+	=== "Censys (URL) - SHA-256 Hash"
 		```
-		https://search.censys.io/search?resource=hosts&q=services.tls.certificates.leaf_data.fingerprint%3A+005a1e83bf89badab2b9958b9c008fbb25c862f78ed996b2ae32ff4a7178c8d4
+		https://search.censys.io/search?resource=hosts&q=services.tls.certificates.leaf_data.fingerprint%3A+{SHA256_HASH}
 		```
-	=== "Censys (URL) - Common name"
+  	=== "Censys (URL) - Serial number"
 		```
-		https://search.censys.io/search?resource=hosts&sort=RELEVANCE&per_page=25&virtual_hosts=INCLUDE&q=services.tls.certificate.parsed.subject.common_name%3A{COMMON_NAME}
+		https://search.censys.io/search?resource=certificates&q=parsed.serial_number%3A+{SERIAL_NUMBER}
+		```
+	=== "Censys (URL) - CN"
+		```
+		https://search.censys.io/search?resource=hosts&q=services.tls.certificate.parsed.subject.common_name%3A{COMMON_NAME}
 		```
 ---
 
