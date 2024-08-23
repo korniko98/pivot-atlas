@@ -53,6 +53,10 @@ You can also use a CLI tool such as `dig` to perform DNS lookups (or use an onli
 
 Platforms such as [Silent Push](https://silentpush.com/) retain DNS resolution data, allowing analysts to query for historical resolutions. This can be useful when investigating long-term activity, during which time the threat actor is likely to have made various changes to their infrastructure.
 
+### DNS Permutations
+
+[DNStwist](https://github.com/elceef/dnstwist) is an open source tool that generates a comprehensive list of permutations based on a provided domain name and then checks if any of these permutations are currently in use. It allows to find domains with similar names.
+
 ## Traffic aggregation
 
 ### Web traffic
@@ -65,7 +69,7 @@ Another source of traffic information about websites in particular is [urlscan.i
 
 ## Host scanners
 
-Platforms such as [Censys](https://search.censys.io/), [Shodan](https://www.shodan.io/), and [Validin](https://www.validin.com/) regularly scan IP addresses to determine what servers they're hosting, allowing analysts to query for current or historical information in their scan databases.
+Platforms such as [Censys](https://search.censys.io/), [Shodan](https://www.shodan.io/) [Validin](https://www.validin.com/), and [FOFA](https://en.fofa.info/) regularly scan IP addresses to determine what servers they're hosting, allowing analysts to query for current or historical information in their scan databases.
 
 ## Honeypots
 
