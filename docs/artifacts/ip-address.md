@@ -228,7 +228,11 @@ An IP address can host one or more servers on various ports. Scanning different 
 
 ####:octicons-arrow-right-24: Servers with same fingerprint
 
-Attacker-controlled servers operated by the same threat actor or that are part of the same campaign often have overlapping techstacks (meaning that they run the same set of software components). Moreover, these servers might be configured in the exact same way. This can result in a subset of malicious servers that can be uniquely identified by their fingerprint (or a set of fingerprint types), such as [JARM](/fingerprints#jarm-fingerprint), [HHHash](/fingerprints/#hhhash-fingerprint), or one of the [JA4+](/fingerprints/#ja4-fingerprints) fingerprints.
+Attacker-controlled servers operated by the same threat actor or that are part of the same campaign often have overlapping techstacks (meaning that they run the same set of software components). Moreover, these servers might be configured in the exact same way. This can result in a subset of malicious servers that can be uniquely identified by their fingerprint (or a set of fingerprint types), such as [JARM](/fingerprints#jarm-fingerprint), [HHHash](/fingerprints/#hhhash-fingerprint), one of the [JA4+](/fingerprints/#ja4-fingerprints) fingerprints, [HASSH](/fingerprints/#hassh), or the [HTML Response Body Hash](/fingerprints/#html-response-body-hash).
+
+####:octicons-arrow-right-24: Servers with same title
+
+Threat actors often leave the default HTML title of the command and control server they deployed. Pivoting on the HTML title allow analysts to discover additional servers. For example, Mythic C2 by default uses Mythic as HTML title. It is possible to search the HTML title on the [Host Scanners](/tools/#host-scanners) platforms.[^9]
 
 ####:octicons-arrow-right-24: Servers with same banner or headers
 
@@ -306,3 +310,4 @@ Attacker-controlled servers hosted on an IP address may store malware for victim
 [^6]: [Identifying Cobalt Strike team servers in the wild](https://blog.fox-it.com/2019/02/26/identifying-cobalt-strike-team-servers-in-the-wild/)
 [^7]: [Massive WordPress JavaScript Injection Campaign Redirects to Ads ](https://blog.sucuri.net/2022/05/massive-wordpress-javascript-injection-campaign-redirects-to-ads.html)
 [^8]: [Hunting Cobalt Strike Servers](https://bank-security.medium.com/hunting-cobalt-strike-servers-385c5bedda7b)
+[^9]: [A Beginner's Guide to Tracking Malware Infrastructure](https://censys.com/a-beginners-guide-to-tracking-malware-infrastructure/)
