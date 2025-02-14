@@ -228,7 +228,15 @@ An IP address can host one or more servers on various ports. Scanning different 
 
 ####:octicons-arrow-right-24: Servers with same fingerprint
 
-Attacker-controlled servers operated by the same threat actor or that are part of the same campaign often have overlapping techstacks (meaning that they run the same set of software components). Moreover, these servers might be configured in the exact same way. This can result in a subset of malicious servers that can be uniquely identified by their fingerprint (or a set of fingerprint types), such as [JARM](/fingerprints#jarm-fingerprint), [HHHash](/fingerprints/#hhhash-fingerprint), or one of the [JA4+](/fingerprints/#ja4-fingerprints) fingerprints.
+Attacker-controlled servers operated by the same threat actor or that are part of the same campaign often have overlapping techstacks (meaning that they run the same set of software components). Moreover, these servers might be configured in the exact same way. This can result in a subset of malicious servers that can be uniquely identified by their fingerprint (or a set of fingerprint types), such as [JARM](/fingerprints#jarm-fingerprint), [HHHash](/fingerprints/#hhhash-fingerprint), one of the [JA4+](/fingerprints/#ja4-fingerprints) fingerprints, [HASSH](/fingerprints/#hassh), or the [HTML Response Body Hash](/fingerprints/#html-response-body-hash).
+
+####:octicons-arrow-right-24: Servers with same title
+
+When threat actors deploy open-source or commercial command and control servers, they often neglect to modify the default HTML title of the server, or they might reuse the same title across multiple deployments. Pivoting on the HTML title via [host scanning](/tools/#host-scanners) platforms thereby allows analysts to discover additional such servers. However, when pivoting on default titles in particular, note that the resulting servers are unlikely to be operated by the same actor, but rather any actor that happened to make the same configuration mistake.
+
+!!! abstract "Example"
+
+	Mythic C2 by default uses "Mythic" as its HTML title.[^9]
 
 ####:octicons-arrow-right-24: Servers with same banner or headers
 
@@ -306,3 +314,4 @@ Attacker-controlled servers hosted on an IP address may store malware for victim
 [^6]: [Identifying Cobalt Strike team servers in the wild](https://blog.fox-it.com/2019/02/26/identifying-cobalt-strike-team-servers-in-the-wild/)
 [^7]: [Massive WordPress JavaScript Injection Campaign Redirects to Ads ](https://blog.sucuri.net/2022/05/massive-wordpress-javascript-injection-campaign-redirects-to-ads.html)
 [^8]: [Hunting Cobalt Strike Servers](https://bank-security.medium.com/hunting-cobalt-strike-servers-385c5bedda7b)
+[^9]: [A Beginner's Guide to Tracking Malware Infrastructure](https://censys.com/a-beginners-guide-to-tracking-malware-infrastructure/)
