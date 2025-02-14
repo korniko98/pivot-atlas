@@ -76,7 +76,7 @@ title: Domain
 
 ####:octicons-arrow-right-24: Domains with similar names
 
-Threat actors may register multiple domains with a similar naming scheme, which can be levereged by analysts to discover additional potentially related domains by querying [DNS databases](/tools/#dns-data). Additionally, threat actors may use names similar to their target organizations' domain names, which can be a useful indicator of malicious intent when reviewing potentially related domains. Another possible solution is to use tools like [dnstwist](/tools/#dns-data) to find a comprehensive list of permutations based on a provided domain name.
+Threat actors may register multiple domains with a similar naming scheme, which can be levereged by analysts to discover additional potentially related domains by querying [DNS databases](/tools/#dns-data) or using tools like [dnstwist](https://dnstwist.it/) to find permutations of any given domain name. Additionally, threat actors may use names similar to their target organizations' domain names, which can be a useful indicator of malicious intent when reviewing potentially related domains.
 
 !!! abstract "Example"
 
