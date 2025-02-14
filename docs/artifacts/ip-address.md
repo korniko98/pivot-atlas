@@ -232,7 +232,11 @@ Attacker-controlled servers operated by the same threat actor or that are part o
 
 ####:octicons-arrow-right-24: Servers with same title
 
-Threat actors often leave the default HTML title of the command and control server they deployed. Pivoting on the HTML title allow analysts to discover additional servers. For example, Mythic C2 by default uses Mythic as HTML title. It is possible to search the HTML title on the [Host Scanners](/tools/#host-scanners) platforms.[^9]
+When threat actors deploy open-source or commercial command and control servers, they often neglect to modify the default HTML title of the server, or they might reuse the same title across multiple deployments. Pivoting on the HTML title via [host scanning](/tools/#host-scanners) platforms thereby allows analysts to discover additional such servers. However, when pivoting on default titles in particular, note that the resulting servers are unlikely to be operated by the same actor, but rather any actor that happened to make the same configuration mistake.
+
+!!! abstract "Example"
+
+	Mythic C2 by default uses "Mythic" as its HTML title.[^9]
 
 ####:octicons-arrow-right-24: Servers with same banner or headers
 
