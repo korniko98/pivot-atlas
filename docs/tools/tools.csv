@@ -10,6 +10,7 @@
 [Silent Push](https://silentpush.com/),":material-checkbox-multiple-marked:{ title=""Also provides WHOIS history"" }",":material-checkbox-multiple-marked: { title=""Also provides DNS history"" }",:material-checkbox-marked:,:material-checkbox-marked:, ,":material-checkbox-marked-outline: { title=""Only contains information about submitted URLs."" }", , , , , , 
 [Validin](https://www.validin.com/),:material-checkbox-marked:,":material-checkbox-multiple-marked:{ title=""Also provides DNS history"" }",:material-checkbox-marked:,:material-checkbox-marked:, ,":material-checkbox-marked-outline: { title=""Only scans some URLs."" }", , , , , , 
 [IPinfo](https://ipinfo.io/), ,:material-checkbox-marked:, , , , , , , , , , 
+[dnstwist](https://dnstwist.it/), ,:material-checkbox-marked:, , , , , , , , , ,
 "[Spamhaus](https://www.spamhaus.org/) { title=""Premium only"" }", ,":material-checkbox-multiple-marked:{ title=""Also provides DNS history"" }", , , , , , , , , , 
 "[ZETAlytics](https://zetalytics.com/) { title=""Premium only"" }", ,":material-checkbox-multiple-marked:{ title=""Also provides DNS history"" }", , , , , , , , , , 
 "[Circle.lu](https://www.circl.lu/services/)  { title=""Limited access"" }", ,":material-checkbox-multiple-marked:{ title=""Also provides DNS history"" }", ,:material-checkbox-marked:, , , , , , , , 
@@ -45,4 +46,3 @@
 [Maltego](https://www.maltego.com/), , , , , , , , , , , ,:material-checkbox-marked:
 [Malwoverview](https://github.com/alexandreborges/malwoverview), , , , , , , , , , , ,:material-checkbox-marked:
 [Mitaka](https://github.com/ninoseki/mitaka), , , , , , , , , , , ,:material-checkbox-marked:
-[dnstwist](https://github.com/elceef/dnstwist), ,:material-checkbox-marked:, , , , , , , , , ,
