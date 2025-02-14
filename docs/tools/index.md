@@ -55,7 +55,7 @@ Platforms such as [Silent Push](https://silentpush.com/) retain DNS resolution d
 
 ### DNS Permutations
 
-[DNStwist](https://github.com/elceef/dnstwist) is an open source tool that generates a comprehensive list of permutations based on a provided domain name and then checks if any of these permutations are currently in use. It allows to find domains with similar names.
+[DNStwist](https://github.com/elceef/dnstwist) is an open source tool that generates a comprehensive list of permutations based on a provided domain name and then checks if any of these permutations are currently in use. It allows discovery of domains with similar names.
 
 ## Traffic aggregation
 
