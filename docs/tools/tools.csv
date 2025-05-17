@@ -36,7 +36,7 @@
 [ThreatFox](https://threatfox.abuse.ch/), , ,":material-checkbox-marked-outline: { title=""Only contains IP addresses and domains tagged as malicious."" }", , , ,":material-checkbox-marked-outline: { title=""Only contains hashes tagged as malicious."" }", , , , , 
 [Intezer Analyse](https://analyze.intezer.com/), , , , , , , , ,:material-checkbox-marked:, , , 
 [GitHub Search](https://github.com/search), , , , , , , , , ,:material-checkbox-marked:, , 
-"[Team Cymru](https://www.team-cymru.com/cyber-threat-hunting-tools) { title=""Premium only"" }", , , , , , , , , , ,:material-checkbox-marked:, 
+"[Team Cymru](https://www.team-cymru.com/cyber-threat-hunting-tools) { title=""Premium only"" }", :material-checkbox-marked:, :material-checkbox-marked:, :material-checkbox-marked:, :material-checkbox-marked:, , , :material-checkbox-marked:, , , ,:material-checkbox-marked:,":material-checkbox-marked-outline: { title=""Team Cymru has over 2,000 Tags for additional context."" }" 
 [Similarweb](https://www.similarweb.com/), , , , , , , , , , ,":material-checkbox-marked-outline: { title=""Only shows traffic between websites."" }", 
 [MISP](https://www.misp-project.org/), , , , , , , , , , , ,:material-checkbox-marked:
 [Cortex](https://github.com/TheHive-Project/Cortex), , , , , , , , , , , ,:material-checkbox-marked:
