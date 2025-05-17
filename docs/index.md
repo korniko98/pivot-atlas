@@ -101,3 +101,11 @@ If you'd like to learn more about how threat actors operate, the following books
 
 * [Network Attacks and Exploitation: A Framework](https://www.wiley.com/en-us/Network+Attacks+and+Exploitation%3A+A+Framework-p-9781118987124) by [Matthew Monte](https://x.com/networkattack)
 * [Attribution of Advanced Persistent Threats](https://link.springer.com/book/10.1007/978-3-662-61313-9) by [Timo Steffens](https://twitter.com/Timo_Steffens)
+
+---
+
+## Related projects
+
+* [Invisible Strings – Contemporary Challenges And Techniques Of Infrastructure Tracking] by [Kamil Bojarski](https://x.com/Lawsecnet) (see also [spreadsheet](https://docs.google.com/spreadsheets/d/1oBOW5qGJstWYg3qXwSK12MHav4Pz6rzP77FzSB2IEeY/edit?gid=1591959748#gid=1591959748) and blogpost[https://counterintelligence.pl/en/2023/07/wyciskajac-cytryny-ioc-metodyczna-analiza-infrastruktury-sieciowej/])
+* [Pivot Mappings Spreadsheet](https://docs.google.com/spreadsheets/d/1AYrXOZwWt9qJbfjntg0GYl7K76Q5eoO6HWrnVq6HCrk/edit?gid=1673474781#gid=1673474781) by [Yashraj Solanki](https://x.com/RustyNoob619) (based on Pivot Atlas)
+* [Unveiling shadows: key tactics for tracking cyber threat actors, attribution, and infrastructure analysis](https://www.virusbulletin.com/conference/vb2024/abstracts/unveiling-shadows-key-tactics-tracking-cyber-threat-actors-attribution-and-infrastructure-analysis/) by [Hossein Jazi](https://x.com/h2jazi)
