@@ -106,6 +106,6 @@ If you'd like to learn more about how threat actors operate, the following books
 
 ## Related projects
 
-* [Invisible Strings – Contemporary Challenges And Techniques Of Infrastructure Tracking] by [Kamil Bojarski](https://x.com/Lawsecnet) (see also [spreadsheet](https://docs.google.com/spreadsheets/d/1oBOW5qGJstWYg3qXwSK12MHav4Pz6rzP77FzSB2IEeY/edit?gid=1591959748#gid=1591959748) and blogpost[https://counterintelligence.pl/en/2023/07/wyciskajac-cytryny-ioc-metodyczna-analiza-infrastruktury-sieciowej/])
+* [Invisible Strings – Contemporary Challenges And Techniques Of Infrastructure Tracking](https://www.youtube.com/watch?v=QdhzzstMZCk) by [Kamil Bojarski](https://x.com/Lawsecnet) (see also [spreadsheet](https://docs.google.com/spreadsheets/d/1oBOW5qGJstWYg3qXwSK12MHav4Pz6rzP77FzSB2IEeY/edit?gid=1591959748#gid=1591959748) and [blogpost](https://counterintelligence.pl/en/2023/07/wyciskajac-cytryny-ioc-metodyczna-analiza-infrastruktury-sieciowej/])
 * [Pivot Mappings Spreadsheet](https://docs.google.com/spreadsheets/d/1AYrXOZwWt9qJbfjntg0GYl7K76Q5eoO6HWrnVq6HCrk/edit?gid=1673474781#gid=1673474781) by [Yashraj Solanki](https://x.com/RustyNoob619) (based on Pivot Atlas)
 * [Unveiling shadows: key tactics for tracking cyber threat actors, attribution, and infrastructure analysis](https://www.virusbulletin.com/conference/vb2024/abstracts/unveiling-shadows-key-tactics-tracking-cyber-threat-actors-attribution-and-infrastructure-analysis/) by [Hossein Jazi](https://x.com/h2jazi)
