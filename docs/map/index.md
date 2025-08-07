@@ -66,7 +66,7 @@ flowchart LR
 	SAMPLE -- communicates --> SERVER
 	SAMPLE -- connects --> SERVER
 	SAMPLE_ <-- hash  ---> SAMPLE
-	SAMPLE <-- observables ---> SAMPLE_
+	SAMPLE_ <-- observables ---> SAMPLE
 	SAMPLE -- identifies as ---> USER_AGENT
 	SAMPLE -- queries ---> DOMAIN
 	SAMPLE -- references  ---> DOMAIN
