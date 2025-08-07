@@ -61,11 +61,11 @@ flowchart LR
 	SERVER <-- fingerprint ---> SERVER_
 	SERVER <-- URL path ---> SERVER_
 	SERVER -- identifies as --> USER_AGENT
+	SAMPLE_ <-- hash  ---> SAMPLE
 	SAMPLE_ <-- behavior ---> SAMPLE
 	SAMPLE_ <-- code similarity ---> SAMPLE
 	SAMPLE -- communicates --> SERVER
 	SAMPLE -- connects --> SERVER
-	SAMPLE_ <-- hash  ---> SAMPLE
 	SAMPLE_ <-- observables ---> SAMPLE
 	SAMPLE -- identifies as ---> USER_AGENT
 	SAMPLE -- queries ---> DOMAIN
