@@ -54,6 +54,7 @@ title: Sample
 		SAMPLE <-- hash ---> SAMPLE_
 		SAMPLE <-- code similarity --> SAMPLE_
 		SAMPLE <-- behavior --> SAMPLE_
+		SAMPLE <-- observables --> SAMPLE_
 
 		SAMPLE -- references ---> DOMAIN
 		SAMPLE -- queries ---> DOMAIN
