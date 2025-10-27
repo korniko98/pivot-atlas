@@ -129,6 +129,10 @@ Threat actors may set up various API endpoints on their servers to facilitate th
 
 Given a domain resolving to an attacker-controlled server, analysts can query for any of its known URL paths in the databases of [URL scanning services](/tools/#url-scanners) such as [URLScan](https://urlscan.io/). This can surface other domains with the same paths which might resolve to potentially related servers.
 
+!!! abstract "Example"
+
+	Microsoft reported `ebsumrnit[.]eu` as a domain controlled by Void Blizzard, used for spear-phishing. This domain is a look-alike of the legitimate `ebsummit[.]eu`. Based on the .eu TLD, the registration date and registrar, Validin were able to identify 6 additional malicious domains.  [^2]
+
 ??? example "Try it out"
 
 	=== "URLScan (URL)"
@@ -150,7 +154,7 @@ TLS certificates contain a common name field (CN) indicating which domain or sub
 
 !!! abstract "Example"
 
-	Embee Research analyzed certificate data related to a domain associated with MatanBuchus in order to surface additional domains using certificates with the same subdomains, certificate authority, and registration period.[^2]
+	Embee Research analyzed certificate data related to a domain associated with MatanBuchus in order to surface additional domains using certificates with the same subdomains, certificate authority, and registration period.[^3]
 
 ---
 
@@ -170,7 +174,7 @@ Historic DNS resolutions can be based on either passive DNS collection (pDNS), w
 
 !!! abstract "Example"
 
-	Embee Research analyzed passive DNS data related to several domains associated with ACTINIUM in order to surface additional IP addresses to which they previously resolved.[^3]
+	Embee Research analyzed passive DNS data related to several domains associated with ACTINIUM in order to surface additional IP addresses to which they previously resolved.[^4]
 
 ??? example "Try it out"
 
@@ -192,5 +196,6 @@ However, some threat actors may obfuscate hardcoded domains as an anti-analysis 
 Regardless, given a domain, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
 
 [^1]: [#StopRansomware: Black Basta](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-131a)
-[^2]: [Identifying MatanBuchus Domains Through Hardcoded Certificate Values](https://www.embeeresearch.io/tls-certificates-for-threat-intel-dns/)
-[^3]: [Passive DNS Pivoting - Uncovering APT Infrastructure Through Historical Records and Subdomain Analysis](https://www.embeeresearch.io/uncovering-apt-infrastructure-with-passive-dns-pivoting/)
+[^2]: [Hunting Laundry Bear: Infrastructure Analysis Guide and Findings](https://www.validin.com/blog/laundry_bear_infrastructure_analysis/)
+[^3]: [Identifying MatanBuchus Domains Through Hardcoded Certificate Values](https://www.embeeresearch.io/tls-certificates-for-threat-intel-dns/)
+[^4]: [Passive DNS Pivoting - Uncovering APT Infrastructure Through Historical Records and Subdomain Analysis](https://www.embeeresearch.io/uncovering-apt-infrastructure-with-passive-dns-pivoting/)
