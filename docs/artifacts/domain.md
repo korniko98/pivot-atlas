@@ -86,6 +86,10 @@ Threat actors may register multiple domains with a similar naming scheme, which 
 
 Threat actors may have a preference for certain top-level domains (TLD), such as `.xyz`, which is usually very cheap or even free (for this reason, some organizations block this TLD as a precautionary measure). In such cases, applying a TLD filter alongside filters for other parameters (such as registrar) can narrow domain search results within [DNS databases](/tools/#dns-data) to a number reasonably small enough to manually review.
 
+!!! abstract "Example"
+
+	Microsoft reported `ebsumrnit[.]eu` as a domain controlled by Void Blizzard, used for spear-phishing. This domain is a look-alike of the legitimate `ebsummit[.]eu`. Based on the .eu TLD, the registration date and registrar, Validin were able to identify 6 additional malicious domains.  [^2]
+
 ####:octicons-arrow-right-24: Domains with same registrar
 
 A [domain name registrar](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/) handles registrations of domains and leases them to customers. Some threat actors may show preference for certain registrars when registering their domains for malicious use (possible reasons may include minimal anti-fruad mechanisms in place or acceptance of cryptocurrency as payment). This preference can then be leveraged by analysts for pivoting purposes by querying [WHOIS databases](/tools/#whois-data).
@@ -128,10 +132,6 @@ Threat actors perform registration in bulk of domains meant for malicious purpos
 Threat actors may set up various API endpoints on their servers to facilitate the required functionality for their malicious infrastructure. Each of these endpoints may be available on a different URL path (e.g., malware may connect to an `/upload/` endpoint to exfiltrate data). Similarly, threat actors may hijack legitimate servers and deploy a file containing malicious code, which may be located on a consistent URL path across multiple compromised servers.
 
 Given a domain resolving to an attacker-controlled server, analysts can query for any of its known URL paths in the databases of [URL scanning services](/tools/#url-scanners) such as [URLScan](https://urlscan.io/). This can surface other domains with the same paths which might resolve to potentially related servers.
-
-!!! abstract "Example"
-
-	Microsoft reported `ebsumrnit[.]eu` as a domain controlled by Void Blizzard, used for spear-phishing. This domain is a look-alike of the legitimate `ebsummit[.]eu`. Based on the .eu TLD, the registration date and registrar, Validin were able to identify 6 additional malicious domains.  [^2]
 
 ??? example "Try it out"
 
