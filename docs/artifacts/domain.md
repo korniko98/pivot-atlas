@@ -86,6 +86,10 @@ Threat actors may register multiple domains with a similar naming scheme, which 
 
 Threat actors may have a preference for certain top-level domains (TLD), such as `.xyz`, which is usually very cheap or even free (for this reason, some organizations block this TLD as a precautionary measure). In such cases, applying a TLD filter alongside filters for other parameters (such as registrar) can narrow domain search results within [DNS databases](/tools/#dns-data) to a number reasonably small enough to manually review.
 
+!!! abstract "Example"
+
+	Microsoft reported `ebsumrnit[.]eu` as a domain controlled by Void Blizzard, used for spear-phishing. This domain is a look-alike of the legitimate `ebsummit[.]eu`. Based on the .eu TLD, the registration date and registrar, Validin were able to identify 6 additional malicious domains.  [^2]
+
 ####:octicons-arrow-right-24: Domains with same registrar
 
 A [domain name registrar](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/) handles registrations of domains and leases them to customers. Some threat actors may show preference for certain registrars when registering their domains for malicious use (possible reasons may include minimal anti-fruad mechanisms in place or acceptance of cryptocurrency as payment). This preference can then be leveraged by analysts for pivoting purposes by querying [WHOIS databases](/tools/#whois-data).
@@ -150,7 +154,7 @@ TLS certificates contain a common name field (CN) indicating which domain or sub
 
 !!! abstract "Example"
 
-	Embee Research analyzed certificate data related to a domain associated with MatanBuchus in order to surface additional domains using certificates with the same subdomains, certificate authority, and registration period.[^2]
+	Embee Research analyzed certificate data related to a domain associated with MatanBuchus in order to surface additional domains using certificates with the same subdomains, certificate authority, and registration period.[^3]
 
 ---
 
@@ -170,7 +174,7 @@ Historic DNS resolutions can be based on either passive DNS collection (pDNS), w
 
 !!! abstract "Example"
 
-	Embee Research analyzed passive DNS data related to several domains associated with ACTINIUM in order to surface additional IP addresses to which they previously resolved.[^3]
+	Embee Research analyzed passive DNS data related to several domains associated with ACTINIUM in order to surface additional IP addresses to which they previously resolved.[^4]
 
 ??? example "Try it out"
 
@@ -192,5 +196,6 @@ However, some threat actors may obfuscate hardcoded domains as an anti-analysis 
 Regardless, given a domain, analysts can use ["malware zoo"](/tools/#malware-zoos) platforms such as [VirusTotal](https://virustotal.com) to query for any such previously encountered samples.
 
 [^1]: [#StopRansomware: Black Basta](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-131a)
-[^2]: [Identifying MatanBuchus Domains Through Hardcoded Certificate Values](https://www.embeeresearch.io/tls-certificates-for-threat-intel-dns/)
-[^3]: [Passive DNS Pivoting - Uncovering APT Infrastructure Through Historical Records and Subdomain Analysis](https://www.embeeresearch.io/uncovering-apt-infrastructure-with-passive-dns-pivoting/)
+[^2]: [Hunting Laundry Bear: Infrastructure Analysis Guide and Findings](https://www.validin.com/blog/laundry_bear_infrastructure_analysis/)
+[^3]: [Identifying MatanBuchus Domains Through Hardcoded Certificate Values](https://www.embeeresearch.io/tls-certificates-for-threat-intel-dns/)
+[^4]: [Passive DNS Pivoting - Uncovering APT Infrastructure Through Historical Records and Subdomain Analysis](https://www.embeeresearch.io/uncovering-apt-infrastructure-with-passive-dns-pivoting/)
