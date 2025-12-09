@@ -3,7 +3,7 @@ icon: material/github
 title: GitHub User
 ---
 
-# :material/github: GitHub User
+# :material-github: GitHub User
 
 ## Overview
 
@@ -32,47 +32,51 @@ title: GitHub User
 <div class="grid cards" markdown>
 -   :material-globe-model:{ .lg .middle } __Pivot Map__
 	```mermaid
-  flowchart LR
-    classDef primary stroke-width: 2px
-    classDef secondary stroke-dasharray: 5 5
-    USER(User):::primary
-    USER_(User):::secondary
-    EMAIL(User Email)
-    EMAIL_(noreply Email)
-    ORG(Organization)
-    COMMIT(Commit)
-    REPO(Repository)
-    REPO_(Repository):::secondary
-    BRANCH(Branch)
-    COMMIT_(Commit):::secondary
-    KEY(Key)
-    KEY_(Key)
-    PR(Pull Request)
-    FORK(Fork)
-    USER -- created --> REPO
-    USER -- similar name --> USER_
-    USER -- similar image --> USER_
-    USER -- made --> COMMIT
-    USER -- created / commited to --> BRANCH
-    USER -- forked --> FORK
-    USER -- uses --> KEY_
-    USER -- opened / reviewed --> PR
-    EMAIL_ -- contains --> USER_
-    EMAIL -- listed by ---> COMMIT_
-    BRANCH -- in --> REPO
-    FORK -- of --> REPO
-    COMMIT -- lists --> EMAIL
-    COMMIT -- lists --> EMAIL_
-    COMMIT -- signed by ---> KEY
-    KEY -- signed ---> COMMIT_
-    KEY_ -- used by --> USER_
-    COMMIT_ --made by --> USER_
-    PR -- to --> REPO
-    REPO -- owned by ---> ORG
-    REPO -- similar metadata / content --> REPO_
-    USER -- belongs to --> ORG
-    ORG -- has --> USER_
-    ORG -- has --> REPO_
+	flowchart LR
+		classDef primary stroke-width: 2px
+		classDef secondary stroke-dasharray: 5 5
+		
+		%% define nodes
+	    USER(User):::primary
+	    USER_(User):::secondary
+	    EMAIL(User Email)
+	    EMAIL_(noreply Email)
+	    ORG(Organization)
+	    COMMIT(Commit)
+	    REPO(Repository)
+	    REPO_(Repository):::secondary
+	    BRANCH(Branch)
+	    COMMIT_(Commit):::secondary
+	    KEY(Key)
+	    KEY_(Key)
+	    PR(Pull Request)
+	    FORK(Fork)
+		
+		%% define edges
+	    USER -- created --> REPO
+	    USER -- similar name --> USER_
+	    USER -- similar image --> USER_
+	    USER -- made --> COMMIT
+	    USER -- created / commited to --> BRANCH
+	    USER -- forked --> FORK
+	    USER -- uses --> KEY_
+	    USER -- opened / reviewed --> PR
+	    EMAIL_ -- contains --> USER_
+	    EMAIL -- listed by ---> COMMIT_
+	    BRANCH -- in --> REPO
+	    FORK -- of --> REPO
+	    COMMIT -- lists --> EMAIL
+	    COMMIT -- lists --> EMAIL_
+	    COMMIT -- signed by ---> KEY
+	    KEY -- signed ---> COMMIT_
+	    KEY_ -- used by --> USER_
+	    COMMIT_ --made by --> USER_
+	    PR -- to --> REPO
+	    REPO -- owned by ---> ORG
+	    REPO -- similar metadata / content --> REPO_
+	    USER -- belongs to --> ORG
+	    ORG -- has --> USER_
+	    ORG -- has --> REPO_
 	```
 </div>
 
